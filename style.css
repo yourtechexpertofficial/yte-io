@@ -1,0 +1,132 @@
+@font-face {
+  font-family: 'yte';
+  src:  url('fonts/yte.eot?hndz3a');
+  src:  url('fonts/yte.eot?hndz3a#iefix') format('embedded-opentype'),
+    url('fonts/yte.ttf?hndz3a') format('truetype'),
+    url('fonts/yte.woff?hndz3a') format('woff'),
+    url('fonts/yte.svg?hndz3a#yte') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'yte' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-home:before {
+  content: "\e902";
+}
+.ico-newspaper:before {
+  content: "\e904";
+}
+.ico-pencil:before {
+  content: "\e905";
+}
+.ico-image:before {
+  content: "\e90d";
+}
+.ico-images:before {
+  content: "\e90e";
+}
+.ico-play:before {
+  content: "\e912";
+}
+.ico-files-empty:before {
+  content: "\e925";
+}
+.ico-calendar:before {
+  content: "\e953";
+}
+.ico-display:before {
+  content: "\e956";
+}
+.ico-mobile:before {
+  content: "\e958";
+}
+.ico-bubbles:before {
+  content: "\e96f";
+}
+.ico-user:before {
+  content: "\e971";
+}
+.ico-search:before {
+  content: "\e986";
+}
+.ico-settings:before {
+  content: "\e994";
+}
+.ico-trophy:before {
+  content: "\e99e";
+}
+.ico-gift:before {
+  content: "\e99f";
+}
+.ico-bin:before {
+  content: "\e9ac";
+}
+.ico-download3:before {
+  content: "\e9c7";
+}
+.ico-link:before {
+  content: "\e9cb";
+}
+.ico-attachment:before {
+  content: "\e9cd";
+}
+.ico-happy:before {
+  content: "\e9df";
+}
+.ico-plus:before {
+  content: "\ea0a";
+}
+.ico-minus:before {
+  content: "\ea0b";
+}
+.ico-cross:before {
+  content: "\ea0f";
+}
+.ico-checkmark:before {
+  content: "\ea10";
+}
+.ico-play3:before {
+  content: "\ea1c";
+}
+.ico-arrow-down:before {
+  content: "\ea3e";
+}
+.ico-embed2:before {
+  content: "\ea80";
+}
+.ico-share:before {
+  content: "\ea82";
+}
+.ico-amazon:before {
+  content: "\ea87";
+}
+.ico-twitter:before {
+  content: "\ea96";
+}
+.ico-rss:before {
+  content: "\ea9b";
+}
+.ico-youtube:before {
+  content: "\ea9d";
+}
+.ico-reddit:before {
+  content: "\eac6";
+}
+.ico-pinterest:before {
+  content: "\ead1";
+}
