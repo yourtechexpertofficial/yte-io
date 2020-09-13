@@ -1,2 +1,0 @@
-# yte-io
-yte support
