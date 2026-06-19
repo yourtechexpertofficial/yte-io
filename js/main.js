@@ -1,181 +1,245 @@
-/* ─── Particle Canvas ────────────────────────────────────────────────────────── */
-(function initParticles() {
+/* ============================================================
+   COSVIRE — Main JavaScript
+   Particle canvas · scroll reveals · counters · interactions
+   ============================================================ */
+'use strict';
+
+/* ── 1. Navbar scroll ────────────────────────────────────── */
+(function () {
+  const nav = document.getElementById('nav');
+  if (!nav) return;
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}());
+
+/* ── 2. Hamburger / Mobile menu ──────────────────────────── */
+(function () {
+  const btn  = document.getElementById('hamburger');
+  if (!btn) return;
+
+  // Inject mobile menu overlay
+  const menu = document.createElement('div');
+  menu.id = 'mobileMenu';
+  const links = [
+    ['#ecosystem','Ecosystem'],
+    ['#products','Products'],
+    ['#vision','Vision'],
+    ['#contact','Contact'],
+  ];
+  links.forEach(([href, label]) => {
+    const a = document.createElement('a');
+    a.href = href; a.textContent = label;
+    menu.appendChild(a);
+  });
+  document.body.appendChild(menu);
+
+  const close = () => {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  btn.addEventListener('click', () => {
+    const open = btn.classList.toggle('open');
+    menu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+}());
+
+/* ── 3. Smooth scrolling ─────────────────────────────────── */
+(function () {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const navH = document.getElementById('nav')?.offsetHeight || 0;
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - navH,
+        behavior: 'smooth',
+      });
+    });
+  });
+}());
+
+/* ── 4. Particle Canvas ──────────────────────────────────── */
+(function () {
   const canvas = document.getElementById('particleCanvas');
   if (!canvas) return;
+
   const ctx = canvas.getContext('2d');
+  let W, H, rafId;
+  const mouse = { x: null, y: null };
+  const SPEED  = 0.38;
+  const COUNT  = 110;
+  const LINK_D = 130;
 
-  let W, H, particles, mouse = { x: -9999, y: -9999 };
-  const COUNT = 90;
-  const MAX_DIST = 140;
-
-  function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-
-  function Particle() {
-    this.x  = Math.random() * W;
-    this.y  = Math.random() * H;
-    this.vx = (Math.random() - 0.5) * 0.4;
-    this.vy = (Math.random() - 0.5) * 0.4;
-    this.r  = Math.random() * 1.5 + 0.5;
-    this.alpha = Math.random() * 0.5 + 0.2;
-  }
-
-  function initParticleList() {
-    particles = Array.from({ length: COUNT }, () => new Particle());
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, W, H);
-
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > W) p.vx *= -1;
-      if (p.y < 0 || p.y > H) p.vy *= -1;
-
+  class P {
+    constructor() { this.init(); }
+    init() {
+      this.x  = Math.random() * W;
+      this.y  = Math.random() * H;
+      this.vx = (Math.random() - 0.5) * SPEED;
+      this.vy = (Math.random() - 0.5) * SPEED;
+      this.r  = Math.random() * 1.5 + 0.4;
+      this.a  = Math.random() * 0.55 + 0.15;
+    }
+    update() {
+      if (mouse.x !== null) {
+        const dx = this.x - mouse.x, dy = this.y - mouse.y;
+        const d  = Math.hypot(dx, dy);
+        if (d < 100) {
+          const f = (100 - d) / 100;
+          this.vx += (dx / d) * f * 0.07;
+          this.vy += (dy / d) * f * 0.07;
+        }
+      }
+      const spd = Math.hypot(this.vx, this.vy);
+      if (spd > SPEED * 2.8) {
+        this.vx = (this.vx / spd) * SPEED * 2.8;
+        this.vy = (this.vy / spd) * SPEED * 2.8;
+      }
+      this.vx *= 0.992;
+      this.vy *= 0.992;
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < -10) this.x = W + 10;
+      if (this.x > W + 10) this.x = -10;
+      if (this.y < -10) this.y = H + 10;
+      if (this.y > H + 10) this.y = -10;
+    }
+    draw() {
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 245, 212, ${p.alpha})`;
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0,245,212,${this.a})`;
       ctx.fill();
+    }
+  }
 
+  let particles = [];
+
+  const resize = () => {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  };
+
+  const frame = () => {
+    ctx.clearRect(0, 0, W, H);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
       for (let j = i + 1; j < particles.length; j++) {
-        const q = particles[j];
-        const dx = p.x - q.x, dy = p.y - q.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MAX_DIST) {
-          const opacity = (1 - dist / MAX_DIST) * 0.12;
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d  = Math.hypot(dx, dy);
+        if (d < LINK_D) {
           ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(q.x, q.y);
-          ctx.strokeStyle = `rgba(0, 245, 212, ${opacity})`;
-          ctx.lineWidth = 0.6;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,245,212,${(1 - d / LINK_D) * 0.28})`;
+          ctx.lineWidth   = 0.5;
           ctx.stroke();
         }
       }
-
-      const mdx = p.x - mouse.x, mdy = p.y - mouse.y;
-      const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-      if (mdist < 100) {
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.strokeStyle = `rgba(123, 47, 255, ${(1 - mdist / 100) * 0.3})`;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-      }
     }
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', () => { resize(); });
-  canvas.closest('.hero')?.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  canvas.closest('.hero')?.addEventListener('mouseleave', () => {
-    mouse.x = -9999; mouse.y = -9999;
-  });
+    rafId = requestAnimationFrame(frame);
+  };
 
   resize();
-  initParticleList();
-  draw();
-})();
+  particles = Array.from({ length: COUNT }, () => new P());
+  frame();
 
-/* ─── Navbar Scroll ──────────────────────────────────────────────────────────── */
-(function initNav() {
-  const nav = document.getElementById('nav');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('resize', () => {
+    resize();
+    particles.forEach(p => p.init());
   }, { passive: true });
 
-  hamburger?.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
-    hamburger.setAttribute('aria-expanded', String(open));
+  canvas.addEventListener('mousemove', e => {
+    const r  = canvas.getBoundingClientRect();
+    mouse.x  = e.clientX - r.left;
+    mouse.y  = e.clientY - r.top;
   });
+  canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+}());
 
-  navLinks?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      hamburger?.classList.remove('open');
-    });
-  });
-})();
-
-/* ─── Smooth Scroll ──────────────────────────────────────────────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    const offset = 72;
-    const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-  });
-});
-
-/* ─── Scroll Reveal ──────────────────────────────────────────────────────────── */
-(function initReveal() {
+/* ── 5. Scroll Reveal ────────────────────────────────────── */
+(function () {
   const items = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const delay = parseInt(entry.target.dataset.delay || '0', 10);
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, delay);
-      observer.unobserve(entry.target);
+  if (!items.length) return;
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const delay = e.target.dataset.delay ? parseInt(e.target.dataset.delay, 10) : 0;
+      setTimeout(() => e.target.classList.add('is-visible'), delay);
+      io.unobserve(e.target);
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  items.forEach(el => observer.observe(el));
-})();
+  items.forEach(el => io.observe(el));
+}());
 
-/* ─── Counter Animation ──────────────────────────────────────────────────────── */
-(function initCounters() {
-  const counters = document.querySelectorAll('.stats-bar__num[data-target]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseInt(el.dataset.target, 10);
-      const duration = 1200;
-      const start = performance.now();
+/* ── 6. Counter Animation ────────────────────────────────── */
+(function () {
+  const nums = document.querySelectorAll('[data-target]');
+  if (!nums.length) return;
 
-      function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(eased * target);
-        if (progress < 1) requestAnimationFrame(update);
-        else el.textContent = target;
-      }
+  const easeOut = t => 1 - (1 - t) ** 3;
 
-      requestAnimationFrame(update);
-      observer.unobserve(el);
+  const animate = el => {
+    const end = parseInt(el.dataset.target, 10);
+    const dur = 1400;
+    const t0  = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      el.textContent = Math.round(easeOut(p) * end);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      animate(e.target);
+      io.unobserve(e.target);
     });
   }, { threshold: 0.5 });
 
-  counters.forEach(el => observer.observe(el));
-})();
+  nums.forEach(el => io.observe(el));
+}());
 
-/* ─── Card Glow Spotlight ────────────────────────────────────────────────────── */
-(function initCardGlow() {
+/* ── 7. Card spotlight (mouse glow) ─────────────────────── */
+(function () {
   document.querySelectorAll('.card, .product-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      card.style.setProperty('--mx', `${x}%`);
-      card.style.setProperty('--my', `${y}%`);
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top)  + 'px');
     });
   });
-})();
+}());
+
+/* ── 8. Active nav link highlighting ─────────────────────── */
+(function () {
+  const sections = document.querySelectorAll('section[id]');
+  const links    = document.querySelectorAll('.nav__link');
+  if (!sections.length || !links.length) return;
+
+  const onScroll = () => {
+    const y = window.scrollY + 120;
+    let current = '';
+    sections.forEach(s => { if (s.offsetTop <= y) current = s.id; });
+    links.forEach(l => {
+      const active = l.getAttribute('href') === '#' + current;
+      l.style.color = active ? 'var(--cyan)' : '';
+    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}());
