@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cosvire — an innovation ecosystem engineering tomorrow's technology products. From concept to creation, we build what others only imagine." />
+  <title>Cosvire — Innovation Ecosystem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#home" class="nav__logo">
+        <span class="nav__logo-text">COSVIRE</span>
+        <span class="nav__logo-dot"></span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#ecosystem" class="nav__link">Ecosystem</a></li>
+        <li><a href="#products" class="nav__link">Products</a></li>
+        <li><a href="#vision" class="nav__link">Vision</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+      <a href="#ecosystem" class="btn btn--nav">Explore Now</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero__grid-overlay"></div>
+    <div class="hero__content">
+      <div class="hero__badge reveal">
+        <span class="hero__badge-dot"></span>
+        Ecosystem &nbsp;&middot;&nbsp; Innovation &nbsp;&middot;&nbsp; Future
+      </div>
+      <h1 class="hero__title reveal">
+        Where Ideas Become
+        <span class="hero__gradient-text">Digital Reality</span>
+      </h1>
+      <p class="hero__sub reveal">
+        Cosvire is an innovation ecosystem engineering tomorrow's technology products.
+        From concept to creation &mdash; we build what others only imagine.
+      </p>
+      <div class="hero__actions reveal">
+        <a href="#ecosystem" class="btn btn--primary">
+          <span>Discover Ecosystem</span>
+          <i class="ico-arrow-down"></i>
+        </a>
+        <a href="#products" class="btn btn--ghost">View Products</a>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator">
+      <div class="hero__scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+    <div class="hero__orb hero__orb--1"></div>
+    <div class="hero__orb hero__orb--2"></div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-bar__inner">
+      <div class="stats-bar__item">
+        <span class="stats-bar__num" data-target="37">0</span><span class="stats-bar__suffix">+</span>
+        <span class="stats-bar__label">Icons Built</span>
+      </div>
+      <div class="stats-bar__sep"></div>
+      <div class="stats-bar__item">
+        <span class="stats-bar__sym">&infin;</span>
+        <span class="stats-bar__label">Ideas</span>
+      </div>
+      <div class="stats-bar__sep"></div>
+      <div class="stats-bar__item">
+        <span class="stats-bar__num" data-target="1">0</span>
+        <span class="stats-bar__label">Ecosystem</span>
+      </div>
+      <div class="stats-bar__sep"></div>
+      <div class="stats-bar__item">
+        <span class="stats-bar__sym">2026</span>
+        <span class="stats-bar__label">Founded</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ecosystem -->
+  <section class="section ecosystem" id="ecosystem">
+    <div class="container">
+      <p class="section__label reveal">THE ECOSYSTEM</p>
+      <h2 class="section__title reveal">
+        One Vision.<br />
+        <span class="text-gradient">Infinite Possibilities.</span>
+      </h2>
+      <p class="section__sub reveal">
+        Cosvire is not just a company &mdash; it's a living ecosystem where technology ideas are conceived,
+        refined, and engineered into products that matter. Every product born here starts as a spark
+        and ends as something the world actually uses.
+      </p>
+      <div class="cards-grid">
+        <div class="card reveal" data-delay="0">
+          <div class="card__border"></div>
+          <div class="card__icon-wrap"><i class="ico-display card__icon"></i></div>
+          <h3 class="card__title">Innovation Lab</h3>
+          <p class="card__desc">Where raw ideas are transformed into structured product concepts through research, design, and systems thinking.</p>
+        </div>
+        <div class="card reveal" data-delay="100">
+          <div class="card__border"></div>
+          <div class="card__icon-wrap"><i class="ico-settings card__icon"></i></div>
+          <h3 class="card__title">Development Hub</h3>
+          <p class="card__desc">Engineering and building products with cutting-edge technology — robust, scalable, and built to last.</p>
+        </div>
+        <div class="card reveal" data-delay="200">
+          <div class="card__border"></div>
+          <div class="card__icon-wrap"><i class="ico-share card__icon"></i></div>
+          <h3 class="card__title">Launch Pad</h3>
+          <p class="card__desc">Deploying products into the world, iterating on feedback, and scaling ideas that shape the future of tech.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section products" id="products">
+    <div class="container">
+      <p class="section__label reveal">PRODUCTS</p>
+      <h2 class="section__title reveal">Ideas <span class="text-gradient">In Motion</span></h2>
+      <p class="section__sub reveal">
+        Every product born from Cosvire starts as a spark &mdash; an idea engineered into reality.
+      </p>
+      <div class="products-grid">
+
+        <article class="product-card reveal" data-delay="0">
+          <div class="product-card__top" style="--accent: #00f5d4;"></div>
+          <div class="product-card__icon"><i class="ico-images"></i></div>
+          <h3 class="product-card__name">YTE Icons</h3>
+          <p class="product-card__desc">A custom icon ecosystem powering Cosvire's visual identity across all products and platforms.</p>
+          <span class="badge badge--live">
+            <span class="badge__dot"></span>Live
+          </span>
+        </article>
+
+        <article class="product-card reveal" data-delay="80">
+          <div class="product-card__top" style="--accent: #7b2fff;"></div>
+          <div class="product-card__icon"><i class="ico-display"></i></div>
+          <h3 class="product-card__name">Cosvire OS</h3>
+          <p class="product-card__desc">A unified operating layer for all Cosvire products — stealth mode, launching soon.</p>
+          <span class="badge badge--soon">Coming Soon</span>
+        </article>
+
+        <article class="product-card reveal" data-delay="160">
+          <div class="product-card__top" style="--accent: #2563eb;"></div>
+          <div class="product-card__icon"><i class="ico-mobile"></i></div>
+          <h3 class="product-card__name">Cosvire Mobile</h3>
+          <p class="product-card__desc">Cross-platform mobile experiences built natively inside the Cosvire ecosystem.</p>
+          <span class="badge badge--soon">Coming Soon</span>
+        </article>
+
+        <article class="product-card reveal" data-delay="240">
+          <div class="product-card__top" style="--accent: #f59e0b;"></div>
+          <div class="product-card__icon"><i class="ico-search"></i></div>
+          <h3 class="product-card__name">Cosvire Search</h3>
+          <p class="product-card__desc">Intelligent search infrastructure for the next generation of digital products.</p>
+          <span class="badge badge--soon">Coming Soon</span>
+        </article>
+
+        <article class="product-card reveal" data-delay="320">
+          <div class="product-card__top" style="--accent: #ec4899;"></div>
+          <div class="product-card__icon"><i class="ico-link"></i></div>
+          <h3 class="product-card__name">Cosvire Connect</h3>
+          <p class="product-card__desc">A connectivity layer bridging all products, users, and data in one coherent network.</p>
+          <span class="badge badge--soon">Coming Soon</span>
+        </article>
+
+        <article class="product-card reveal" data-delay="400">
+          <div class="product-card__top" style="--accent: #10b981;"></div>
+          <div class="product-card__icon"><i class="ico-trophy"></i></div>
+          <h3 class="product-card__name">Cosvire Rewards</h3>
+          <p class="product-card__desc">A loyalty and engagement system rewarding users across the entire Cosvire ecosystem.</p>
+          <span class="badge badge--soon">Coming Soon</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision -->
+  <section class="vision" id="vision">
+    <div class="vision__noise"></div>
+    <div class="container">
+      <div class="vision__quote reveal">
+        <div class="vision__qmark">&ldquo;</div>
+        <blockquote class="vision__text">
+          We don&rsquo;t follow technology trends.<br />
+          We create them.
+        </blockquote>
+        <cite class="vision__cite">&mdash; Cosvire Manifesto</cite>
+      </div>
+      <div class="vision__pillars">
+        <div class="vision__pillar reveal" data-delay="0">
+          <div class="vision__pillar-icon"><i class="ico-display"></i></div>
+          <h4>Build Bold</h4>
+          <p>We pursue ambitious ideas without compromise, building products that push boundaries others dare not approach.</p>
+        </div>
+        <div class="vision__pillar reveal" data-delay="120">
+          <div class="vision__pillar-icon"><i class="ico-play"></i></div>
+          <h4>Move Fast</h4>
+          <p>Speed is a feature. We ship, learn, and iterate faster than the market can react.</p>
+        </div>
+        <div class="vision__pillar reveal" data-delay="240">
+          <div class="vision__pillar-icon"><i class="ico-happy"></i></div>
+          <h4>Think Infinite</h4>
+          <p>No idea is too big. No problem is too complex. We operate at the very edge of what's possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="contact__inner reveal">
+        <p class="section__label">GET IN TOUCH</p>
+        <h2 class="section__title">Join the <span class="text-gradient">Ecosystem</span></h2>
+        <p class="section__sub">Ready to bring your ideas to life? Get in touch with the Cosvire team.</p>
+        <a href="mailto:admin@cosvire.com" class="contact__email">
+          <i class="ico-attachment"></i>
+          admin@cosvire.com
+        </a>
+        <div class="contact__socials">
+          <a href="#" class="contact__social" aria-label="Twitter"><i class="ico-twitter"></i></a>
+          <a href="#" class="contact__social" aria-label="YouTube"><i class="ico-youtube"></i></a>
+          <a href="#" class="contact__social" aria-label="Reddit"><i class="ico-reddit"></i></a>
+          <a href="#" class="contact__social" aria-label="RSS"><i class="ico-rss"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo">
+            <span>COSVIRE</span>
+            <span class="nav__logo-dot"></span>
+          </a>
+          <p class="footer__tagline">Engineering the future, one product at a time.</p>
+        </div>
+        <nav class="footer__nav">
+          <a href="#ecosystem">Ecosystem</a>
+          <a href="#products">Products</a>
+          <a href="#vision">Vision</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Cosvire. All rights reserved.</span>
+        <span>Built with the Cosvire Ecosystem</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
