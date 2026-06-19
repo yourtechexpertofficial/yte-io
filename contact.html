@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Cosvire — get in touch with the team." />
+  <title>Contact — Cosvire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <span>COSVIRE</span>
+      <span class="nav__logo-dot"></span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html#ecosystem" class="nav__link">Ecosystem</a></li>
+      <li><a href="index.html#products" class="nav__link">Products</a></li>
+      <li><a href="index.html#vision" class="nav__link">Vision</a></li>
+      <li><a href="about.html" class="nav__link">About</a></li>
+      <li><a href="blog.html" class="nav__link">Blog</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn--nav" style="background:var(--indigo);color:#fff;">Get in Touch</a>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero__orb"></div>
+  <div class="container">
+    <p class="page-hero__label reveal">CONTACT</p>
+    <h1 class="page-hero__title reveal">
+      Let's <span class="text-gradient">Start a Conversation</span>
+    </h1>
+    <p class="page-hero__sub reveal">
+      Have an idea, question, or want to collaborate? Reach out — the Cosvire ecosystem is always open to new connections.
+    </p>
+  </div>
+</section>
+
+<!-- Contact Form + Sidebar -->
+<section class="contact-page">
+  <div class="container">
+
+    <div class="contact-form-wrap reveal">
+      <h2>Send a Message</h2>
+      <form action="mailto:admin@cosvire.com" method="post" enctype="text/plain">
+        <div class="form__2col">
+          <div class="form__row">
+            <label class="form__label" for="name">Full Name</label>
+            <input class="form__input" type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form__row">
+            <label class="form__label" for="email">Email Address</label>
+            <input class="form__input" type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="form__row">
+          <label class="form__label" for="subject">Subject</label>
+          <input class="form__input" type="text" id="subject" name="subject" placeholder="What's this about?" />
+        </div>
+        <div class="form__row">
+          <label class="form__label" for="message">Message</label>
+          <textarea class="form__textarea" id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary form__btn">
+          Send Message &nbsp;<i class="ri-send-plane-line"></i>
+        </button>
+      </form>
+    </div>
+
+    <aside class="contact-sidebar reveal" data-delay="150">
+      <h3>Contact Information</h3>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="ri-at-line"></i></div>
+        <div>
+          <p class="contact-info-label">Email</p>
+          <p class="contact-info-value">admin@cosvire.com</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="ri-time-line"></i></div>
+        <div>
+          <p class="contact-info-label">Response Time</p>
+          <p class="contact-info-value">Within 48 hours</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="ri-global-line"></i></div>
+        <div>
+          <p class="contact-info-label">Location</p>
+          <p class="contact-info-value">Remote &mdash; Worldwide</p>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-info-icon"><i class="ri-shield-check-line"></i></div>
+        <div>
+          <p class="contact-info-label">Privacy</p>
+          <p class="contact-info-value">Your data stays private</p>
+        </div>
+      </div>
+
+      <div style="margin-top:28px;">
+        <h3>Follow Along</h3>
+        <div class="contact__socials" style="justify-content:flex-start; margin-top:14px;">
+          <a href="#" class="contact__social" aria-label="Twitter/X"><i class="ri-twitter-x-line"></i></a>
+          <a href="#" class="contact__social" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+          <a href="#" class="contact__social" aria-label="Reddit"><i class="ri-reddit-line"></i></a>
+          <a href="#" class="contact__social" aria-label="RSS"><i class="ri-rss-line"></i></a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <span>COSVIRE</span>
+          <span class="nav__logo-dot"></span>
+        </a>
+        <p class="footer__tagline">Engineering the future, one product at a time.</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="index.html#ecosystem">Ecosystem</a>
+        <a href="index.html#products">Products</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cosvire. All rights reserved.</span>
+      <span>Built with the Cosvire Ecosystem</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

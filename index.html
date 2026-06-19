@@ -8,267 +8,523 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#home" class="nav__logo">
-        <span class="nav__logo-text">COSVIRE</span>
-        <span class="nav__logo-dot"></span>
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#home" class="nav__logo">
+      <span class="nav__logo-text">COSVIRE</span>
+      <span class="nav__logo-dot"></span>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#ecosystem" class="nav__link">Ecosystem</a></li>
+      <li><a href="#products" class="nav__link">Products</a></li>
+      <li><a href="#vision" class="nav__link">Vision</a></li>
+      <li><a href="about.html" class="nav__link">About</a></li>
+      <li><a href="blog.html" class="nav__link">Blog</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--nav">Get in Touch</a>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero__grid-overlay"></div>
+  <div class="hero__content">
+    <div class="hero__badge reveal">
+      <span class="hero__badge-dot"></span>
+      Ecosystem &nbsp;&middot;&nbsp; Innovation &nbsp;&middot;&nbsp; Future
+    </div>
+    <h1 class="hero__title reveal">
+      Where Ideas Become<br>
+      <span class="hero__gradient-text">Digital Reality</span>
+    </h1>
+    <p class="hero__sub reveal">
+      Cosvire is an innovation ecosystem engineering tomorrow's technology products.
+      From concept to creation — we build what others only imagine.
+    </p>
+    <div class="hero__actions reveal">
+      <a href="#ecosystem" class="btn btn--primary">
+        Discover Ecosystem &nbsp;<i class="ri-arrow-down-line"></i>
       </a>
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#ecosystem" class="nav__link">Ecosystem</a></li>
-        <li><a href="#products" class="nav__link">Products</a></li>
-        <li><a href="#vision" class="nav__link">Vision</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
-      </ul>
-      <a href="#ecosystem" class="btn btn--nav">Explore Now</a>
-      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="#products" class="btn btn--ghost">View Products</a>
     </div>
-  </nav>
+  </div>
+  <div class="hero__scroll-indicator">
+    <div class="hero__scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <canvas id="particleCanvas"></canvas>
-    <div class="hero__grid-overlay"></div>
-    <div class="hero__content">
-      <div class="hero__badge reveal">
-        <span class="hero__badge-dot"></span>
-        Ecosystem &nbsp;&middot;&nbsp; Innovation &nbsp;&middot;&nbsp; Future
-      </div>
-      <h1 class="hero__title reveal">
-        Where Ideas Become
-        <span class="hero__gradient-text">Digital Reality</span>
-      </h1>
-      <p class="hero__sub reveal">
-        Cosvire is an innovation ecosystem engineering tomorrow's technology products.
-        From concept to creation &mdash; we build what others only imagine.
-      </p>
-      <div class="hero__actions reveal">
-        <a href="#ecosystem" class="btn btn--primary">
-          <span>Discover Ecosystem</span>
-          <i class="ico-arrow-down"></i>
-        </a>
-        <a href="#products" class="btn btn--ghost">View Products</a>
-      </div>
-    </div>
-    <div class="hero__scroll-indicator">
-      <div class="hero__scroll-line"></div>
-      <span>Scroll</span>
-    </div>
-    <div class="hero__orb hero__orb--1"></div>
-    <div class="hero__orb hero__orb--2"></div>
-  </section>
-
-  <!-- Stats Bar -->
-  <div class="stats-bar">
-    <div class="stats-bar__inner">
-      <div class="stats-bar__item">
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stats-bar__inner">
+    <div class="stats-bar__item">
+      <div class="stats-bar__value">
         <span class="stats-bar__num" data-target="37">0</span><span class="stats-bar__suffix">+</span>
-        <span class="stats-bar__label">Icons Built</span>
       </div>
-      <div class="stats-bar__sep"></div>
-      <div class="stats-bar__item">
-        <span class="stats-bar__sym">&infin;</span>
-        <span class="stats-bar__label">Ideas</span>
-      </div>
-      <div class="stats-bar__sep"></div>
-      <div class="stats-bar__item">
+      <span class="stats-bar__label">Icons Built</span>
+    </div>
+    <div class="stats-bar__sep"></div>
+    <div class="stats-bar__item">
+      <span class="stats-bar__sym">&infin;</span>
+      <span class="stats-bar__label">Ideas</span>
+    </div>
+    <div class="stats-bar__sep"></div>
+    <div class="stats-bar__item">
+      <div class="stats-bar__value">
         <span class="stats-bar__num" data-target="1">0</span>
-        <span class="stats-bar__label">Ecosystem</span>
       </div>
-      <div class="stats-bar__sep"></div>
-      <div class="stats-bar__item">
-        <span class="stats-bar__sym">2026</span>
-        <span class="stats-bar__label">Founded</span>
+      <span class="stats-bar__label">Ecosystem</span>
+    </div>
+    <div class="stats-bar__sep"></div>
+    <div class="stats-bar__item">
+      <span class="stats-bar__sym">2026</span>
+      <span class="stats-bar__label">Founded</span>
+    </div>
+  </div>
+</div>
+
+<!-- Ecosystem -->
+<section class="section ecosystem" id="ecosystem">
+  <div class="container">
+    <p class="section__label reveal">THE ECOSYSTEM</p>
+    <h2 class="section__title reveal">
+      One Vision.<br>
+      <span class="text-gradient">Infinite Possibilities.</span>
+    </h2>
+    <p class="section__sub reveal">
+      Cosvire is not just a company — it's a living ecosystem where technology ideas are conceived,
+      refined, and engineered into products that matter. Every product born here starts as a spark
+      and ends as something the world actually uses.
+    </p>
+    <div class="cards-grid">
+      <div class="card reveal" data-delay="0">
+        <span class="card__num">01</span>
+        <div class="card__border"></div>
+        <div class="card__icon-wrap"><i class="ri-flask-line"></i></div>
+        <h3 class="card__title">Innovation Lab</h3>
+        <p class="card__desc">Where raw ideas are transformed into structured product concepts through research, design, and systems thinking.</p>
+      </div>
+      <div class="card reveal" data-delay="100">
+        <span class="card__num">02</span>
+        <div class="card__border"></div>
+        <div class="card__icon-wrap"><i class="ri-code-s-slash-line"></i></div>
+        <h3 class="card__title">Development Hub</h3>
+        <p class="card__desc">Engineering and building products with cutting-edge technology — robust, scalable, and built to last.</p>
+      </div>
+      <div class="card reveal" data-delay="200">
+        <span class="card__num">03</span>
+        <div class="card__border"></div>
+        <div class="card__icon-wrap"><i class="ri-rocket-line"></i></div>
+        <h3 class="card__title">Launch Pad</h3>
+        <p class="card__desc">Deploying products into the world, iterating on feedback, and scaling ideas that shape the future of tech.</p>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- Ecosystem -->
-  <section class="section ecosystem" id="ecosystem">
-    <div class="container">
-      <p class="section__label reveal">THE ECOSYSTEM</p>
-      <h2 class="section__title reveal">
-        One Vision.<br />
-        <span class="text-gradient">Infinite Possibilities.</span>
-      </h2>
-      <p class="section__sub reveal">
-        Cosvire is not just a company &mdash; it's a living ecosystem where technology ideas are conceived,
-        refined, and engineered into products that matter. Every product born here starts as a spark
-        and ends as something the world actually uses.
+<!-- Egg Hatch -->
+<section class="hatch" id="hatch">
+  <div class="container">
+
+    <div class="hatch__scene">
+      <div class="hatch__glow" id="hatchGlow"></div>
+
+      <!-- Egg wrapper — gets class changes from JS -->
+      <div class="hatch__egg-wrap floating" id="hatchEgg">
+
+        <!-- Full egg (visible before crack) -->
+        <div class="hatch__egg-whole" id="eggWhole">
+          <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+              <radialGradient id="eggGrad" cx="35%" cy="28%" r="72%">
+                <stop offset="0%"   stop-color="#f5f0e6"/>
+                <stop offset="45%"  stop-color="#e8dcca"/>
+                <stop offset="100%" stop-color="#c8a87a"/>
+              </radialGradient>
+              <radialGradient id="eggGlow" cx="50%" cy="55%" r="50%">
+                <stop offset="0%"  stop-color="#06b6d4" stop-opacity="0.55"/>
+                <stop offset="60%" stop-color="#6366f1" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="eggShadow">
+                <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#06b6d4" flood-opacity="0.2"/>
+              </filter>
+              <clipPath id="eggClip">
+                <path d="M80 10 C116 10 150 46 150 96 C150 152 120 208 80 208 C40 208 10 152 10 96 C10 46 44 10 80 10 Z"/>
+              </clipPath>
+            </defs>
+            <!-- Inner glow (revealed when cracking) -->
+            <ellipse cx="80" cy="125" rx="65" ry="75" fill="url(#eggGlow)" clip-path="url(#eggClip)" class="egg-glow-inner" style="opacity:0;transition:opacity 1s ease"/>
+            <!-- Main egg body -->
+            <path d="M80 10 C116 10 150 46 150 96 C150 152 120 208 80 208 C40 208 10 152 10 96 C10 46 44 10 80 10 Z"
+                  fill="url(#eggGrad)" filter="url(#eggShadow)"/>
+            <!-- Speckles -->
+            <circle cx="48" cy="68" r="2.5"  fill="#d4b896" opacity="0.55"/>
+            <circle cx="75" cy="52" r="1.8"  fill="#d4b896" opacity="0.45"/>
+            <circle cx="98" cy="72" r="2"    fill="#d4b896" opacity="0.5"/>
+            <circle cx="42" cy="100" r="1.6" fill="#d4b896" opacity="0.4"/>
+            <circle cx="110" cy="108" r="2"  fill="#d4b896" opacity="0.45"/>
+            <circle cx="60" cy="138" r="1.8" fill="#d4b896" opacity="0.35"/>
+            <circle cx="96" cy="150" r="1.5" fill="#d4b896" opacity="0.3"/>
+            <!-- Highlight -->
+            <ellipse cx="47" cy="55" rx="20" ry="26" fill="#ffffff" opacity="0.14" transform="rotate(-12 47 55)"/>
+            <!-- Crack lines (drawn via stroke-dashoffset) -->
+            <path class="crack-main"
+                  d="M11 102 L32 88 L54 108 L80 88 L102 110 L130 84 L149 98"
+                  fill="none" stroke="#7a5a38" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="crack-branch1"
+                  d="M80 88 L68 72"
+                  fill="none" stroke="#7a5a38" stroke-width="1.6" stroke-linecap="round"/>
+            <path class="crack-branch2"
+                  d="M102 110 L116 126"
+                  fill="none" stroke="#7a5a38" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Top shell half (flies up when hatched) -->
+        <div class="hatch__shell-top" id="shellTop">
+          <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+              <radialGradient id="shellTopGrad" cx="35%" cy="28%" r="72%">
+                <stop offset="0%"   stop-color="#f5f0e6"/>
+                <stop offset="50%"  stop-color="#e8dcca"/>
+                <stop offset="100%" stop-color="#c8a87a"/>
+              </radialGradient>
+            </defs>
+            <path d="M11 102 L32 88 L54 108 L80 88 L102 110 L130 84 L149 98 C146 58 122 10 80 10 C38 10 14 58 11 102 Z"
+                  fill="url(#shellTopGrad)"/>
+            <path d="M11 102 L32 88 L54 108 L80 88 L102 110 L130 84 L149 98"
+                  fill="none" stroke="#7a5a38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <ellipse cx="47" cy="55" rx="18" ry="24" fill="#ffffff" opacity="0.14" transform="rotate(-12 47 55)"/>
+          </svg>
+        </div>
+
+        <!-- Bottom shell half -->
+        <div class="hatch__shell-bottom" id="shellBottom">
+          <svg viewBox="0 0 160 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+              <radialGradient id="shellBotGrad" cx="40%" cy="70%" r="65%">
+                <stop offset="0%"   stop-color="#e8dcca"/>
+                <stop offset="100%" stop-color="#b8956a"/>
+              </radialGradient>
+            </defs>
+            <path d="M11 102 L32 88 L54 108 L80 88 L102 110 L130 84 L149 98 C152 138 122 208 80 208 C38 208 8 138 11 102 Z"
+                  fill="url(#shellBotGrad)"/>
+            <path d="M11 102 L32 88 L54 108 L80 88 L102 110 L130 84 L149 98"
+                  fill="none" stroke="#7a5a38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+      </div><!-- /hatch__egg-wrap -->
+
+      <!-- The Chick (outside egg-wrap, sibling in scene) -->
+      <div class="hatch__chick" id="hatchChick">
+        <svg viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="cBody" cx="38%" cy="35%" r="65%">
+              <stop offset="0%"   stop-color="#fef08a"/>
+              <stop offset="55%"  stop-color="#fde047"/>
+              <stop offset="100%" stop-color="#ca8a04"/>
+            </radialGradient>
+            <radialGradient id="cHead" cx="34%" cy="28%" r="68%">
+              <stop offset="0%"   stop-color="#fef9c3"/>
+              <stop offset="50%"  stop-color="#fef08a"/>
+              <stop offset="100%" stop-color="#eab308"/>
+            </radialGradient>
+            <radialGradient id="cWing" cx="30%" cy="35%" r="70%">
+              <stop offset="0%"   stop-color="#fde047"/>
+              <stop offset="100%" stop-color="#a16207"/>
+            </radialGradient>
+            <radialGradient id="cEye" cx="33%" cy="28%" r="65%">
+              <stop offset="0%"   stop-color="#34d399"/>
+              <stop offset="45%"  stop-color="#06b6d4"/>
+              <stop offset="100%" stop-color="#0369a1"/>
+            </radialGradient>
+            <linearGradient id="cBeak" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"   stop-color="#fb923c"/>
+              <stop offset="100%" stop-color="#c2410c"/>
+            </linearGradient>
+            <linearGradient id="cFoot" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%"   stop-color="#f97316"/>
+              <stop offset="100%" stop-color="#9a3412"/>
+            </linearGradient>
+            <filter id="chickGlow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Feet -->
+          <line x1="58" y1="178" x2="55" y2="196" stroke="url(#cFoot)" stroke-width="5" stroke-linecap="round"/>
+          <line x1="55" y1="196" x2="36" y2="207" stroke="url(#cFoot)" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="55" y1="196" x2="55" y2="212" stroke="url(#cFoot)" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="55" y1="196" x2="73" y2="205" stroke="url(#cFoot)" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="102" y1="178" x2="105" y2="196" stroke="url(#cFoot)" stroke-width="5" stroke-linecap="round"/>
+          <line x1="105" y1="196" x2="87" y2="207" stroke="url(#cFoot)" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="105" y1="196" x2="105" y2="212" stroke="url(#cFoot)" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="105" y1="196" x2="124" y2="205" stroke="url(#cFoot)" stroke-width="3.5" stroke-linecap="round"/>
+
+          <!-- Body -->
+          <ellipse cx="80" cy="148" rx="52" ry="44" fill="url(#cBody)"/>
+          <!-- Body shading -->
+          <ellipse cx="80" cy="162" rx="44" ry="27" fill="#ca8a04" opacity="0.16"/>
+          <!-- Body highlight -->
+          <ellipse cx="60" cy="132" rx="24" ry="18" fill="#fef9c3" opacity="0.28"/>
+          <!-- Belly fluff -->
+          <ellipse cx="80" cy="155" rx="30" ry="20" fill="#fef08a" opacity="0.22"/>
+          <!-- Feather arcs on body -->
+          <path d="M46 155 Q60 147 74 155" fill="none" stroke="#ca8a04" stroke-width="1" opacity="0.22"/>
+          <path d="M50 165 Q65 157 80 165" fill="none" stroke="#ca8a04" stroke-width="1" opacity="0.18"/>
+          <path d="M86 155 Q99 147 112 155" fill="none" stroke="#ca8a04" stroke-width="1" opacity="0.22"/>
+
+          <!-- Left wing -->
+          <ellipse cx="34" cy="148" rx="20" ry="30" fill="url(#cWing)" transform="rotate(-14 34 148)"/>
+          <ellipse cx="30" cy="138" rx="11" ry="16" fill="#fef08a" opacity="0.18" transform="rotate(-14 30 138)"/>
+          <path d="M20 148 Q33 140 46 148" fill="none" stroke="#a16207" stroke-width="0.9" opacity="0.28"/>
+          <path d="M18 158 Q32 150 46 158" fill="none" stroke="#a16207" stroke-width="0.8" opacity="0.22"/>
+
+          <!-- Right wing -->
+          <ellipse cx="126" cy="148" rx="20" ry="30" fill="url(#cWing)" transform="rotate(14 126 148)"/>
+          <ellipse cx="130" cy="138" rx="11" ry="16" fill="#fef08a" opacity="0.18" transform="rotate(14 130 138)"/>
+          <path d="M114 148 Q126 140 140 148" fill="none" stroke="#a16207" stroke-width="0.9" opacity="0.28"/>
+          <path d="M114 158 Q127 150 142 158" fill="none" stroke="#a16207" stroke-width="0.8" opacity="0.22"/>
+
+          <!-- Crest feathers (3 tufts on top) -->
+          <ellipse cx="68" cy="54" rx="7.5" ry="20" fill="#eab308" opacity="0.88" transform="rotate(-24 68 54)"/>
+          <ellipse cx="80" cy="48" rx="8.5" ry="24" fill="#fde047"/>
+          <ellipse cx="92" cy="54" rx="7.5" ry="20" fill="#eab308" opacity="0.88" transform="rotate(24 92 54)"/>
+          <ellipse cx="80" cy="52" rx="4" ry="12" fill="#fef9c3" opacity="0.4"/>
+
+          <!-- Head -->
+          <circle cx="80" cy="96" r="40" fill="url(#cHead)"/>
+          <!-- Head bottom shadow -->
+          <ellipse cx="80" cy="127" rx="30" ry="11" fill="#ca8a04" opacity="0.18"/>
+          <!-- Head highlight -->
+          <circle cx="66" cy="82" r="16" fill="#fef9c3" opacity="0.22"/>
+
+          <!-- Cheek blush -->
+          <ellipse cx="50" cy="107" rx="12" ry="8" fill="#f9a8d4" opacity="0.48"/>
+          <ellipse cx="110" cy="107" rx="12" ry="8" fill="#f9a8d4" opacity="0.48"/>
+
+          <!-- Left eye -->
+          <circle cx="66" cy="93" r="14.5" fill="#fff" opacity="0.96"/>
+          <circle cx="67" cy="93" r="11"   fill="url(#cEye)"/>
+          <circle cx="68" cy="93" r="6.5"  fill="#07101e"/>
+          <!-- Specular highlights -->
+          <circle cx="63" cy="88" r="4"    fill="#ffffff"/>
+          <circle cx="72" cy="97" r="2"    fill="#ffffff" opacity="0.65"/>
+          <!-- Eyelid hint -->
+          <path d="M52 86 Q66 78 80 86" fill="none" stroke="#92400e" stroke-width="1.2" stroke-linecap="round" opacity="0.25"/>
+
+          <!-- Right eye -->
+          <circle cx="94" cy="93" r="14.5" fill="#fff" opacity="0.96"/>
+          <circle cx="95" cy="93" r="11"   fill="url(#cEye)"/>
+          <circle cx="96" cy="93" r="6.5"  fill="#07101e"/>
+          <circle cx="91" cy="88" r="4"    fill="#ffffff"/>
+          <circle cx="100" cy="97" r="2"   fill="#ffffff" opacity="0.65"/>
+          <path d="M80 86 Q94 78 108 86" fill="none" stroke="#92400e" stroke-width="1.2" stroke-linecap="round" opacity="0.25"/>
+
+          <!-- Beak -->
+          <path d="M71 108 Q80 125 89 108 Q84 114 80 116 Q76 114 71 108 Z" fill="url(#cBeak)"/>
+          <!-- Lower beak ridge -->
+          <path d="M73 112 Q80 122 87 112 Q83 118 80 119 Q77 118 73 112 Z" fill="#f97316" opacity="0.8"/>
+          <!-- Beak highlight -->
+          <path d="M73.5 109.5 Q80 116 86 109.5 Z" fill="#fed7aa" opacity="0.32"/>
+          <!-- Beak midline -->
+          <line x1="80" y1="108" x2="80" y2="120" stroke="#9a3412" stroke-width="0.9" opacity="0.38"/>
+        </svg>
+      </div><!-- /hatch__chick -->
+
+      <div class="hatch__burst" id="hatchBurst"></div>
+    </div><!-- /hatch__scene -->
+
+    <div class="hatch__copy reveal">
+      <p class="hatch__label">The Origin</p>
+      <h2 class="hatch__title">Every Product<br><span class="text-gradient">Starts as an Idea</span></h2>
+      <p class="hatch__text">
+        From a single spark of imagination, Cosvire engineers complete digital products —
+        each one born, nurtured, and launched from within the ecosystem.
       </p>
-      <div class="cards-grid">
-        <div class="card reveal" data-delay="0">
-          <div class="card__border"></div>
-          <div class="card__icon-wrap"><i class="ico-display card__icon"></i></div>
-          <h3 class="card__title">Innovation Lab</h3>
-          <p class="card__desc">Where raw ideas are transformed into structured product concepts through research, design, and systems thinking.</p>
-        </div>
-        <div class="card reveal" data-delay="100">
-          <div class="card__border"></div>
-          <div class="card__icon-wrap"><i class="ico-settings card__icon"></i></div>
-          <h3 class="card__title">Development Hub</h3>
-          <p class="card__desc">Engineering and building products with cutting-edge technology — robust, scalable, and built to last.</p>
-        </div>
-        <div class="card reveal" data-delay="200">
-          <div class="card__border"></div>
-          <div class="card__icon-wrap"><i class="ico-share card__icon"></i></div>
-          <h3 class="card__title">Launch Pad</h3>
-          <p class="card__desc">Deploying products into the world, iterating on feedback, and scaling ideas that shape the future of tech.</p>
-        </div>
+      <p class="hatch__hint" id="hatchHint">↓ Scroll to hatch</p>
+      <div class="hatch__progress">
+        <div class="hatch__step"></div>
+        <div class="hatch__step"></div>
+        <div class="hatch__step"></div>
+        <div class="hatch__step"></div>
       </div>
     </div>
-  </section>
 
-  <!-- Products -->
-  <section class="section products" id="products">
-    <div class="container">
-      <p class="section__label reveal">PRODUCTS</p>
-      <h2 class="section__title reveal">Ideas <span class="text-gradient">In Motion</span></h2>
-      <p class="section__sub reveal">
-        Every product born from Cosvire starts as a spark &mdash; an idea engineered into reality.
-      </p>
-      <div class="products-grid">
+  </div>
+</section>
 
-        <article class="product-card reveal" data-delay="0">
-          <div class="product-card__top" style="--accent: #00f5d4;"></div>
-          <div class="product-card__icon"><i class="ico-images"></i></div>
+<!-- Products -->
+<section class="section products" id="products">
+  <div class="container">
+    <p class="section__label reveal">PRODUCTS</p>
+    <h2 class="section__title reveal">Ideas <span class="text-gradient">In Motion</span></h2>
+    <p class="section__sub reveal">
+      Every product born from Cosvire starts as a spark — an idea engineered into reality.
+    </p>
+    <div class="products-grid">
+
+      <article class="product-card reveal" data-delay="0">
+        <div class="product-card__top" style="--accent:#06b6d4;"></div>
+        <div class="product-card__body">
+          <div class="product-card__icon" style="color:#06b6d4;"><i class="ri-image-2-line"></i></div>
           <h3 class="product-card__name">YTE Icons</h3>
           <p class="product-card__desc">A custom icon ecosystem powering Cosvire's visual identity across all products and platforms.</p>
           <span class="badge badge--live">
             <span class="badge__dot"></span>Live
           </span>
-        </article>
+        </div>
+      </article>
 
-        <article class="product-card reveal" data-delay="80">
-          <div class="product-card__top" style="--accent: #7b2fff;"></div>
-          <div class="product-card__icon"><i class="ico-display"></i></div>
+      <article class="product-card reveal" data-delay="80">
+        <div class="product-card__top" style="--accent:#a855f7;"></div>
+        <div class="product-card__body">
+          <div class="product-card__icon" style="color:#a855f7;"><i class="ri-computer-line"></i></div>
           <h3 class="product-card__name">Cosvire OS</h3>
           <p class="product-card__desc">A unified operating layer for all Cosvire products — stealth mode, launching soon.</p>
           <span class="badge badge--soon">Coming Soon</span>
-        </article>
+        </div>
+      </article>
 
-        <article class="product-card reveal" data-delay="160">
-          <div class="product-card__top" style="--accent: #2563eb;"></div>
-          <div class="product-card__icon"><i class="ico-mobile"></i></div>
+      <article class="product-card reveal" data-delay="160">
+        <div class="product-card__top" style="--accent:#6366f1;"></div>
+        <div class="product-card__body">
+          <div class="product-card__icon" style="color:#6366f1;"><i class="ri-smartphone-line"></i></div>
           <h3 class="product-card__name">Cosvire Mobile</h3>
           <p class="product-card__desc">Cross-platform mobile experiences built natively inside the Cosvire ecosystem.</p>
           <span class="badge badge--soon">Coming Soon</span>
-        </article>
+        </div>
+      </article>
 
-        <article class="product-card reveal" data-delay="240">
-          <div class="product-card__top" style="--accent: #f59e0b;"></div>
-          <div class="product-card__icon"><i class="ico-search"></i></div>
+      <article class="product-card reveal" data-delay="240">
+        <div class="product-card__top" style="--accent:#f59e0b;"></div>
+        <div class="product-card__body">
+          <div class="product-card__icon" style="color:#f59e0b;"><i class="ri-search-2-line"></i></div>
           <h3 class="product-card__name">Cosvire Search</h3>
           <p class="product-card__desc">Intelligent search infrastructure for the next generation of digital products.</p>
           <span class="badge badge--soon">Coming Soon</span>
-        </article>
+        </div>
+      </article>
 
-        <article class="product-card reveal" data-delay="320">
-          <div class="product-card__top" style="--accent: #ec4899;"></div>
-          <div class="product-card__icon"><i class="ico-link"></i></div>
+      <article class="product-card reveal" data-delay="320">
+        <div class="product-card__top" style="--accent:#ec4899;"></div>
+        <div class="product-card__body">
+          <div class="product-card__icon" style="color:#ec4899;"><i class="ri-links-line"></i></div>
           <h3 class="product-card__name">Cosvire Connect</h3>
           <p class="product-card__desc">A connectivity layer bridging all products, users, and data in one coherent network.</p>
           <span class="badge badge--soon">Coming Soon</span>
-        </article>
+        </div>
+      </article>
 
-        <article class="product-card reveal" data-delay="400">
-          <div class="product-card__top" style="--accent: #10b981;"></div>
-          <div class="product-card__icon"><i class="ico-trophy"></i></div>
+      <article class="product-card reveal" data-delay="400">
+        <div class="product-card__top" style="--accent:#22c55e;"></div>
+        <div class="product-card__body">
+          <div class="product-card__icon" style="color:#22c55e;"><i class="ri-trophy-line"></i></div>
           <h3 class="product-card__name">Cosvire Rewards</h3>
           <p class="product-card__desc">A loyalty and engagement system rewarding users across the entire Cosvire ecosystem.</p>
           <span class="badge badge--soon">Coming Soon</span>
-        </article>
+        </div>
+      </article>
 
+    </div>
+  </div>
+</section>
+
+<!-- Vision -->
+<section class="vision" id="vision">
+  <div class="vision__noise"></div>
+  <div class="container">
+    <div class="vision__quote reveal">
+      <div class="vision__qmark">&ldquo;</div>
+      <blockquote class="vision__text">
+        We don&rsquo;t follow technology trends.<br>We create them.
+      </blockquote>
+      <cite class="vision__cite">&mdash; Cosvire Manifesto</cite>
+    </div>
+    <div class="vision__pillars">
+      <div class="vision__pillar reveal" data-delay="0">
+        <div class="vision__pillar-icon"><i class="ri-meteor-line"></i></div>
+        <h4>Build Bold</h4>
+        <p>We pursue ambitious ideas without compromise, building products that push boundaries others dare not approach.</p>
+      </div>
+      <div class="vision__pillar reveal" data-delay="120">
+        <div class="vision__pillar-icon"><i class="ri-flashlight-line"></i></div>
+        <h4>Move Fast</h4>
+        <p>Speed is a feature. We ship, learn, and iterate faster than the market can react.</p>
+      </div>
+      <div class="vision__pillar reveal" data-delay="240">
+        <div class="vision__pillar-icon"><i class="ri-infinity-line"></i></div>
+        <h4>Think Infinite</h4>
+        <p>No idea is too big. No problem is too complex. We operate at the very edge of what's possible.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Vision -->
-  <section class="vision" id="vision">
-    <div class="vision__noise"></div>
-    <div class="container">
-      <div class="vision__quote reveal">
-        <div class="vision__qmark">&ldquo;</div>
-        <blockquote class="vision__text">
-          We don&rsquo;t follow technology trends.<br />
-          We create them.
-        </blockquote>
-        <cite class="vision__cite">&mdash; Cosvire Manifesto</cite>
-      </div>
-      <div class="vision__pillars">
-        <div class="vision__pillar reveal" data-delay="0">
-          <div class="vision__pillar-icon"><i class="ico-display"></i></div>
-          <h4>Build Bold</h4>
-          <p>We pursue ambitious ideas without compromise, building products that push boundaries others dare not approach.</p>
-        </div>
-        <div class="vision__pillar reveal" data-delay="120">
-          <div class="vision__pillar-icon"><i class="ico-play"></i></div>
-          <h4>Move Fast</h4>
-          <p>Speed is a feature. We ship, learn, and iterate faster than the market can react.</p>
-        </div>
-        <div class="vision__pillar reveal" data-delay="240">
-          <div class="vision__pillar-icon"><i class="ico-happy"></i></div>
-          <h4>Think Infinite</h4>
-          <p>No idea is too big. No problem is too complex. We operate at the very edge of what's possible.</p>
-        </div>
+<!-- Contact -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="contact__inner reveal">
+      <p class="section__label">GET IN TOUCH</p>
+      <h2 class="section__title">Join the <span class="text-gradient">Ecosystem</span></h2>
+      <p class="section__sub">Ready to bring your ideas to life? Get in touch with the Cosvire team.</p>
+      <a href="mailto:admin@cosvire.com" class="contact__email">
+        <i class="ri-at-line"></i>
+        admin@cosvire.com
+      </a>
+      <div class="contact__socials">
+        <a href="#" class="contact__social" aria-label="Twitter/X"><i class="ri-twitter-x-line"></i></a>
+        <a href="#" class="contact__social" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+        <a href="#" class="contact__social" aria-label="Reddit"><i class="ri-reddit-line"></i></a>
+        <a href="#" class="contact__social" aria-label="RSS"><i class="ri-rss-line"></i></a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contact -->
-  <section class="section contact" id="contact">
-    <div class="container">
-      <div class="contact__inner reveal">
-        <p class="section__label">GET IN TOUCH</p>
-        <h2 class="section__title">Join the <span class="text-gradient">Ecosystem</span></h2>
-        <p class="section__sub">Ready to bring your ideas to life? Get in touch with the Cosvire team.</p>
-        <a href="mailto:admin@cosvire.com" class="contact__email">
-          <i class="ico-attachment"></i>
-          admin@cosvire.com
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="#home" class="footer__logo">
+          <span>COSVIRE</span>
+          <span class="nav__logo-dot"></span>
         </a>
-        <div class="contact__socials">
-          <a href="#" class="contact__social" aria-label="Twitter"><i class="ico-twitter"></i></a>
-          <a href="#" class="contact__social" aria-label="YouTube"><i class="ico-youtube"></i></a>
-          <a href="#" class="contact__social" aria-label="Reddit"><i class="ico-reddit"></i></a>
-          <a href="#" class="contact__social" aria-label="RSS"><i class="ico-rss"></i></a>
-        </div>
+        <p class="footer__tagline">Engineering the future, one product at a time.</p>
       </div>
+      <nav class="footer__nav">
+        <a href="#ecosystem">Ecosystem</a>
+        <a href="#products">Products</a>
+        <a href="#vision">Vision</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <a href="#home" class="footer__logo">
-            <span>COSVIRE</span>
-            <span class="nav__logo-dot"></span>
-          </a>
-          <p class="footer__tagline">Engineering the future, one product at a time.</p>
-        </div>
-        <nav class="footer__nav">
-          <a href="#ecosystem">Ecosystem</a>
-          <a href="#products">Products</a>
-          <a href="#vision">Vision</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-      <div class="footer__bottom">
-        <span>&copy; 2026 Cosvire. All rights reserved.</span>
-        <span>Built with the Cosvire Ecosystem</span>
-      </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cosvire. All rights reserved.</span>
+      <span>Built with the Cosvire Ecosystem</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

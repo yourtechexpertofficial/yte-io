@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cosvire Blog — thoughts on technology, design, and building products." />
+  <title>Blog — Cosvire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <span>COSVIRE</span>
+      <span class="nav__logo-dot"></span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html#ecosystem" class="nav__link">Ecosystem</a></li>
+      <li><a href="index.html#products" class="nav__link">Products</a></li>
+      <li><a href="index.html#vision" class="nav__link">Vision</a></li>
+      <li><a href="about.html" class="nav__link">About</a></li>
+      <li><a href="blog.html" class="nav__link" style="color:var(--indigo)">Blog</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn--nav">Get in Touch</a>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero__orb"></div>
+  <div class="container">
+    <p class="page-hero__label reveal">BLOG</p>
+    <h1 class="page-hero__title reveal">
+      Thoughts on <span class="text-gradient">Building</span>
+    </h1>
+    <p class="page-hero__sub reveal">
+      Ideas, learnings, and insights from inside the Cosvire ecosystem. Technology, design, and the process of turning ideas into products.
+    </p>
+  </div>
+</section>
+
+<!-- Blog Content -->
+<section class="blog-page">
+  <div class="container">
+
+    <!-- Filters -->
+    <div class="blog-filters">
+      <button class="blog-filter active">All</button>
+      <button class="blog-filter">Technology</button>
+      <button class="blog-filter">Design</button>
+      <button class="blog-filter">Products</button>
+      <button class="blog-filter">Ecosystem</button>
+    </div>
+
+    <!-- Featured Posts -->
+    <div class="blog-featured">
+      <article class="blog-card blog-card--featured reveal">
+        <div class="blog-card__img">
+          <i class="ri-rocket-2-line"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag">Products</span>
+          <h2 class="blog-card__title">Introducing the Cosvire Ecosystem: Building Everything, Together</h2>
+          <p class="blog-card__excerpt">
+            What happens when you decide that instead of building one product, you build an entire ecosystem?
+            That's the question Cosvire was created to answer. Here's the thinking behind it.
+          </p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> June 19, 2026</span>
+            <span><i class="ri-time-line"></i> 8 min read</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card blog-card--featured reveal" data-delay="100">
+        <div class="blog-card__img" style="background:linear-gradient(135deg,#0c0c1e 0%,rgba(168,85,247,.12) 100%);">
+          <i class="ri-image-2-line" style="color:rgba(168,85,247,.4)"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag" style="background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.2);color:#a855f7">Design</span>
+          <h2 class="blog-card__title">Why We Built Our Own Icon Set (And Why You Might Too)</h2>
+          <p class="blog-card__excerpt">
+            YTE Icons started as a practical necessity and became a full visual language. The story of how 37 icons shaped the identity of an entire ecosystem.
+          </p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> June 15, 2026</span>
+            <span><i class="ri-time-line"></i> 6 min read</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Post Grid -->
+    <div class="blog-grid">
+
+      <article class="blog-card reveal" data-delay="0">
+        <div class="blog-card__img" style="height:140px;font-size:2rem;background:linear-gradient(135deg,#0c0c1e 0%,rgba(6,182,212,.1) 100%);color:rgba(6,182,212,.4)">
+          <i class="ri-code-s-slash-line"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag" style="background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.2);color:#06b6d4">Technology</span>
+          <h3 class="blog-card__title">The Tech Stack Behind Cosvire's First Products</h3>
+          <p class="blog-card__excerpt">Pure HTML, CSS, and vanilla JS. Here's why we chose simplicity over frameworks for v1.</p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> June 10, 2026</span>
+            <span><i class="ri-time-line"></i> 5 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" data-delay="80">
+        <div class="blog-card__img" style="height:140px;font-size:2rem;background:linear-gradient(135deg,#0c0c1e 0%,rgba(245,158,11,.08) 100%);color:rgba(245,158,11,.4)">
+          <i class="ri-lightbulb-line"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2);color:#f59e0b">Ecosystem</span>
+          <h3 class="blog-card__title">How I Structure Idea Development Inside the Ecosystem</h3>
+          <p class="blog-card__excerpt">Not all ideas make it. Here's the process I use to filter, validate, and move ideas into active development.</p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> June 5, 2026</span>
+            <span><i class="ri-time-line"></i> 7 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" data-delay="160">
+        <div class="blog-card__img" style="height:140px;font-size:2rem;background:linear-gradient(135deg,#0c0c1e 0%,rgba(236,72,153,.08) 100%);color:rgba(236,72,153,.4)">
+          <i class="ri-palette-line"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag" style="background:rgba(236,72,153,.1);border-color:rgba(236,72,153,.2);color:#ec4899">Design</span>
+          <h3 class="blog-card__title">Building a Visual Identity from Scratch: The Cosvire Design System</h3>
+          <p class="blog-card__excerpt">Dark palettes, indigo accents, Space Grotesk headlines — how every design decision was made with intent.</p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> June 1, 2026</span>
+            <span><i class="ri-time-line"></i> 9 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" data-delay="240">
+        <div class="blog-card__img" style="height:140px;font-size:2rem;background:linear-gradient(135deg,#0c0c1e 0%,rgba(34,197,94,.08) 100%);color:rgba(34,197,94,.4)">
+          <i class="ri-smartphone-line"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag" style="background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.2);color:#22c55e">Products</span>
+          <h3 class="blog-card__title">Cosvire Mobile: What We're Building and Why</h3>
+          <p class="blog-card__excerpt">A preview of what's coming in the mobile space. Cross-platform but native-feeling — the challenge we're taking on.</p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> May 28, 2026</span>
+            <span><i class="ri-time-line"></i> 4 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" data-delay="320">
+        <div class="blog-card__img" style="height:140px;font-size:2rem;background:linear-gradient(135deg,#0c0c1e 0%,rgba(99,102,241,.1) 100%);color:rgba(99,102,241,.4)">
+          <i class="ri-search-2-line"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag">Technology</span>
+          <h3 class="blog-card__title">Why Search Infrastructure Is the Hardest Problem We're Solving</h3>
+          <p class="blog-card__excerpt">Cosvire Search isn't just a search box. It's a new way of indexing and surfacing content across a connected product ecosystem.</p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> May 22, 2026</span>
+            <span><i class="ri-time-line"></i> 6 min</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" data-delay="400">
+        <div class="blog-card__img" style="height:140px;font-size:2rem;background:linear-gradient(135deg,#0c0c1e 0%,rgba(168,85,247,.1) 100%);color:rgba(168,85,247,.4)">
+          <i class="ri-trophy-line"></i>
+        </div>
+        <div class="blog-card__body">
+          <span class="blog-tag" style="background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.2);color:#a855f7">Ecosystem</span>
+          <h3 class="blog-card__title">Cosvire Rewards: Loyalty for an Interconnected Ecosystem</h3>
+          <p class="blog-card__excerpt">How do you build a reward system that works across multiple products? The architecture behind Cosvire Rewards.</p>
+          <div class="blog-card__meta">
+            <span><i class="ri-calendar-line"></i> May 18, 2026</span>
+            <span><i class="ri-time-line"></i> 5 min</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <span>COSVIRE</span>
+          <span class="nav__logo-dot"></span>
+        </a>
+        <p class="footer__tagline">Engineering the future, one product at a time.</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="index.html#ecosystem">Ecosystem</a>
+        <a href="index.html#products">Products</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="legal.html">Legal</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cosvire. All rights reserved.</span>
+      <span>Built with the Cosvire Ecosystem</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
