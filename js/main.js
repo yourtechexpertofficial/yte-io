@@ -1,5 +1,5 @@
 /* ============================================================
-   COSVIRE — Main JavaScript v3 "Incubator"
+   COSVIRE — Main JavaScript v3
    ============================================================ */
 'use strict';
 
@@ -20,7 +20,7 @@
   menu.id = 'mobileMenu';
   [
     ['index.html#ecosystem', 'Ecosystem'],
-    ['index.html#incubator', 'Incubator'],
+    ['index.html#forge',     'Forge'],
     ['index.html#products',  'Products'],
     ['about.html',           'About'],
     ['blog.html',            'Journal'],
@@ -189,115 +189,106 @@
   track.innerHTML += track.innerHTML;
 }());
 
-/* ── 8. Egg hatch sequence ───────────────────────────────── */
+/* ── 8. The Forge — idea → product synthesizer ───────────── */
 (function () {
-  const scene  = document.getElementById('hatchScene');
-  const wrap   = document.getElementById('hatchEgg');
-  const mark   = document.getElementById('hatchMark');
-  const glow   = document.getElementById('hatchGlow');
-  const flash  = document.getElementById('hatchFlash');
-  const beam   = document.getElementById('hatchBeam');
-  const burst  = document.getElementById('hatchBurst');
-  const shards = document.getElementById('hatchShards');
-  const stages = document.querySelectorAll('.hatch__stage');
-  const eggInnerGlow = document.querySelector('.egg-inner-glow');
-  if (!wrap || !mark) return;
+  const machine  = document.getElementById('forgeMachine');
+  const input    = document.getElementById('forgeInput');
+  const btn      = document.getElementById('forgeRun');
+  const state    = document.getElementById('forgeState');
+  const log      = document.getElementById('forgeLog');
+  const card     = document.getElementById('forgeCard');
+  const cardName = document.getElementById('forgeCardName');
+  const cardSrc  = document.getElementById('forgeCardSrc');
+  const cardTime = document.getElementById('forgeCardTime');
+  const nodes    = document.querySelectorAll('.forge__node');
+  const links    = document.querySelectorAll('.forge__link');
+  if (!machine || !input || !nodes.length) return;
 
-  const setStage = n => {
-    stages.forEach(s => {
-      const idx = parseInt(s.dataset.stage, 10);
-      s.classList.toggle('done', idx < n);
-      s.classList.toggle('now',  idx === n);
+  const DEMO_IDEA = 'smart recipe planner';
+  const delay = ms => new Promise(r => setTimeout(r, ms));
+
+  const addLog = (text, ok) => {
+    const line = document.createElement('span');
+    line.textContent = text;
+    if (ok) line.className = 'ok';
+    log.appendChild(line);
+    while (log.children.length > 6) log.removeChild(log.firstChild);
+  };
+
+  const STOP = new Set(['a','an','the','for','of','to','and','my','our','your','app',
+    'application','smart','new','better','idea','with','that','some','kind','like',
+    'ai','web','mobile','online','digital','simple','easy']);
+  const productName = idea => {
+    const words = idea.toLowerCase().replace(/[^a-z0-9 ]/g, '')
+      .split(/\s+/).filter(w => w && !STOP.has(w));
+    const key = words[0] || 'spark';
+    return 'Cosvire ' + key.charAt(0).toUpperCase() + key.slice(1);
+  };
+
+  const STAGES = [
+    { status: 'shaping…',   logs: ['> idea received — parsing concept', '> mapping the problem space'] },
+    { status: 'building…',  logs: ['> scaffolding architecture', '> compiling interface'] },
+    { status: 'deploying…', logs: ['> provisioning deploy target', '> running smoke tests'] },
+  ];
+
+  let running = false;
+  const run = async ideaRaw => {
+    if (running) return;
+    running = true;
+    const idea = (ideaRaw || '').trim().slice(0, 60) || DEMO_IDEA;
+
+    card.classList.remove('show');
+    log.innerHTML = '';
+    nodes.forEach(n => {
+      n.classList.remove('active', 'done');
+      n.querySelector('.forge__node-status').textContent = 'standby';
     });
-  };
+    links.forEach(l => l.classList.remove('active'));
+    state.textContent = 'FORGING';
+    state.classList.add('on');
 
-  /* Shell shatters into flying shards */
-  const spawnShards = () => {
-    if (!shards) return;
-    const cols = ['#f0eee4', '#ddd9cb', '#bcb8a6', '#d7ff4d'];
-    for (let i = 0; i < 14; i++) {
-      const d = document.createElement('div');
-      d.className = 'hatch__shard';
-      const a    = (i / 14) * Math.PI * 2 + (i % 3) * 0.17;
-      const dist = 85 + ((i * 53) % 75);
-      d.style.setProperty('--sx', (Math.cos(a) * dist).toFixed(1) + 'px');
-      d.style.setProperty('--sy', (Math.sin(a) * dist * 0.9 - 34).toFixed(1) + 'px');
-      d.style.setProperty('--sr', (((i * 97) % 360) - 180) + 'deg');
-      const s = 12 + ((i * 29) % 18);
-      d.innerHTML = '<svg width="' + s + '" height="' + s + '" viewBox="0 0 20 20">'
-        + '<polygon points="1,17 10,1 19,13 12,19" fill="' + cols[i % cols.length] + '"/></svg>';
-      shards.appendChild(d);
-      setTimeout(() => d.remove(), 1000);
+    addLog('> forge start: "' + idea + '"');
+    await delay(550);
+
+    for (let i = 0; i < nodes.length; i++) {
+      nodes[i].classList.add('active');
+      nodes[i].querySelector('.forge__node-status').textContent = STAGES[i].status;
+      for (const line of STAGES[i].logs) {
+        addLog(line);
+        await delay(520);
+      }
+      nodes[i].classList.remove('active');
+      nodes[i].classList.add('done');
+      nodes[i].querySelector('.forge__node-status').textContent = '✓ done';
+      if (links[i]) links[i].classList.add('active');
+      await delay(240);
     }
+
+    const name = productName(idea);
+    const secs = (1.8 + (idea.length % 23) / 10).toFixed(1);
+    cardName.textContent = name;
+    cardSrc.textContent  = 'forged from: "' + idea + '"';
+    cardTime.textContent = secs + 's build';
+    card.classList.add('show');
+    addLog('✓ shipped: ' + name + ' — hello, world', true);
+    state.textContent = 'SHIPPED';
+    await delay(700);
+    state.classList.remove('on');
+    running = false;
   };
 
-  /* Volt/violet confetti */
-  const spawnBurst = () => {
-    if (!burst) return;
-    const colors = ['#d7ff4d', '#8b7cf8', '#ffb84d', '#ebe9e2'];
-    for (let i = 0; i < 18; i++) {
-      const p = document.createElement('div');
-      p.className = 'burst-particle';
-      const angle = (i / 18) * Math.PI * 2 + Math.random() * 0.4;
-      const dist  = 60 + Math.random() * 70;
-      p.style.setProperty('--bx', (Math.cos(angle) * dist).toFixed(1) + 'px');
-      p.style.setProperty('--by', (Math.sin(angle) * dist * 0.85).toFixed(1) + 'px');
-      const size = 4 + Math.random() * 6;
-      p.style.width  = size + 'px';
-      p.style.height = size + 'px';
-      p.style.background = colors[i % colors.length];
-      p.style.borderRadius = i % 3 === 0 ? '2px' : '50%';
-      burst.appendChild(p);
-      setTimeout(() => p.remove(), 900);
-    }
-  };
+  btn?.addEventListener('click', () => run(input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') run(input.value); });
 
-  let triggered = false;
+  /* Auto-demo once when the machine scrolls into view */
+  let auto = false;
   const io = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting || triggered) return;
-    triggered = true;
+    if (!entry.isIntersecting || auto) return;
+    auto = true;
     io.disconnect();
-
-    setStage(0);
-
-    /* Stage 1 — heartbeat detected */
-    setTimeout(() => {
-      wrap.classList.remove('floating');
-      wrap.classList.add('beating');
-      setStage(1);
-    }, 600);
-
-    /* Stage 2 — energy breach: volt cracks + inner glow, heartbeat quickens */
-    setTimeout(() => {
-      wrap.classList.remove('beating');
-      wrap.classList.add('beating--fast', 'cracking');
-      scene?.classList.add('live');
-      glow?.classList.add('active');
-      if (eggInnerGlow) eggInnerGlow.style.opacity = '1';
-      setStage(2);
-    }, 2100);
-
-    /* Stage 3 — shatter: flash, beam, shards, the mark is born */
-    setTimeout(() => {
-      wrap.classList.remove('beating--fast');
-      wrap.classList.add('gone');
-      spawnShards();
-      spawnBurst();
-      flash?.classList.add('active');
-      beam?.classList.add('active');
-      setStage(3);
-      setTimeout(() => mark.classList.add('rising'), 160);
-      setTimeout(() => {
-        mark.classList.remove('rising');
-        mark.style.transform = 'translateX(-50%)';
-        mark.style.opacity = '1';
-        mark.classList.add('idle');
-        stages.forEach(s => { s.classList.add('done'); s.classList.remove('now'); });
-      }, 160 + 1150);
-    }, 3700);
-  }, { threshold: 0.55 });
-
-  io.observe(wrap);
+    setTimeout(() => { if (!running && !input.value) run(DEMO_IDEA); }, 700);
+  }, { threshold: 0.35 });
+  io.observe(machine);
 }());
 
 /* ── 9. Legal tabs ───────────────────────────────────────── */
