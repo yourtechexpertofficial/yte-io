@@ -85,26 +85,42 @@ body::after {
   80% { transform:rotate(3deg)  translateY(-3px); }
   92% { transform:rotate(-1deg) translateY(-1px); }
 }
-@keyframes shellTopFly {
-  0%   { transform:translateY(0) rotate(0) scale(1); opacity:1; }
-  35%  { transform:translateY(-46px) rotate(-10deg); opacity:1; }
-  100% { transform:translateY(-230px) rotate(-38deg) scale(.85); opacity:0; }
+@keyframes eggBeat {
+  0%,100% { transform:scale(1); }
+  14%     { transform:scale(1.035); }
+  28%     { transform:scale(1); }
+  42%     { transform:scale(1.05); }
+  56%     { transform:scale(1); }
 }
-@keyframes shellBotSettle {
-  0%   { transform:rotate(0); }
-  40%  { transform:rotate(7deg) translateX(6px) translateY(3px); }
-  100% { transform:rotate(4deg) translateX(4px) translateY(5px); }
+@keyframes eggVanish {
+  to { transform:scale(1.12); opacity:0; }
 }
-@keyframes chickRise {
-  0%   { transform:translateX(-50%) translateY(64px) scale(.5); opacity:0; }
-  50%  { transform:translateX(-50%) translateY(-18px) scale(1.1); opacity:1; }
-  72%  { transform:translateX(-50%) translateY(6px) scale(.96); }
-  100% { transform:translateX(-50%) translateY(0) scale(1); opacity:1; }
+@keyframes shardFly {
+  0%   { transform:translate(0,0) rotate(0) scale(1); opacity:1; }
+  100% { transform:translate(var(--sx),var(--sy)) rotate(var(--sr)) scale(.6); opacity:0; }
 }
-@keyframes chickIdle {
-  0%,100% { transform:translateX(-50%) translateY(0) rotate(0); }
-  30%     { transform:translateX(-50%) translateY(-9px) rotate(-2deg); }
-  60%     { transform:translateX(-50%) translateY(-2px) rotate(2deg); }
+@keyframes flashPop {
+  0%   { transform:translate(-50%,50%) scale(.2); opacity:1; }
+  100% { transform:translate(-50%,50%) scale(2.4); opacity:0; }
+}
+@keyframes beamUp {
+  0%   { transform:translateX(-50%) scaleY(0); opacity:0; }
+  30%  { opacity:.9; }
+  100% { transform:translateX(-50%) scaleY(1); opacity:0; }
+}
+@keyframes markRise {
+  0%   { transform:translateX(-50%) translateY(90px) scale(.3) rotate(-14deg); opacity:0; }
+  55%  { transform:translateX(-50%) translateY(-22px) scale(1.1) rotate(3deg); opacity:1; }
+  75%  { transform:translateX(-50%) translateY(8px) scale(.96) rotate(-1deg); }
+  100% { transform:translateX(-50%) translateY(0) scale(1) rotate(0); opacity:1; }
+}
+@keyframes markIdle {
+  0%,100% { transform:translateX(-50%) translateY(0); }
+  50%     { transform:translateX(-50%) translateY(-14px); }
+}
+@keyframes markGlow {
+  0%,100% { filter:drop-shadow(0 18px 34px rgba(0,0,0,.5)) drop-shadow(0 0 22px rgba(215,255,77,.25)); }
+  50%     { filter:drop-shadow(0 18px 34px rgba(0,0,0,.5)) drop-shadow(0 0 44px rgba(215,255,77,.5)); }
 }
 @keyframes burstPop {
   0%   { transform:translate(0,0) scale(1) rotate(0); opacity:1; }
@@ -528,52 +544,105 @@ body::after {
   z-index:2;
 }
 .hatch__egg-wrap.floating { animation:eggFloat 4s ease-in-out infinite; }
-.hatch__egg-wrap.wobbling { animation:eggWobble .65s ease-in-out 2; }
-.hatch__egg-whole,
-.hatch__shell-top,
-.hatch__shell-bottom { position:absolute; inset:0; }
-.hatch__shell-top,
-.hatch__shell-bottom { opacity:0; pointer-events:none; }
-.crack-main   { stroke-dasharray:420; stroke-dashoffset:420; transition:stroke-dashoffset 1s var(--ease-soft); }
-.crack-branch1 { stroke-dasharray:70; stroke-dashoffset:70; transition:stroke-dashoffset .5s ease .4s; }
-.crack-branch2 { stroke-dasharray:60; stroke-dashoffset:60; transition:stroke-dashoffset .5s ease .55s; }
+.hatch__egg-wrap.beating  { animation:eggBeat 1.4s ease-in-out infinite; transform-origin:50% 80%; }
+.hatch__egg-wrap.beating--fast { animation:eggBeat .7s ease-in-out infinite; transform-origin:50% 80%; }
+.hatch__egg-wrap.gone { animation:eggVanish .18s ease-out forwards; }
+.hatch__egg-whole { position:absolute; inset:0; }
+/* Energy cracks — volt light leaking through the shell */
+.crack-main    { stroke-dasharray:420; stroke-dashoffset:420; transition:stroke-dashoffset 1.1s var(--ease-soft); }
+.crack-branch1 { stroke-dasharray:80; stroke-dashoffset:80; transition:stroke-dashoffset .5s ease .45s; }
+.crack-branch2 { stroke-dasharray:70; stroke-dashoffset:70; transition:stroke-dashoffset .5s ease .6s; }
+.crack-branch3 { stroke-dasharray:60; stroke-dashoffset:60; transition:stroke-dashoffset .45s ease .75s; }
 .hatch__egg-wrap.cracking .crack-main,
 .hatch__egg-wrap.cracking .crack-branch1,
-.hatch__egg-wrap.cracking .crack-branch2 { stroke-dashoffset:0; }
-.hatch__egg-wrap.hatched .hatch__egg-whole { opacity:0; transition:opacity .1s; }
-.hatch__egg-wrap.hatched .hatch__shell-top {
-  opacity:1;
-  animation:shellTopFly 1s var(--ease) forwards;
+.hatch__egg-wrap.cracking .crack-branch2,
+.hatch__egg-wrap.cracking .crack-branch3 { stroke-dashoffset:0; }
+
+/* Shell shards (spawned by JS on shatter) */
+.hatch__shards {
+  position:absolute;
+  bottom:150px; left:50%;
+  pointer-events:none;
+  z-index:3;
 }
-.hatch__egg-wrap.hatched .hatch__shell-bottom {
-  opacity:1;
-  transform-origin:50% 90%;
-  animation:shellBotSettle .8s var(--ease) forwards;
+.hatch__shard {
+  position:absolute;
+  top:0; left:0;
+  animation:shardFly .95s var(--ease) forwards;
 }
 
-.hatch__chick {
+/* Flash + beam at the moment of hatch */
+.hatch__flash {
   position:absolute;
-  bottom:44px; left:50%;
-  width:132px;
-  transform:translateX(-50%) translateY(64px) scale(.5);
+  bottom:60px; left:50%;
+  width:260px; height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.9) 0%, rgba(215,255,77,.5) 30%, transparent 65%);
+  transform:translate(-50%,50%) scale(.2);
   opacity:0;
-  z-index:1;
   pointer-events:none;
-  filter:drop-shadow(0 14px 22px rgba(0,0,0,.45));
+  z-index:4;
 }
-.hatch__chick.rising {
+.hatch__flash.active { animation:flashPop .55s ease-out forwards; }
+.hatch__beam {
+  position:absolute;
+  bottom:50px; left:50%;
+  width:120px; height:340px;
+  transform:translateX(-50%) scaleY(0);
+  transform-origin:bottom center;
+  background:linear-gradient(to top, rgba(215,255,77,.35), rgba(215,255,77,.08) 60%, transparent);
+  clip-path:polygon(32% 100%, 68% 100%, 100% 0%, 0% 0%);
+  opacity:0;
+  pointer-events:none;
+  z-index:1;
+}
+.hatch__beam.active { animation:beamUp .9s var(--ease) forwards; }
+
+/* The mark — Cosvire logo born from the egg */
+.hatch__mark {
+  position:absolute;
+  bottom:64px; left:50%;
+  width:150px; height:150px;
+  transform:translateX(-50%) translateY(90px) scale(.3);
+  opacity:0;
+  z-index:2;
+  pointer-events:none;
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,.5)) drop-shadow(0 0 22px rgba(215,255,77,.25));
+}
+.hatch__mark.rising {
   z-index:3;
-  animation:chickRise 1s cubic-bezier(.34,1.56,.64,1) .2s forwards;
+  animation:markRise 1.05s cubic-bezier(.34,1.56,.64,1) forwards;
 }
-.hatch__chick.idle { z-index:3; animation:chickIdle 2.6s ease-in-out infinite; }
+.hatch__mark.idle {
+  z-index:3;
+  animation:markIdle 3.2s ease-in-out infinite, markGlow 3.2s ease-in-out infinite;
+}
+.hatch__mark-ring {
+  position:absolute;
+  inset:-26px;
+  border:1px dashed rgba(215,255,77,.35);
+  border-radius:50%;
+  opacity:0;
+  transition:opacity .6s ease .4s;
+  animation:spinSlow 26s linear infinite;
+}
+.hatch__mark.idle .hatch__mark-ring { opacity:1; }
 
 .hatch__burst {
   position:absolute;
   bottom:150px; left:50%;
   pointer-events:none;
-  z-index:4;
+  z-index:5;
 }
 .burst-particle { position:absolute; top:0; left:0; animation:burstPop .8s var(--ease-soft) forwards; }
+
+/* Nav logomark */
+.nav__mark {
+  width:27px; height:27px;
+  border-radius:7px;
+  flex-shrink:0;
+  align-self:center;
+}
 
 /* Copy side */
 .hatch__copy { position:relative; z-index:2; }
