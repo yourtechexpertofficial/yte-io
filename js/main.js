@@ -1,5 +1,5 @@
 /* ============================================================
-   COSVIRE — Main JavaScript v2
+   COSVIRE — Main JavaScript v3 "Incubator"
    ============================================================ */
 'use strict';
 
@@ -7,26 +7,26 @@
 (function () {
   const nav = document.getElementById('nav');
   if (!nav) return;
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 }());
 
-/* ── 2. Hamburger / Mobile menu ──────────────────────────── */
+/* ── 2. Hamburger / mobile menu ──────────────────────────── */
 (function () {
   const btn = document.getElementById('hamburger');
   if (!btn) return;
   const menu = document.createElement('div');
   menu.id = 'mobileMenu';
-  const links = [
+  [
     ['index.html#ecosystem', 'Ecosystem'],
+    ['index.html#incubator', 'Incubator'],
     ['index.html#products',  'Products'],
-    ['index.html#vision',    'Vision'],
     ['about.html',           'About'],
-    ['blog.html',            'Blog'],
+    ['blog.html',            'Journal'],
     ['contact.html',         'Contact'],
-  ];
-  links.forEach(([href, label]) => {
+    ['login.html',           'Sign In'],
+  ].forEach(([href, label]) => {
     const a = document.createElement('a');
     a.href = href; a.textContent = label;
     menu.appendChild(a);
@@ -46,7 +46,7 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 }());
 
-/* ── 3. Smooth scrolling ─────────────────────────────────── */
+/* ── 3. Smooth scrolling for same-page anchors ───────────── */
 (function () {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -62,96 +62,86 @@
   });
 }());
 
-/* ── 4. Particle Canvas ──────────────────────────────────── */
+/* ── 4. Orbit canvas (hero) ──────────────────────────────── */
 (function () {
-  const canvas = document.getElementById('particleCanvas');
+  const canvas = document.getElementById('orbitCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H;
-  const mouse = { x: null, y: null };
-  const SPEED  = 0.36;
-  const COUNT  = 100;
-  const LINK_D = 130;
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+  let W, H, cx, cy;
 
-  class P {
-    constructor() { this.init(); }
-    init() {
-      this.x  = Math.random() * W;
-      this.y  = Math.random() * H;
-      this.vx = (Math.random() - 0.5) * SPEED;
-      this.vy = (Math.random() - 0.5) * SPEED;
-      this.r  = Math.random() * 1.5 + 0.4;
-      this.a  = Math.random() * 0.5 + 0.15;
-    }
-    update() {
-      if (mouse.x !== null) {
-        const dx = this.x - mouse.x, dy = this.y - mouse.y;
-        const d  = Math.hypot(dx, dy);
-        if (d < 100) {
-          const f = (100 - d) / 100;
-          this.vx += (dx / d) * f * 0.07;
-          this.vy += (dy / d) * f * 0.07;
-        }
-      }
-      const spd = Math.hypot(this.vx, this.vy);
-      if (spd > SPEED * 2.8) {
-        this.vx = (this.vx / spd) * SPEED * 2.8;
-        this.vy = (this.vy / spd) * SPEED * 2.8;
-      }
-      this.vx *= 0.992; this.vy *= 0.992;
-      this.x += this.vx; this.y += this.vy;
-      if (this.x < -10)    this.x = W + 10;
-      if (this.x > W + 10) this.x = -10;
-      if (this.y < -10)    this.y = H + 10;
-      if (this.y > H + 10) this.y = -10;
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(99,102,241,${this.a})`;
-      ctx.fill();
-    }
-  }
+  const RINGS = [
+    { r: 0.22, tilt: 0.42, speed: 0.00042, dots: 2, color: '215,255,77'  },
+    { r: 0.34, tilt: 0.40, speed: -0.00030, dots: 3, color: '139,124,248' },
+    { r: 0.46, tilt: 0.38, speed: 0.00020, dots: 4, color: '235,233,226' },
+  ];
+  const offsets = RINGS.map((ring, i) =>
+    Array.from({ length: ring.dots }, (_, k) => (k / ring.dots) * Math.PI * 2 + i)
+  );
 
-  let particles = [];
   const resize = () => {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    const rect = canvas.getBoundingClientRect();
+    W = rect.width; H = rect.height;
+    canvas.width  = W * DPR;
+    canvas.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    cx = W / 2; cy = H / 2;
   };
-  const frame = () => {
+
+  const frame = now => {
     ctx.clearRect(0, 0, W, H);
-    for (let i = 0; i < particles.length; i++) {
-      particles[i].update();
-      particles[i].draw();
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d  = Math.hypot(dx, dy);
-        if (d < LINK_D) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(99,102,241,${(1 - d / LINK_D) * 0.22})`;
-          ctx.lineWidth   = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
+    const base = Math.min(W, H);
+
+    // Core
+    const coreR = base * 0.055;
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR * 3.4);
+    grad.addColorStop(0, 'rgba(215,255,77,0.5)');
+    grad.addColorStop(0.35, 'rgba(215,255,77,0.12)');
+    grad.addColorStop(1, 'rgba(215,255,77,0)');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, coreR * 3.4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = 'rgba(215,255,77,0.9)';
+    ctx.beginPath();
+    ctx.arc(cx, cy, coreR * 0.45, 0, Math.PI * 2);
+    ctx.fill();
+
+    RINGS.forEach((ring, i) => {
+      const rx = base * ring.r;
+      const ry = rx * ring.tilt;
+
+      ctx.strokeStyle = `rgba(${ring.color},0.16)`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rx, ry, -0.28, 0, Math.PI * 2);
+      ctx.stroke();
+
+      offsets[i].forEach(off => {
+        const a = now * ring.speed + off;
+        // point on tilted ellipse
+        const px0 = Math.cos(a) * rx;
+        const py0 = Math.sin(a) * ry;
+        const px = cx + px0 * Math.cos(-0.28) - py0 * Math.sin(-0.28);
+        const py = cy + px0 * Math.sin(-0.28) + py0 * Math.cos(-0.28);
+        const depth = (Math.sin(a) + 1) / 2;           // fake depth
+        const size = 2 + depth * 2.6;
+        ctx.fillStyle = `rgba(${ring.color},${0.35 + depth * 0.6})`;
+        ctx.beginPath();
+        ctx.arc(px, py, size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    });
+
     requestAnimationFrame(frame);
   };
+
   resize();
-  particles = Array.from({ length: COUNT }, () => new P());
-  frame();
-  window.addEventListener('resize', () => { resize(); particles.forEach(p => p.init()); }, { passive: true });
-  canvas.addEventListener('mousemove', e => {
-    const r = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - r.left;
-    mouse.y = e.clientY - r.top;
-  });
-  canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+  window.addEventListener('resize', resize, { passive: true });
+  requestAnimationFrame(frame);
 }());
 
-/* ── 5. Scroll Reveal ────────────────────────────────────── */
+/* ── 5. Scroll reveal ────────────────────────────────────── */
 (function () {
   const items = document.querySelectorAll('.reveal');
   if (!items.length) return;
@@ -166,14 +156,14 @@
   items.forEach(el => io.observe(el));
 }());
 
-/* ── 6. Counter Animation ────────────────────────────────── */
+/* ── 6. Counters ─────────────────────────────────────────── */
 (function () {
   const nums = document.querySelectorAll('[data-target]');
   if (!nums.length) return;
   const easeOut = t => 1 - (1 - t) ** 3;
   const animate = el => {
     const end = parseInt(el.dataset.target, 10);
-    const dur = 1400;
+    const dur = 1500;
     const t0  = performance.now();
     const tick = now => {
       const p = Math.min((now - t0) / dur, 1);
@@ -192,124 +182,98 @@
   nums.forEach(el => io.observe(el));
 }());
 
-/* ── 7. Card spotlight glow ──────────────────────────────── */
+/* ── 7. Marquee: duplicate track for seamless loop ───────── */
 (function () {
-  document.querySelectorAll('.card, .product-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top)  + 'px');
-    });
-  });
+  const track = document.getElementById('marqueeTrack');
+  if (!track) return;
+  track.innerHTML += track.innerHTML;
 }());
 
-/* ── 8. Active nav link highlighting ─────────────────────── */
+/* ── 8. Egg hatch sequence ───────────────────────────────── */
 (function () {
-  const sections = document.querySelectorAll('section[id]');
-  const links    = document.querySelectorAll('.nav__link');
-  if (!sections.length || !links.length) return;
-  const onScroll = () => {
-    const y = window.scrollY + 120;
-    let current = '';
-    sections.forEach(s => { if (s.offsetTop <= y) current = s.id; });
-    links.forEach(l => {
-      const href = l.getAttribute('href');
-      const active = href === '#' + current || href === 'index.html#' + current;
-      l.style.color = active ? 'var(--indigo)' : '';
-    });
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-}());
-
-/* ── 9. Egg Hatching Animation ───────────────────────────── */
-(function () {
-  const wrap  = document.getElementById('hatchEgg');
-  const chick = document.getElementById('hatchChick');
-  const glow  = document.getElementById('hatchGlow');
-  const burst = document.getElementById('hatchBurst');
-  const hint  = document.getElementById('hatchHint');
-  const steps = document.querySelectorAll('.hatch__step');
-  const eggInnerGlow = document.querySelector('.egg-glow-inner');
-
+  const scene  = document.getElementById('hatchScene');
+  const wrap   = document.getElementById('hatchEgg');
+  const chick  = document.getElementById('hatchChick');
+  const glow   = document.getElementById('hatchGlow');
+  const burst  = document.getElementById('hatchBurst');
+  const stages = document.querySelectorAll('.hatch__stage');
+  const eggInnerGlow = document.querySelector('.egg-inner-glow');
   if (!wrap || !chick) return;
 
-  const setStep = n => steps.forEach((s, i) => s.classList.toggle('active', i <= n));
+  const setStage = n => {
+    stages.forEach(s => {
+      const idx = parseInt(s.dataset.stage, 10);
+      s.classList.toggle('done', idx < n);
+      s.classList.toggle('now',  idx === n);
+    });
+  };
 
   const spawnBurst = () => {
     if (!burst) return;
-    const colors = ['#06b6d4', '#6366f1', '#a855f7', '#22c55e', '#f59e0b', '#ec4899'];
-    for (let i = 0; i < 14; i++) {
-      const p   = document.createElement('div');
+    const colors = ['#d7ff4d', '#8b7cf8', '#ffb84d', '#ebe9e2'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
       p.className = 'burst-particle';
-      const angle  = (i / 14) * 360;
-      const dist   = 55 + Math.random() * 50;
-      const bx = (Math.cos(angle * Math.PI / 180) * dist).toFixed(1) + 'px';
-      const by = (Math.sin(angle * Math.PI / 180) * dist).toFixed(1) + 'px';
-      p.style.setProperty('--bx', bx);
-      p.style.setProperty('--by', by);
+      const angle = (i / 18) * Math.PI * 2 + Math.random() * 0.4;
+      const dist  = 60 + Math.random() * 70;
+      p.style.setProperty('--bx', (Math.cos(angle) * dist).toFixed(1) + 'px');
+      p.style.setProperty('--by', (Math.sin(angle) * dist * 0.85).toFixed(1) + 'px');
+      const size = 4 + Math.random() * 6;
+      p.style.width  = size + 'px';
+      p.style.height = size + 'px';
       p.style.background = colors[i % colors.length];
-      const size = (4 + Math.random() * 7).toFixed(1) + 'px';
-      p.style.width  = size;
-      p.style.height = size;
+      // mix of squares and circles for confetti feel
+      p.style.borderRadius = i % 3 === 0 ? '2px' : '50%';
       burst.appendChild(p);
-      setTimeout(() => p.remove(), 750);
+      setTimeout(() => p.remove(), 900);
     }
   };
 
   let triggered = false;
-
   const io = new IntersectionObserver(([entry]) => {
     if (!entry.isIntersecting || triggered) return;
     triggered = true;
     io.disconnect();
 
-    setStep(0);
+    setStage(0);
 
-    /* Stage 1 — wobble (triggers at intersection) */
+    /* Stage 1 — first signs of life: wobble */
     setTimeout(() => {
       wrap.classList.remove('floating');
       wrap.classList.add('wobbling');
-      setStep(1);
-    }, 300);
+      setStage(1);
+    }, 700);
 
-    /* Stage 2 — crack lines appear + inner glow */
+    /* Stage 2 — breaking the shell: cracks + inner glow */
     setTimeout(() => {
       wrap.classList.remove('wobbling');
       wrap.classList.add('cracking');
-      if (glow) glow.classList.add('active');
+      scene?.classList.add('live');
+      glow?.classList.add('active');
       if (eggInnerGlow) eggInnerGlow.style.opacity = '1';
-      setStep(2);
-    }, 1600);
+      setStage(2);
+    }, 2100);
 
-    /* Stage 3 — hatch: shells split, chick rises */
+    /* Stage 3 — hatched */
     setTimeout(() => {
       wrap.classList.add('hatched');
       spawnBurst();
-      if (hint) hint.classList.add('hidden');
-      setStep(3);
-
-      /* Slight delay before chick rise so shell flies first */
-      setTimeout(() => {
-        chick.classList.add('rising');
-      }, 280);
-
-      /* After rise animation, switch to bounce loop */
+      setStage(3);
+      setTimeout(() => chick.classList.add('rising'), 200);
       setTimeout(() => {
         chick.classList.remove('rising');
-        chick.style.transform = 'translateX(-50%) translateY(0) scale(1)';
-        chick.style.opacity   = '1';
-        chick.classList.add('bouncing');
-      }, 280 + 1100);
-
-    }, 3000);
-
-  }, { threshold: 0.5 });
+        chick.style.transform = 'translateX(-50%)';
+        chick.style.opacity = '1';
+        chick.classList.add('idle');
+        stages.forEach(s => { s.classList.add('done'); s.classList.remove('now'); });
+      }, 200 + 1250);
+    }, 3600);
+  }, { threshold: 0.55 });
 
   io.observe(wrap);
 }());
 
-/* ── 10. Legal tabs ──────────────────────────────────────── */
+/* ── 9. Legal tabs ───────────────────────────────────────── */
 (function () {
   const tabs = document.querySelectorAll('.legal-tab');
   if (!tabs.length) return;
@@ -318,13 +282,12 @@
       tabs.forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.legal-doc').forEach(d => d.classList.remove('active'));
       tab.classList.add('active');
-      const target = document.getElementById(tab.dataset.tab);
-      if (target) target.classList.add('active');
+      document.getElementById(tab.dataset.tab)?.classList.add('active');
     });
   });
 }());
 
-/* ── 11. Blog filters ────────────────────────────────────── */
+/* ── 10. Blog filters ────────────────────────────────────── */
 (function () {
   const filters = document.querySelectorAll('.blog-filter');
   if (!filters.length) return;
@@ -332,6 +295,11 @@
     f.addEventListener('click', () => {
       filters.forEach(x => x.classList.remove('active'));
       f.classList.add('active');
+      const cat = f.dataset.cat || 'all';
+      document.querySelectorAll('[data-post-cat]').forEach(post => {
+        post.style.display =
+          cat === 'all' || post.dataset.postCat === cat ? '' : 'none';
+      });
     });
   });
 }());

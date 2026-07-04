@@ -7,67 +7,61 @@
   <title>Sign In — Cosvire</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
-  <style>
-    .login-page canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-  </style>
 </head>
 <body>
 
 <div class="login-page">
-  <canvas id="particleCanvas"></canvas>
 
-  <div class="login-card">
-    <a href="index.html" class="login-logo">
-      <span>COSVIRE</span>
-      <span class="nav__logo-dot"></span>
-    </a>
-    <h2>Welcome back</h2>
-    <p>Sign in to access the Cosvire ecosystem.</p>
+  <!-- Left panel -->
+  <aside class="login-side">
+    <a href="index.html" class="nav__logo">COSVIRE<em>.</em></a>
+    <p class="login-side__quote">
+      Ideas go in.<br />Products come <span class="accent">out.</span>
+    </p>
+    <span class="mono">The incubation ecosystem / EST. 2026</span>
+    <span class="login-side__word" aria-hidden="true">IN</span>
+  </aside>
 
-    <div class="social-btns">
-      <button class="btn--social">
-        <i class="ri-github-fill"></i> GitHub
-      </button>
-      <button class="btn--social">
-        <i class="ri-google-fill"></i> Google
-      </button>
-    </div>
+  <!-- Form -->
+  <main class="login-form-col">
+    <div class="login-box">
+      <span class="mono mono--volt">Access / Members</span>
+      <h2>Welcome back</h2>
+      <p>Sign in to enter the ecosystem.</p>
 
-    <div class="login-divider">or continue with email</div>
-
-    <form action="#">
-      <div class="form__row">
-        <label class="form__label" for="login-email">Email Address</label>
-        <input class="form__input" type="email" id="login-email" placeholder="you@example.com" autocomplete="email" required />
+      <div class="social-btns">
+        <button class="btn--social" type="button"><i class="ri-github-fill"></i> GitHub</button>
+        <button class="btn--social" type="button"><i class="ri-google-fill"></i> Google</button>
       </div>
-      <div class="form__row">
-        <label class="form__label" for="login-password">Password</label>
-        <input class="form__input" type="password" id="login-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password" required />
-      </div>
-      <label class="form__check">
-        <input type="checkbox" /> Remember me for 30 days
-      </label>
-      <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
-        Sign In &nbsp;<i class="ri-arrow-right-line"></i>
-      </button>
-    </form>
 
-    <div class="login-footer">
-      Don't have an account? <a href="contact.html">Get in touch</a>
-      &nbsp;&middot;&nbsp;
-      <a href="legal.html">Privacy Policy</a>
+      <div class="login-divider">or with email</div>
+
+      <form action="#">
+        <div class="form__row">
+          <label class="form__label" for="login-email">Email</label>
+          <input class="form__input" type="email" id="login-email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="form__row">
+          <label class="form__label" for="login-password">Password</label>
+          <input class="form__input" type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <label class="form__check">
+          <input type="checkbox" /> Keep me signed in for 30 days
+        </label>
+        <button type="submit" class="btn btn--volt" style="width:100%; justify-content:center;">
+          Enter the Ecosystem <i class="ri-arrow-right-line"></i>
+        </button>
+      </form>
+
+      <p class="login-foot">
+        No account yet? <a href="contact.html">Get in touch</a> &nbsp;·&nbsp; <a href="legal.html">Privacy</a>
+      </p>
     </div>
-  </div>
+  </main>
+
 </div>
 
 <script src="js/main.js"></script>
