@@ -1,6 +1,6 @@
 /* ============================================================
    COSVIRE — Design System v4
-   Parent company · portfolio-led · ink + volt
+   Ink + volt · Syne + Inter + Plex Mono
    Syne (display) · Inter (text) · IBM Plex Mono (meta)
    ============================================================ */
 
@@ -126,78 +126,65 @@ img,svg { display:block; max-width:100%; }
 .section__title em { font-style:normal; color:var(--volt); }
 .section__lede { color:var(--muted); max-width:38ch; font-size:1rem; line-height:1.8; }
 
-/* ── Portfolio (the centrepiece) ─────────────────────────── */
-.pf-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px; }
-.pf-filter {
-  font-family:var(--font-m); font-size:.66rem; font-weight:500;
-  letter-spacing:.13em; text-transform:uppercase; color:var(--muted);
-  padding:8px 15px; border:1px solid var(--line); border-radius:2px;
-  transition:all var(--t);
-}
-.pf-filter:hover { color:var(--paper); border-color:rgba(237,236,230,.24); }
-.pf-filter.active { color:var(--ink); background:var(--volt); border-color:var(--volt); }
+/* ── The product ─────────────────────────────────────────── */
+.product { display:grid; grid-template-columns:1fr 320px; gap:56px; align-items:start; border:1px solid var(--line); background:var(--ink-2); padding:38px 36px; }
+.product__name { font-size:clamp(1.9rem,3.4vw,2.7rem); letter-spacing:-.028em; margin:14px 0 16px; }
+.product__desc { color:var(--muted); line-height:1.85; max-width:56ch; }
+.product__desc + .product__desc { margin-top:1em; }
+.product__desc strong { color:var(--paper); font-weight:500; }
+.product__spec { border-left:1px solid var(--line); padding-left:26px; }
+.product__spec dt { font-family:var(--font-m); font-size:.62rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--dim); margin-bottom:6px; }
+.product__spec dd { font-family:var(--font-d); font-weight:800; font-size:1.5rem; letter-spacing:-.03em; margin-bottom:20px; }
+.product__spec dd em { font-style:normal; color:var(--volt); }
+.product__spec dd small { display:block; font-family:var(--font-b); font-weight:400; font-size:.82rem; letter-spacing:0; color:var(--muted); margin-top:4px; }
 
-.portfolio { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-.holding {
-  position:relative; background:var(--ink-2);
-  padding:32px 28px 28px; min-height:270px;
-  display:flex; flex-direction:column;
-  transition:background var(--t);
-  overflow:hidden;
-}
-.holding::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:2px;
-  background:var(--accent,var(--volt)); transform:scaleX(0); transform-origin:left;
-  transition:transform .45s var(--ease);
-}
-.holding:hover::before { transform:scaleX(1); }
-.holding:hover { background:var(--ink-3); }
-.holding__no {
-  font-family:var(--font-m); font-size:.64rem; font-weight:500;
-  letter-spacing:.16em; color:var(--dim); margin-bottom:auto;
-}
-.holding__name { font-size:1.5rem; letter-spacing:-.024em; margin-bottom:10px; }
-.holding__desc { font-size:.9rem; color:var(--muted); line-height:1.7; margin-bottom:22px; }
-.holding__foot { display:flex; align-items:center; justify-content:space-between; gap:14px; padding-top:16px; border-top:1px solid var(--line-2); }
-.holding__stage { font-family:var(--font-m); font-size:.62rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
 .badge {
   display:inline-flex; align-items:center; gap:7px;
   font-family:var(--font-m); font-size:.62rem; font-weight:500;
-  letter-spacing:.14em; text-transform:uppercase;
-  color:var(--accent,var(--volt));
+  letter-spacing:.14em; text-transform:uppercase; color:var(--volt);
 }
 .badge i { width:5px; height:5px; border-radius:50%; background:currentColor; font-style:normal; }
-.badge--dev { color:var(--dim); }
-.badge--dev i { background:none; border:1px solid currentColor; }
 
-/* ── Architecture map ────────────────────────────────────── */
-.arch { display:grid; grid-template-columns:1fr 300px; gap:56px; align-items:start; }
-.arch__stack { display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); }
-.layer { background:var(--ink-2); padding:20px 24px; display:grid; grid-template-columns:132px 1fr; gap:24px; align-items:center; }
-.layer__label { font-family:var(--font-m); font-size:.63rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
-.layer__label b { display:block; color:var(--muted); font-weight:500; margin-bottom:4px; }
-.layer__items { display:flex; gap:10px; flex-wrap:wrap; }
-.node {
-  font-family:var(--font-m); font-size:.7rem; font-weight:500;
-  letter-spacing:.05em; color:var(--muted);
-  padding:9px 16px; border:1px solid var(--line);
-  border-radius:2px; background:var(--ink-3);
-  transition:all var(--t); cursor:default;
+/* ── Icon lab — the real set, rendered live ──────────────── */
+@font-face {
+  font-family:'yte';
+  src:url('../fonts/yte.woff') format('woff'),
+      url('../fonts/yte.ttf') format('truetype');
+  font-weight:normal; font-style:normal; font-display:block;
 }
-.node:hover, .node.is-active {
-  color:var(--ink); background:var(--accent,var(--volt));
-  border-color:var(--accent,var(--volt));
+.lab__bar { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
+.lab__search {
+  flex:1; min-width:220px;
+  background:var(--ink-2); border:1px solid var(--line); border-radius:2px;
+  padding:13px 16px; color:var(--paper);
+  font-family:var(--font-m); font-size:.78rem; outline:none;
+  transition:border-color var(--t);
 }
-.node.is-dep { color:var(--accent-dep,var(--volt)); border-color:currentColor; background:var(--ink-3); }
-.node.is-dim { opacity:.3; }
-.arch__read {
-  border:1px solid var(--line); background:var(--ink-2);
-  padding:26px 24px; position:sticky; top:100px;
+.lab__search:focus { border-color:var(--volt); }
+.lab__search::placeholder { color:var(--dim); }
+.lab__count { font-family:var(--font-m); font-size:.68rem; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--dim); white-space:nowrap; }
+.lab__count b { color:var(--volt); font-weight:500; }
+.lab__grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(116px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
+.cellico {
+  background:var(--ink-2); padding:22px 10px 16px;
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  cursor:pointer; transition:background var(--t), color var(--t);
 }
-.arch__read h4 { font-size:1.15rem; margin:14px 0 10px; letter-spacing:-.02em; }
-.arch__read p { font-size:.88rem; color:var(--muted); line-height:1.75; }
-.arch__read dl { margin-top:20px; padding-top:18px; border-top:1px solid var(--line-2); font-family:var(--font-m); font-size:.68rem; line-height:2.1; color:var(--dim); }
-.arch__read dl b { color:var(--paper); font-weight:500; }
+.cellico:hover { background:var(--ink-4); }
+.cellico.copied { background:var(--volt); }
+.cellico.copied .glyph, .cellico.copied .cellico__name { color:var(--ink); }
+.glyph { font-family:'yte'; font-style:normal; font-size:1.7rem; line-height:1; color:var(--paper); transition:color var(--t); }
+.cellico:hover .glyph { color:var(--volt); }
+.cellico__name { font-family:var(--font-m); font-size:.6rem; letter-spacing:.06em; color:var(--dim); text-align:center; word-break:break-all; transition:color var(--t); }
+.cellico:hover .cellico__name { color:var(--muted); }
+.lab__empty { padding:40px 2px; font-family:var(--font-m); font-size:.74rem; letter-spacing:.1em; color:var(--dim); }
+.lab__hint { margin-top:16px; font-family:var(--font-m); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--dim); }
+
+/* ── Next / honest state ─────────────────────────────────── */
+.next { border:1px solid var(--line); background:var(--ink-2); padding:40px 36px; max-width:64ch; }
+.next h3 { font-size:1.5rem; letter-spacing:-.024em; margin-bottom:14px; }
+.next p { color:var(--muted); line-height:1.85; }
+.next p + p { margin-top:1em; }
 
 /* ── Record ──────────────────────────────────────────────── */
 .record { border-top:1px solid var(--line); max-width:56em; }
@@ -331,9 +318,8 @@ img,svg { display:block; max-width:100%; }
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width:1080px) {
   .lede__grid { grid-template-columns:1fr; gap:34px; }
-  .portfolio { grid-template-columns:repeat(2,1fr); }
-  .arch { grid-template-columns:1fr; gap:26px; }
-  .arch__read { position:static; }
+  .product { grid-template-columns:1fr; gap:28px; }
+  .product__spec { border-left:0; border-top:1px solid var(--line); padding:22px 0 0; }
   .facts { grid-template-columns:repeat(2,1fr); }
   .fact:nth-child(2) { border-right:0; }
 }
@@ -353,12 +339,11 @@ img,svg { display:block; max-width:100%; }
   .gate__aside { min-height:32vh; border-right:0; border-bottom:1px solid var(--line); }
   .note-row { grid-template-columns:1fr; gap:8px; }
   .note-row__tag { justify-self:start; }
-  .layer { grid-template-columns:1fr; gap:12px; }
 }
 @media (max-width:560px) {
   .section { padding:64px 0; }
   .lede { padding:64px 0 52px; }
-  .portfolio, .grid-3 { grid-template-columns:1fr; }
+  .grid-3 { grid-template-columns:1fr; }
   .facts { grid-template-columns:1fr 1fr; }
   .field-pair { grid-template-columns:1fr; gap:0; }
   .colophon__grid { grid-template-columns:1fr; gap:28px; }

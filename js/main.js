@@ -1,5 +1,5 @@
 /* ============================================================
-   COSVIRE — v4 · parent company
+   COSVIRE — v4
    ============================================================ */
 'use strict';
 
@@ -19,9 +19,9 @@
   const nav = document.createElement('nav');
   nav.id = 'mobileNav';
   [
-    ['index.html#portfolio',    'Portfolio'],
-    ['index.html#architecture', 'Architecture'],
-    ['index.html#record',       'Record'],
+    ['index.html#icons',   'YTE Icons'],
+    ['index.html#process', 'Process'],
+    ['index.html#next',    "What's next"],
     ['about.html',              'About'],
     ['blog.html',               'Notes'],
     ['contact.html',            'Contact'],
@@ -99,97 +99,59 @@
   nums.forEach(n => io.observe(n));
 }());
 
-/* ── 6. Portfolio filtering ──────────────────────────────── */
+/* ── 6. Icon lab — search the real set, click to copy ────── */
 (function () {
-  const filters = document.querySelectorAll('.pf-filter');
-  const cards   = document.querySelectorAll('.holding');
-  if (!filters.length || !cards.length) return;
-  filters.forEach(f => {
-    f.addEventListener('click', () => {
-      filters.forEach(x => x.classList.remove('active'));
-      f.classList.add('active');
-      const s = f.dataset.stage;
-      cards.forEach(c => {
-        c.style.display = (s === 'all' || c.dataset.stage === s) ? '' : 'none';
-      });
-    });
-  });
-}());
+  const grid  = document.getElementById('iconGrid');
+  if (!grid) return;
+  const search = document.getElementById('iconSearch');
+  const count  = document.getElementById('iconCount');
+  const empty  = document.getElementById('iconEmpty');
+  const cells  = [...grid.querySelectorAll('.cellico')];
+  const total  = cells.length;
 
-/* ── 7. Architecture map ─────────────────────────────────── */
-(function () {
-  const stack = document.getElementById('archStack');
-  if (!stack) return;
-  const nodes = [...stack.querySelectorAll('.node')];
-  const tag   = document.getElementById('archTag');
-  const name  = document.getElementById('archName');
-  const desc  = document.getElementById('archDesc');
-  const meta  = document.getElementById('archMeta');
-
-  const INFO = {
-    icons:   { name:'YTE Icons',       tag:'Released · Language layer',
-      desc:'The only product that depends on nothing. Thirty-seven glyphs drawn to one standard, giving every other product in the ecosystem a shared visual grammar before a line of its interface is written.' },
-    os:      { name:'Cosvire OS',      tag:'In development · Foundation',
-      desc:'The floor everything else stands on. Identity, settings and state live here once, so four products above it do not each solve the same problems in four different ways.' },
-    connect: { name:'Cosvire Connect', tag:'Research · Services',
-      desc:'The wiring inside the walls. Connect lets products hand data to one another without either side knowing how the other is built — which is what turns six products into one ecosystem.' },
-    search:  { name:'Cosvire Search',  tag:'Research · Services',
-      desc:'A single index spanning everything Cosvire runs. It sits on the foundation and reads across every product, so one query returns results from all of them.' },
-    mobile:  { name:'Cosvire Mobile',  tag:'In development · Surface',
-      desc:'What people actually open. Cross-platform apps that inherit the design language and the foundation, engineered to feel native on every device they land on.' },
-    rewards: { name:'Cosvire Rewards', tag:'Research · Surface',
-      desc:'The deepest-stacked product in the portfolio — it needs the foundation to know who you are and Connect to move value between products. It is built last for that reason.' },
+  const setCount = n => {
+    if (count) count.innerHTML = '<b>' + n + '</b> of ' + total + ' shown';
   };
 
-  const label = k => INFO[k]?.name || k;
-  const clear = () => nodes.forEach(n => {
-    n.classList.remove('is-active', 'is-dep', 'is-dim');
-    n.style.removeProperty('--accent-dep');
+  search?.addEventListener('input', () => {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    cells.forEach(c => {
+      const hit = !q || c.dataset.name.includes(q);
+      c.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+    setCount(shown);
+    if (empty) empty.style.display = shown ? 'none' : '';
+    grid.style.display = shown ? '' : 'none';
   });
 
-  const select = node => {
-    const key    = node.dataset.node;
-    const accent = node.dataset.accent;
-    const deps   = (node.dataset.deps || '').split(',').filter(Boolean);
-    const used   = (node.dataset.used || '').split(',').filter(Boolean);
-    const related = new Set([...deps, ...used]);
+  const flash = (cell, text) => {
+    const label = cell.querySelector('.cellico__name');
+    const original = label.textContent;
+    cell.classList.add('copied');
+    label.textContent = text;
+    setTimeout(() => {
+      cell.classList.remove('copied');
+      label.textContent = original;
+    }, 900);
+  };
 
-    clear();
-    nodes.forEach(n => {
-      const k = n.dataset.node;
-      if (k === key) {
-        n.classList.add('is-active');
-      } else if (related.has(k)) {
-        n.classList.add('is-dep');
-        n.style.setProperty('--accent-dep', accent);
-      } else {
-        n.classList.add('is-dim');
+  cells.forEach(cell => {
+    cell.addEventListener('click', async () => {
+      const cls = 'ico-' + cell.dataset.name;
+      try {
+        await navigator.clipboard.writeText(cls);
+        flash(cell, 'copied');
+      } catch (e) {
+        /* clipboard blocked (http / permissions) — select instead */
+        const r = document.createRange();
+        r.selectNodeContents(cell.querySelector('.cellico__name'));
+        const sel = window.getSelection();
+        sel.removeAllRanges(); sel.addRange(r);
+        flash(cell, cls);
       }
     });
-
-    const info = INFO[key];
-    tag.textContent  = info.tag;
-    name.textContent = info.name;
-    desc.textContent = info.desc;
-    meta.innerHTML =
-      'Stands on &nbsp; <b>' + (deps.length ? deps.map(label).join(', ') : 'Nothing') + '</b><br />' +
-      'Supports &nbsp; <b>' + (used.length ? used.length + ' product' + (used.length > 1 ? 's' : '') : 'None yet') + '</b><br />' +
-      'Layer &nbsp; <b>' + info.tag.split('· ')[1] + '</b>';
-  };
-
-  nodes.forEach(n => {
-    n.addEventListener('mouseenter', () => select(n));
-    n.addEventListener('click', () => select(n));
-    n.addEventListener('focus', () => select(n));
-    n.setAttribute('tabindex', '0');
-  });
-
-  stack.addEventListener('mouseleave', () => {
-    clear();
-    tag.textContent  = 'Select a product';
-    name.textContent = 'Four layers, six products';
-    desc.textContent = 'Nothing in the ecosystem is built from nothing. YTE Icons gives everything its visual language, Cosvire OS gives everything a floor, and each product above inherits the work of the ones beneath it.';
-    meta.innerHTML = 'Layers &nbsp; <b>Four</b><br />Products &nbsp; <b>Six</b><br />Shared systems &nbsp; <b>Two</b>';
   });
 }());
 
