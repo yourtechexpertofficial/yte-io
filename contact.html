@@ -1,140 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Cosvire — get in touch with the ecosystem." />
-  <title>Contact — Cosvire</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Contact Cosvire — get in touch with the company." />
+<title>Contact — Cosvire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">COSVIRE<em>.</em></a>
-    <ul class="nav__links">
-      <li><a href="index.html#ecosystem" class="nav__link">Ecosystem</a></li>
-      <li><a href="index.html#forge" class="nav__link">Forge</a></li>
-      <li><a href="index.html#products" class="nav__link">Products</a></li>
-      <li><a href="about.html" class="nav__link">About</a></li>
-      <li><a href="blog.html" class="nav__link">Journal</a></li>
-    </ul>
-    <a href="login.html" class="btn btn--line btn--nav">Sign In</a>
-    <a href="contact.html" class="btn btn--volt btn--nav">Contact</a>
-    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<header class="page-hero">
-  <div class="container">
-    <div class="section__index reveal">
-      <span class="mono mono--volt">Contact</span><span class="rule"></span><span class="mono">Open channel</span>
-    </div>
-    <h1 class="page-hero__title reveal" data-delay="80">
-      Say <span class="accent">hello.</span>
-    </h1>
-    <p class="page-hero__sub reveal" data-delay="160">
-      An idea, a question, a collaboration — the ecosystem is always listening.
-      Drop a message and it lands directly in the ecosystem.
-    </p>
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+    <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
+    <nav class="masthead__nav">
+      <a href="index.html#portfolio" class="masthead__link">Portfolio</a>
+      <a href="index.html#architecture" class="masthead__link">Architecture</a>
+      <a href="index.html#record" class="masthead__link">Record</a>
+      <a href="about.html" class="masthead__link">About</a>
+      <a href="blog.html" class="masthead__link">Notes</a>
+      <a href="contact.html" class="masthead__link active">Contact</a>
+    </nav>
+    <button class="masthead__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<section class="container">
-  <div class="contact-wrap">
+<main>
+  <section class="lede">
+    <div class="container">
+      <div class="lede__eyebrow reveal">
+        <span class="lede__dot"></span><span class="mono">Contact — Open channel</span>
+      </div>
+      <div class="lede__grid">
+        <h1 class="lede__title reveal" data-delay="60">Start a <em>conversation.</em></h1>
+        <div class="lede__body reveal" data-delay="140"><p>An idea, a question, or a collaboration. Messages reach the person who builds these products directly.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <form class="reveal" action="mailto:admin@cosvire.com" method="post" enctype="text/plain">
-      <div class="form__2col">
-        <div class="form__row">
-          <label class="form__label" for="name">01 / Your name</label>
-          <input class="form__input" type="text" id="name" name="name" placeholder="Ada Lovelace" required />
-        </div>
-        <div class="form__row">
-          <label class="form__label" for="email">02 / Email</label>
-          <input class="form__input" type="email" id="email" name="email" placeholder="you@example.com" required />
-        </div>
-      </div>
-      <div class="form__row">
-        <label class="form__label" for="subject">03 / Subject</label>
-        <input class="form__input" type="text" id="subject" name="subject" placeholder="What's this about?" />
-      </div>
-      <div class="form__row">
-        <label class="form__label" for="message">04 / Message</label>
-        <textarea class="form__textarea" id="message" name="message" placeholder="Tell the ecosystem what's on your mind…" required></textarea>
-      </div>
-      <button type="submit" class="btn btn--volt">Transmit <i class="ri-send-plane-line"></i></button>
-    </form>
+  <section class="section" style="border-bottom:0;">
+    <div class="container">
+      <div class="contact-grid">
+        <form class="reveal" action="mailto:admin@cosvire.com" method="post" enctype="text/plain">
+          <div class="field-pair">
+            <div class="field">
+              <label class="field__label" for="n">01 — Name</label>
+              <input class="field__input" type="text" id="n" name="name" placeholder="Ada Lovelace" required />
+            </div>
+            <div class="field">
+              <label class="field__label" for="e">02 — Email</label>
+              <input class="field__input" type="email" id="e" name="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="s">03 — Subject</label>
+            <input class="field__input" type="text" id="s" name="subject" placeholder="What is this regarding?" />
+          </div>
+          <div class="field">
+            <label class="field__label" for="m">04 — Message</label>
+            <textarea class="field__textarea" id="m" name="message" placeholder="Tell us what you are thinking about." required></textarea>
+          </div>
+          <button type="submit" class="btn btn--volt">Send message</button>
+        </form>
 
-    <aside class="reveal" data-delay="140">
-      <div class="contact-aside__block">
-        <span class="mono contact-aside__label">Direct line</span>
-        <p class="contact-aside__value"><a href="mailto:admin@cosvire.com">admin@cosvire.com</a></p>
-        <p class="contact-aside__note">Every message is read. Expect a reply within 48 hours.</p>
+        <aside class="contact-aside reveal" data-delay="120">
+          <dl>
+            <dt>Direct</dt>
+            <dd><a href="mailto:admin@cosvire.com">admin@cosvire.com</a>
+              <small>Read by the person who builds these products.</small></dd>
+            <dt>Response time</dt>
+            <dd>Within 48 hours<small>Every message gets a reply.</small></dd>
+            <dt>Location</dt>
+            <dd>Remote — worldwide<small>The company operates entirely online.</small></dd>
+            <dt>Privacy</dt>
+            <dd>Your data stays yours<small>Never shared, sold, or used for anything you did not ask for.</small></dd>
+          </dl>
+        </aside>
       </div>
-      <div class="contact-aside__block">
-        <span class="mono contact-aside__label">Base of operations</span>
-        <p class="contact-aside__value">Remote — Worldwide</p>
-        <p class="contact-aside__note">The ecosystem lives on the internet. So does its builder.</p>
-      </div>
-      <div class="contact-aside__block">
-        <span class="mono contact-aside__label">Privacy</span>
-        <p class="contact-aside__value">Your data stays yours</p>
-        <p class="contact-aside__note">Messages are never shared, sold, or fed to anything you didn't ask for.</p>
-      </div>
-      <div class="contact-aside__block" style="border-bottom:none;">
-        <span class="mono contact-aside__label">Elsewhere</span>
-        <div class="cta__socials" style="justify-content:flex-start; margin-top:14px;">
-          <a href="#" class="cta__social" aria-label="Twitter/X"><i class="ri-twitter-x-line"></i></a>
-          <a href="#" class="cta__social" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
-          <a href="#" class="cta__social" aria-label="Reddit"><i class="ri-reddit-line"></i></a>
-          <a href="#" class="cta__social" aria-label="RSS"><i class="ri-rss-line"></i></a>
-        </div>
-      </div>
-    </aside>
+    </div>
+  </section>
+</main>
 
-  </div>
-</section>
-
-<footer class="footer">
+<footer class="colophon">
   <div class="container">
-    <div class="footer__grid">
+    <div class="colophon__grid">
       <div>
-        <a href="index.html" class="nav__logo">COSVIRE<em>.</em></a>
-        <p class="footer__tagline">The innovation ecosystem. Engineering the future, one product at a time.</p>
+        <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
+        <p class="colophon__about">The parent company of six technology products.
+        Established 2026. Built in public, by one person.</p>
       </div>
-      <div class="footer__cols">
-        <div class="footer__col">
-          <h5>Ecosystem</h5>
-          <a href="index.html#ecosystem">Chambers</a>
-          <a href="index.html#forge">Forge</a>
-          <a href="index.html#products">Products</a>
-        </div>
-        <div class="footer__col">
-          <h5>Company</h5>
-          <a href="about.html">About</a>
-          <a href="blog.html">Journal</a>
-          <a href="contact.html">Contact</a>
-          <a href="login.html">Sign In</a>
-        </div>
-        <div class="footer__col">
-          <h5>Legal</h5>
-          <a href="legal.html">Privacy</a>
-          <a href="legal.html">Terms</a>
-          <a href="legal.html">Cookies</a>
-        </div>
+      <div>
+        <h5>Company</h5>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#architecture">Architecture</a>
+        <a href="index.html#operations">Operations</a>
+        <a href="index.html#record">The record</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="about.html">About</a>
+        <a href="blog.html">Notes</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="legal.html">Privacy</a>
+        <a href="legal.html">Terms</a>
+        <a href="legal.html">Cookies</a>
       </div>
     </div>
-    <div class="footer__legal">
+    <div class="colophon__base">
       <span>&copy; 2026 Cosvire — All rights reserved</span>
-      <span>Forged inside the ecosystem</span>
+      <span>Built inside the ecosystem</span>
     </div>
-    <div class="footer__wordmark" aria-hidden="true">COSVIRE</div>
   </div>
 </footer>
 

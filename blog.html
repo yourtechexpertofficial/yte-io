@@ -1,173 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Cosvire Journal — field notes from inside the innovation ecosystem." />
-  <title>Journal — Cosvire</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Notes from Cosvire — writing on technology, design and building products." />
+<title>Notes — Cosvire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-<nav class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">COSVIRE<em>.</em></a>
-    <ul class="nav__links">
-      <li><a href="index.html#ecosystem" class="nav__link">Ecosystem</a></li>
-      <li><a href="index.html#forge" class="nav__link">Forge</a></li>
-      <li><a href="index.html#products" class="nav__link">Products</a></li>
-      <li><a href="about.html" class="nav__link">About</a></li>
-      <li><a href="blog.html" class="nav__link active">Journal</a></li>
-    </ul>
-    <a href="login.html" class="btn btn--line btn--nav">Sign In</a>
-    <a href="contact.html" class="btn btn--volt btn--nav">Contact</a>
-    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<header class="page-hero">
-  <div class="container">
-    <div class="section__index reveal">
-      <span class="mono mono--volt">Journal</span><span class="rule"></span><span class="mono">Field notes</span>
-    </div>
-    <h1 class="page-hero__title reveal" data-delay="80">
-      Notes from<br />the <span class="accent">forge.</span>
-    </h1>
-    <p class="page-hero__sub reveal" data-delay="160">
-      Ideas, learnings, and dispatches from inside the ecosystem — on technology,
-      design, and the craft of turning sparks into software.
-    </p>
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+    <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
+    <nav class="masthead__nav">
+      <a href="index.html#portfolio" class="masthead__link">Portfolio</a>
+      <a href="index.html#architecture" class="masthead__link">Architecture</a>
+      <a href="index.html#record" class="masthead__link">Record</a>
+      <a href="about.html" class="masthead__link">About</a>
+      <a href="blog.html" class="masthead__link active">Notes</a>
+      <a href="contact.html" class="masthead__link">Contact</a>
+    </nav>
+    <button class="masthead__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<section class="container">
-  <div class="blog-wrap">
-
-    <div class="blog-filters reveal">
-      <button class="blog-filter active" data-cat="all">All</button>
-      <button class="blog-filter" data-cat="tech">Technology</button>
-      <button class="blog-filter" data-cat="design">Design</button>
-      <button class="blog-filter" data-cat="products">Products</button>
-      <button class="blog-filter" data-cat="ecosystem">Ecosystem</button>
+<main>
+  <section class="lede">
+    <div class="container">
+      <div class="lede__eyebrow reveal">
+        <span class="lede__dot"></span><span class="mono">Notes — Company writing</span>
+      </div>
+      <div class="lede__grid">
+        <h1 class="lede__title reveal" data-delay="60">Notes from inside the <em>company.</em></h1>
+        <div class="lede__body reveal" data-delay="140"><p>Writing on technology, design and the practice of moving ideas from a sentence to a released product.</p></div>
+      </div>
     </div>
+  </section>
 
-    <div class="posts">
-      <a href="#" class="post-feature reveal" data-post-cat="ecosystem">
-        <span class="post-feature__date">Jun 19<br />2026</span>
+  <section class="section" style="border-bottom:0;">
+    <div class="container">
+      <div class="filters reveal" style="margin-bottom:8px;">
+        <button class="filter active" data-cat="all">All</button>
+        <button class="filter" data-cat="tech">Technology</button>
+        <button class="filter" data-cat="design">Design</button>
+        <button class="filter" data-cat="products">Products</button>
+        <button class="filter" data-cat="ecosystem">Ecosystem</button>
+      </div>
+      <div class="notes reveal" data-delay="60">
+      <a href="#" class="note-row reveal" data-post-cat="ecosystem">
+        <span class="note-row__date">Jun 19<br />2026</span>
         <div>
-          <h2 class="post-feature__title">Introducing the Cosvire Ecosystem: building everything, together</h2>
-          <p class="post-feature__excerpt">What happens when, instead of building one product, you build an entire ecosystem? That's the question Cosvire was created to answer — here's the thinking behind it.</p>
+          <h2 class="note-row__title">Why Cosvire is structured as a parent company</h2>
+          <p class="note-row__excerpt">A single product is a bet; a portfolio sharing one architecture is a practice. The reasoning behind the company structure.</p>
         </div>
-        <span class="post-feature__tag">Ecosystem</span>
+        <span class="note-row__tag">Ecosystem</span>
       </a>
-
-      <a href="#" class="post-feature reveal" data-post-cat="design" data-delay="60">
-        <span class="post-feature__date">Jun 15<br />2026</span>
+      <a href="#" class="note-row reveal" data-post-cat="design">
+        <span class="note-row__date">Jun 15<br />2026</span>
         <div>
-          <h2 class="post-feature__title">Why we built our own icon set (and why you might too)</h2>
-          <p class="post-feature__excerpt">YTE Icons started as a practical necessity and became a full visual language. How 37 glyphs shaped the identity of an entire ecosystem.</p>
+          <h2 class="note-row__title">Why we drew our own icon set</h2>
+          <p class="note-row__excerpt">YTE Icons began as a practical necessity and became the visual grammar for everything in the portfolio.</p>
         </div>
-        <span class="post-feature__tag">Design</span>
+        <span class="note-row__tag">Design</span>
       </a>
-
-      <a href="#" class="post-feature reveal" data-post-cat="tech" data-delay="120">
-        <span class="post-feature__date">Jun 10<br />2026</span>
+      <a href="#" class="note-row reveal" data-post-cat="tech">
+        <span class="note-row__date">Jun 10<br />2026</span>
         <div>
-          <h2 class="post-feature__title">The tech stack behind Cosvire's first products</h2>
-          <p class="post-feature__excerpt">Pure HTML, CSS, and vanilla JavaScript. Why we chose radical simplicity over frameworks for version one.</p>
+          <h2 class="note-row__title">The stack behind the first releases</h2>
+          <p class="note-row__excerpt">Pure HTML, CSS and vanilla JavaScript. Why radical simplicity was the right call for version one.</p>
         </div>
-        <span class="post-feature__tag">Technology</span>
+        <span class="note-row__tag">Technology</span>
       </a>
-
-      <a href="#" class="post-feature reveal" data-post-cat="ecosystem" data-delay="180">
-        <span class="post-feature__date">Jun 05<br />2026</span>
+      <a href="#" class="note-row reveal" data-post-cat="ecosystem">
+        <span class="note-row__date">Jun 05<br />2026</span>
         <div>
-          <h2 class="post-feature__title">How ideas move through the forge</h2>
-          <p class="post-feature__excerpt">Not every idea makes it. The process for filtering, validating, and moving concepts from the lab into active development.</p>
+          <h2 class="note-row__title">How ideas move through the three rooms</h2>
+          <p class="note-row__excerpt">Not every idea makes it. The process for filtering, validating and moving concepts into active development.</p>
         </div>
-        <span class="post-feature__tag">Ecosystem</span>
+        <span class="note-row__tag">Ecosystem</span>
       </a>
-
-      <a href="#" class="post-feature reveal" data-post-cat="design" data-delay="240">
-        <span class="post-feature__date">Jun 01<br />2026</span>
+      <a href="#" class="note-row reveal" data-post-cat="design">
+        <span class="note-row__date">Jun 01<br />2026</span>
         <div>
-          <h2 class="post-feature__title">Building a visual identity from scratch</h2>
-          <p class="post-feature__excerpt">Ink black, volt chartreuse, Syne display type — how every design decision in the Cosvire system was made with intent.</p>
+          <h2 class="note-row__title">Building a visual identity from nothing</h2>
+          <p class="note-row__excerpt">Ink, volt and Syne — how every decision in the Cosvire design system was made with intent.</p>
         </div>
-        <span class="post-feature__tag">Design</span>
+        <span class="note-row__tag">Design</span>
       </a>
-
-      <a href="#" class="post-feature reveal" data-post-cat="products" data-delay="300">
-        <span class="post-feature__date">May 28<br />2026</span>
+      <a href="#" class="note-row reveal" data-post-cat="products">
+        <span class="note-row__date">May 28<br />2026</span>
         <div>
-          <h2 class="post-feature__title">Cosvire Mobile: what's in the works and why</h2>
-          <p class="post-feature__excerpt">A preview of what's coming in the mobile space — cross-platform but native-feeling, and the engineering challenge that entails.</p>
+          <h2 class="note-row__title">Cosvire Mobile: what we are building</h2>
+          <p class="note-row__excerpt">Cross-platform apps engineered to feel native, and the constraint that makes that difficult.</p>
         </div>
-        <span class="post-feature__tag">Products</span>
+        <span class="note-row__tag">Products</span>
       </a>
-
-      <a href="#" class="post-feature reveal" data-post-cat="tech" data-delay="360">
-        <span class="post-feature__date">May 22<br />2026</span>
+      <a href="#" class="note-row reveal" data-post-cat="tech">
+        <span class="note-row__date">May 22<br />2026</span>
         <div>
-          <h2 class="post-feature__title">Why search infrastructure is the hardest problem in the pipeline</h2>
-          <p class="post-feature__excerpt">Cosvire Search isn't just a search box — it's a new way of indexing and surfacing content across a connected product ecosystem.</p>
+          <h2 class="note-row__title">Search is the hardest thing in the portfolio</h2>
+          <p class="note-row__excerpt">One index across every product. Why it sits in research and not development.</p>
         </div>
-        <span class="post-feature__tag">Technology</span>
+        <span class="note-row__tag">Technology</span>
       </a>
-
-      <a href="#" class="post-feature reveal" data-post-cat="products" data-delay="420">
-        <span class="post-feature__date">May 18<br />2026</span>
+      <a href="#" class="note-row reveal" data-post-cat="products">
+        <span class="note-row__date">May 18<br />2026</span>
         <div>
-          <h2 class="post-feature__title">Cosvire Rewards: loyalty for an interconnected ecosystem</h2>
-          <p class="post-feature__excerpt">How do you build a reward system that works across multiple products? The architecture behind Cosvire Rewards.</p>
+          <h2 class="note-row__title">Rewards, and why it is built last</h2>
+          <p class="note-row__excerpt">The deepest-stacked product in the portfolio needs two other products to exist first.</p>
         </div>
-        <span class="post-feature__tag">Products</span>
+        <span class="note-row__tag">Products</span>
       </a>
+      </div>
     </div>
+  </section>
+</main>
 
-  </div>
-</section>
-
-<footer class="footer">
+<footer class="colophon">
   <div class="container">
-    <div class="footer__grid">
+    <div class="colophon__grid">
       <div>
-        <a href="index.html" class="nav__logo">COSVIRE<em>.</em></a>
-        <p class="footer__tagline">The innovation ecosystem. Engineering the future, one product at a time.</p>
+        <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
+        <p class="colophon__about">The parent company of six technology products.
+        Established 2026. Built in public, by one person.</p>
       </div>
-      <div class="footer__cols">
-        <div class="footer__col">
-          <h5>Ecosystem</h5>
-          <a href="index.html#ecosystem">Chambers</a>
-          <a href="index.html#forge">Forge</a>
-          <a href="index.html#products">Products</a>
-        </div>
-        <div class="footer__col">
-          <h5>Company</h5>
-          <a href="about.html">About</a>
-          <a href="blog.html">Journal</a>
-          <a href="contact.html">Contact</a>
-          <a href="login.html">Sign In</a>
-        </div>
-        <div class="footer__col">
-          <h5>Legal</h5>
-          <a href="legal.html">Privacy</a>
-          <a href="legal.html">Terms</a>
-          <a href="legal.html">Cookies</a>
-        </div>
+      <div>
+        <h5>Company</h5>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#architecture">Architecture</a>
+        <a href="index.html#operations">Operations</a>
+        <a href="index.html#record">The record</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="about.html">About</a>
+        <a href="blog.html">Notes</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="legal.html">Privacy</a>
+        <a href="legal.html">Terms</a>
+        <a href="legal.html">Cookies</a>
       </div>
     </div>
-    <div class="footer__legal">
+    <div class="colophon__base">
       <span>&copy; 2026 Cosvire — All rights reserved</span>
-      <span>Forged inside the ecosystem</span>
+      <span>Built inside the ecosystem</span>
     </div>
-    <div class="footer__wordmark" aria-hidden="true">COSVIRE</div>
   </div>
 </footer>
 

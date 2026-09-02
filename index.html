@@ -1,357 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cosvire — the innovation ecosystem. Ideas enter, products emerge. A personal innovation ecosystem engineering tomorrow's technology." />
-  <title>Cosvire — The Innovation Ecosystem</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Cosvire is the parent company of six technology products — an innovation ecosystem where every idea is engineered, built and released." />
+<title>Cosvire — Parent company of six technology products</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-<!-- Navigation -->
-<nav class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="index.html" class="nav__logo">COSVIRE<em>.</em></a>
-    <ul class="nav__links">
-      <li><a href="#ecosystem" class="nav__link">Ecosystem</a></li>
-      <li><a href="#forge" class="nav__link">Forge</a></li>
-      <li><a href="#products" class="nav__link">Products</a></li>
-      <li><a href="about.html" class="nav__link">About</a></li>
-      <li><a href="blog.html" class="nav__link">Journal</a></li>
-    </ul>
-    <a href="login.html" class="btn btn--line btn--nav">Sign In</a>
-    <a href="contact.html" class="btn btn--volt btn--nav">Contact</a>
-    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- Hero -->
-<header class="hero" id="home">
-  <canvas id="orbitCanvas" aria-hidden="true"></canvas>
-  <div class="container hero__inner">
-    <div class="hero__eyebrow reveal">
-      <span class="hero__eyebrow-dot"></span>
-      <span class="mono">Cosvire — Personal Innovation Ecosystem / EST. 2026</span>
-    </div>
-    <h1 class="hero__title">
-      <span class="line reveal">Ideas go</span>
-      <span class="line reveal" data-delay="90"><span class="stroke">in.</span> Products</span>
-      <span class="line reveal" data-delay="180">come <span class="accent">out.</span></span>
-    </h1>
-    <div class="hero__bottom">
-      <p class="hero__sub reveal" data-delay="260">
-        Cosvire is an <strong>innovation ecosystem</strong> — a single place where raw technology
-        ideas are conceived, engineered, and shipped as real products the world can use.
-      </p>
-      <div class="hero__actions reveal" data-delay="320">
-        <a href="#forge" class="btn btn--volt">Try the Forge <i class="ri-arrow-right-down-line"></i></a>
-        <a href="#products" class="btn btn--line">View Products</a>
-      </div>
-    </div>
-    <div class="hero__meta reveal" data-delay="400">
-      <div class="hero__meta-item">
-        <span class="hero__meta-num"><span data-target="37">0</span><span class="sym">+</span></span>
-        <span class="mono">Icons shipped</span>
-      </div>
-      <div class="hero__meta-item">
-        <span class="hero__meta-num"><span data-target="6">0</span></span>
-        <span class="mono">Products in the forge</span>
-      </div>
-      <div class="hero__meta-item">
-        <span class="hero__meta-num"><span class="sym">&infin;</span></span>
-        <span class="mono">Ideas in orbit</span>
-      </div>
-      <div class="hero__meta-item">
-        <span class="hero__meta-num">01</span>
-        <span class="mono">Ecosystem</span>
-      </div>
-    </div>
+<header class="masthead" id="masthead">
+  <div class="masthead__inner">
+    <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
+    <nav class="masthead__nav">
+      <a href="#portfolio" class="masthead__link">Portfolio</a>
+      <a href="#architecture" class="masthead__link">Architecture</a>
+      <a href="#record" class="masthead__link">Record</a>
+      <a href="about.html" class="masthead__link">About</a>
+      <a href="blog.html" class="masthead__link">Notes</a>
+      <a href="contact.html" class="masthead__link">Contact</a>
+    </nav>
+    <button class="masthead__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- Marquee -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track" id="marqueeTrack">
-    <span class="marquee__item"><i class="ri-sparkling-2-line"></i> Ideate</span>
-    <span class="marquee__item"><i class="ri-arrow-right-line"></i> Research</span>
-    <span class="marquee__item"><i class="ri-arrow-right-line"></i> Engineer</span>
-    <span class="marquee__item"><i class="ri-arrow-right-line"></i> Forge</span>
-    <span class="marquee__item"><i class="ri-arrow-right-line"></i> Launch</span>
-    <span class="marquee__item"><i class="ri-arrow-right-line"></i> Iterate</span>
-  </div>
-</div>
+<main>
 
-<!-- Ecosystem -->
-<section class="section" id="ecosystem">
+  <!-- Lede -->
+  <section class="lede">
+    <div class="container">
+      <div class="lede__eyebrow reveal">
+        <span class="lede__dot"></span>
+        <span class="mono">Cosvire — Innovation ecosystem — Est. 2026</span>
+      </div>
+      <div class="lede__grid">
+        <h1 class="lede__title reveal" data-delay="60">
+          Cosvire is the parent company of six technology <em>products.</em>
+        </h1>
+        <div class="lede__body reveal" data-delay="140">
+          <p>We are not a single product company. Cosvire is the structure underneath
+          several — <strong>a lab that shapes ideas, a hub that engineers them, and a
+          launch pad that releases them.</strong></p>
+          <p>Each product is built on shared architecture, so every one that ships makes
+          the next cheaper to build.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facts -->
   <div class="container">
-    <div class="section__head">
-      <div>
-        <div class="section__index reveal">
-          <span class="mono mono--volt">01</span><span class="rule"></span><span class="mono">The Ecosystem</span>
-        </div>
-        <h2 class="section__title reveal">One vision.<br /><span class="stroke">Three chambers.</span></h2>
-      </div>
-      <p class="section__sub reveal" data-delay="120">
-        Every idea that enters Cosvire moves through three chambers of the ecosystem —
-        from a spark on a whiteboard to a product in the wild.
-      </p>
-    </div>
-
-    <div class="eco-rows">
-      <div class="eco-row reveal">
-        <span class="eco-row__idx">/ 01</span>
-        <h3 class="eco-row__title">Innovation Lab</h3>
-        <p class="eco-row__desc">Raw ideas are captured, stress-tested, and shaped into structured product concepts through research and systems thinking.</p>
-        <span class="eco-row__arrow"><i class="ri-arrow-right-line"></i></span>
-      </div>
-      <div class="eco-row reveal" data-delay="90">
-        <span class="eco-row__idx">/ 02</span>
-        <h3 class="eco-row__title">Development Hub</h3>
-        <p class="eco-row__desc">Concepts become code. Products are engineered with modern technology — robust, scalable, and built to outlast trends.</p>
-        <span class="eco-row__arrow"><i class="ri-arrow-right-line"></i></span>
-      </div>
-      <div class="eco-row reveal" data-delay="180">
-        <span class="eco-row__idx">/ 03</span>
-        <h3 class="eco-row__title">Launch Pad</h3>
-        <p class="eco-row__desc">Finished products go out into the world — deployed, sharpened by feedback, and scaled inside the ecosystem.</p>
-        <span class="eco-row__arrow"><i class="ri-arrow-right-line"></i></span>
-      </div>
-    </div>
+    <dl class="facts reveal">
+      <div class="fact"><dt>Established</dt><dd>2026</dd></div>
+      <div class="fact"><dt>Products</dt><dd>Six</dd></div>
+      <div class="fact"><dt>Released</dt><dd><em>One</em></dd></div>
+      <div class="fact"><dt>Operators</dt><dd>One</dd></div>
+    </dl>
   </div>
-</section>
 
-<!-- The Forge -->
-<section class="forge" id="forge">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <div class="section__index reveal">
-          <span class="mono mono--volt">02</span><span class="rule"></span><span class="mono">The Forge</span>
+  <!-- Portfolio -->
+  <section class="section" id="portfolio">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <div class="section__mark reveal"><span class="bar"></span><span class="mono mono--volt">01 — Portfolio</span></div>
+          <h2 class="section__title reveal" data-delay="40">Everything Cosvire <em>holds.</em></h2>
         </div>
-        <h2 class="section__title reveal">Drop an idea.<br /><span class="accent">Watch it ship.</span></h2>
+        <p class="section__lede reveal" data-delay="80">
+          One product released, five in active development. All of them share the same
+          design system, architecture and standards.
+        </p>
       </div>
-      <p class="section__sub reveal" data-delay="120">
-        This is what Cosvire does, compressed into six seconds. Type any idea into
-        the forge and watch the ecosystem turn it into a product — live.
-      </p>
+
+      <div class="pf-filters reveal" data-delay="100">
+        <button class="pf-filter active" data-stage="all">All six</button>
+        <button class="pf-filter" data-stage="live">Released</button>
+        <button class="pf-filter" data-stage="dev">In development</button>
+        <button class="pf-filter" data-stage="research">Research</button>
+      </div>
+
+      <div class="portfolio reveal" data-delay="140">
+
+        <article class="holding" data-stage="live" style="--accent:#d7ff4d">
+          <span class="holding__no">Holding 01</span>
+          <h3 class="holding__name">YTE Icons</h3>
+          <p class="holding__desc">A custom icon set of 37 glyphs, drawn to a single standard.
+          The visual grammar every later product inherits.</p>
+          <div class="holding__foot">
+            <span class="badge"><i></i>Released</span>
+            <span class="holding__stage">Launch Pad</span>
+          </div>
+        </article>
+
+        <article class="holding" data-stage="dev" style="--accent:#8b7cf8">
+          <span class="holding__no">Holding 02</span>
+          <h3 class="holding__name">Cosvire OS</h3>
+          <p class="holding__desc">The operating layer beneath everything — shared identity,
+          settings and state across all six products.</p>
+          <div class="holding__foot">
+            <span class="badge badge--dev"><i></i>In development</span>
+            <span class="holding__stage">Development Hub</span>
+          </div>
+        </article>
+
+        <article class="holding" data-stage="dev" style="--accent:#45c4d6">
+          <span class="holding__no">Holding 03</span>
+          <h3 class="holding__name">Cosvire Mobile</h3>
+          <p class="holding__desc">Cross-platform apps engineered to be indistinguishable
+          from native ones. Written once, felt everywhere.</p>
+          <div class="holding__foot">
+            <span class="badge badge--dev"><i></i>In development</span>
+            <span class="holding__stage">Development Hub</span>
+          </div>
+        </article>
+
+        <article class="holding" data-stage="research" style="--accent:#ffb84d">
+          <span class="holding__no">Holding 04</span>
+          <h3 class="holding__name">Cosvire Search</h3>
+          <p class="holding__desc">One index reaching across every product, so a query typed
+          anywhere returns results from everywhere.</p>
+          <div class="holding__foot">
+            <span class="badge badge--dev"><i></i>Research</span>
+            <span class="holding__stage">Innovation Lab</span>
+          </div>
+        </article>
+
+        <article class="holding" data-stage="research" style="--accent:#f472b6">
+          <span class="holding__no">Holding 05</span>
+          <h3 class="holding__name">Cosvire Connect</h3>
+          <p class="holding__desc">The connective tissue — how products pass data between
+          themselves without knowing how the others are built.</p>
+          <div class="holding__foot">
+            <span class="badge badge--dev"><i></i>Research</span>
+            <span class="holding__stage">Innovation Lab</span>
+          </div>
+        </article>
+
+        <article class="holding" data-stage="research" style="--accent:#4ade80">
+          <span class="holding__no">Holding 06</span>
+          <h3 class="holding__name">Cosvire Rewards</h3>
+          <p class="holding__desc">Value earned in any product, spendable in any other —
+          otherwise "ecosystem" is only branding.</p>
+          <div class="holding__foot">
+            <span class="badge badge--dev"><i></i>Research</span>
+            <span class="holding__stage">Innovation Lab</span>
+          </div>
+        </article>
+
+      </div>
     </div>
+  </section>
 
-    <div class="forge__machine reveal" data-delay="150" id="forgeMachine">
-      <div class="forge__titlebar">
-        <span class="forge__dots"><i></i><i></i><i></i></span>
-        <span class="mono">cosvire — forge</span>
-        <span class="mono forge__status" id="forgeState">IDLE</span>
+  <!-- Architecture map -->
+  <section class="section" id="architecture">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <div class="section__mark reveal"><span class="bar"></span><span class="mono mono--volt">02 — Architecture</span></div>
+          <h2 class="section__title reveal" data-delay="40">How the products <em>hold together.</em></h2>
+        </div>
+        <p class="section__lede reveal" data-delay="80">
+          A parent company is only worth the structure beneath it. Select any product to
+          trace what it stands on and what stands on it.
+        </p>
       </div>
-      <div class="forge__body">
 
-        <div class="forge__input-row">
-          <span class="forge__prompt">&gt;_</span>
-          <input class="forge__input" id="forgeInput" type="text" maxlength="60"
-                 placeholder="type an idea — e.g. smart recipe planner" aria-label="Your idea" />
-          <button class="btn btn--volt" id="forgeRun">Forge it</button>
-        </div>
+      <div class="arch reveal" data-delay="120">
+        <div class="arch__stack" id="archStack">
 
-        <div class="forge__pipe">
-          <div class="forge__node">
-            <i class="ri-lightbulb-flash-line forge__node-icon"></i>
-            <span class="forge__node-name mono">Innovation Lab</span>
-            <span class="forge__node-status mono">standby</span>
-          </div>
-          <div class="forge__link"></div>
-          <div class="forge__node">
-            <i class="ri-code-s-slash-line forge__node-icon"></i>
-            <span class="forge__node-name mono">Development Hub</span>
-            <span class="forge__node-status mono">standby</span>
-          </div>
-          <div class="forge__link"></div>
-          <div class="forge__node">
-            <i class="ri-rocket-2-line forge__node-icon"></i>
-            <span class="forge__node-name mono">Launch Pad</span>
-            <span class="forge__node-status mono">standby</span>
-          </div>
-        </div>
-
-        <div class="forge__bottom">
-          <div class="forge__log" id="forgeLog" aria-live="polite"></div>
-          <div class="forge__card" id="forgeCard">
-            <span class="bento__tag bento__tag--live"><span class="dot"></span> Live</span>
-            <h3 class="forge__card-name" id="forgeCardName">Cosvire Spark</h3>
-            <p class="forge__card-src mono" id="forgeCardSrc">forged from: —</p>
-            <div class="forge__card-meta">
-              <span id="forgeCardVer">v0.1.0</span>
-              <span id="forgeCardTime">—</span>
+          <div class="layer">
+            <span class="layer__label"><b>Surface</b>What people open</span>
+            <div class="layer__items">
+              <span class="node" data-node="mobile"  data-accent="#45c4d6" data-deps="os"           data-used="">Cosvire Mobile</span>
+              <span class="node" data-node="rewards" data-accent="#4ade80" data-deps="connect,os"   data-used="">Cosvire Rewards</span>
             </div>
           </div>
+
+          <div class="layer">
+            <span class="layer__label"><b>Services</b>Shared capability</span>
+            <div class="layer__items">
+              <span class="node" data-node="search"  data-accent="#ffb84d" data-deps="os"      data-used="">Cosvire Search</span>
+              <span class="node" data-node="connect" data-accent="#f472b6" data-deps="os"      data-used="rewards">Cosvire Connect</span>
+            </div>
+          </div>
+
+          <div class="layer">
+            <span class="layer__label"><b>Foundation</b>The floor</span>
+            <div class="layer__items">
+              <span class="node" data-node="os" data-accent="#8b7cf8" data-deps="" data-used="mobile,rewards,search,connect">Cosvire OS</span>
+            </div>
+          </div>
+
+          <div class="layer">
+            <span class="layer__label"><b>Language</b>Applies to all</span>
+            <div class="layer__items">
+              <span class="node" data-node="icons" data-accent="#d7ff4d" data-deps="" data-used="os,mobile,rewards,search,connect">YTE Icons</span>
+            </div>
+          </div>
+
         </div>
 
+        <aside class="arch__read" id="archRead">
+          <span class="mono mono--volt" id="archTag">Select a product</span>
+          <h4 id="archName">Four layers, six products</h4>
+          <p id="archDesc">Nothing in the ecosystem is built from nothing. YTE Icons gives
+          everything its visual language, Cosvire OS gives everything a floor, and each
+          product above inherits the work of the ones beneath it.</p>
+          <dl id="archMeta">
+            Layers &nbsp; <b>Four</b><br />
+            Products &nbsp; <b>Six</b><br />
+            Shared systems &nbsp; <b>Two</b>
+          </dl>
+        </aside>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Products -->
-<section class="section" id="products">
-  <div class="container">
-    <div class="section__head">
-      <div>
-        <div class="section__index reveal">
-          <span class="mono mono--volt">03</span><span class="rule"></span><span class="mono">The Lineup</span>
+  <!-- The three chambers -->
+  <section class="section" id="operations">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <div class="section__mark reveal"><span class="bar"></span><span class="mono mono--volt">03 — Operations</span></div>
+          <h2 class="section__title reveal" data-delay="40">Every idea walks the same <em>three rooms.</em></h2>
         </div>
-        <h2 class="section__title reveal">Products in<br /><span class="accent">every stage.</span></h2>
+        <p class="section__lede reveal" data-delay="80">
+          The ecosystem is a process, not a slogan. Ideas enter one way and leave through
+          one door — or they stop, which is equally useful.
+        </p>
       </div>
-      <p class="section__sub reveal" data-delay="120">
-        One is live. Five are deep in development. All of them share
-        the same DNA — the Cosvire ecosystem.
+      <div class="grid-3 reveal" data-delay="120">
+        <div class="cell">
+          <span class="cell__no">Room I</span>
+          <h4>Innovation Lab</h4>
+          <p>Where a sentence becomes a specification. Ideas are captured, argued with, and
+          either shaped into something buildable or written down as a reason not to build it.
+          Most ideas stop here, and that is the point.</p>
+        </div>
+        <div class="cell">
+          <span class="cell__no">Room II</span>
+          <h4>Development Hub</h4>
+          <p>Where specifications become software. Products are engineered against the shared
+          architecture, inheriting the design system, component library and standards every
+          earlier product already paid for.</p>
+        </div>
+        <div class="cell">
+          <span class="cell__no">Room III</span>
+          <h4>Launch Pad</h4>
+          <p>Where software meets people. Products are released, measured and revised in
+          public. Nothing here is ever finished — it is shipped, and then improved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Record -->
+  <section class="section" id="record">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <div class="section__mark reveal"><span class="bar"></span><span class="mono mono--volt">04 — The record</span></div>
+          <h2 class="section__title reveal" data-delay="40">Stated <em>plainly.</em></h2>
+        </div>
+      </div>
+      <div class="record reveal" data-delay="80">
+        <div class="record__row"><span class="record__label">Established</span><span class="record__fill"></span><span class="record__value">2026</span></div>
+        <div class="record__row"><span class="record__label">Products held</span><span class="record__fill"></span><span class="record__value" data-count="6">0</span></div>
+        <div class="record__row"><span class="record__label">Released to the public</span><span class="record__fill"></span><span class="record__value"><em data-count="1">0</em></span></div>
+        <div class="record__row"><span class="record__label">In active development</span><span class="record__fill"></span><span class="record__value" data-count="5">0</span></div>
+        <div class="record__row"><span class="record__label">Glyphs drawn</span><span class="record__fill"></span><span class="record__value" data-count="37">0</span></div>
+        <div class="record__row"><span class="record__label">Shared systems</span><span class="record__fill"></span><span class="record__value" data-count="2">0</span></div>
+        <div class="record__row"><span class="record__label">Operators</span><span class="record__fill"></span><span class="record__value" data-count="1">0</span></div>
+        <div class="record__row"><span class="record__label">Ideas archived</span><span class="record__fill"></span><span class="record__value">∞</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact" style="border-bottom:0;">
+    <div class="container">
+      <div class="section__mark reveal"><span class="bar"></span><span class="mono mono--volt">05 — Correspondence</span></div>
+      <h2 class="section__title reveal" data-delay="40" style="max-width:22ch;margin-bottom:22px;">Have an idea worth <em>building?</em></h2>
+      <p class="section__lede reveal" data-delay="80" style="margin-bottom:32px;max-width:46ch;">
+        Every message is read by the person who builds these things. Expect a reply within
+        forty-eight hours.
       </p>
+      <a href="mailto:admin@cosvire.com" class="btn btn--volt reveal" data-delay="120">admin@cosvire.com</a>
     </div>
+  </section>
 
-    <div class="bento">
-      <article class="bento__cell bento__cell--hero reveal">
-        <i class="ri-shapes-line bento__glyph"></i>
-        <span class="bento__tag bento__tag--live"><span class="dot"></span> Live / First product</span>
-        <h3 class="bento__name">YTE Icons</h3>
-        <p class="bento__desc">The first product to ship from the ecosystem — a custom icon set powering Cosvire's visual identity across every product and platform. 37 glyphs and counting.</p>
-      </article>
+</main>
 
-      <article class="bento__cell reveal" data-delay="80">
-        <i class="ri-terminal-window-line bento__glyph"></i>
-        <span class="bento__tag bento__tag--soon"><span class="dot"></span> In the forge</span>
-        <h3 class="bento__name">Cosvire OS</h3>
-        <div class="bento__spacer"></div>
-        <p class="bento__desc">A unified operating layer for every Cosvire product. Stealth mode.</p>
-      </article>
-
-      <article class="bento__cell reveal" data-delay="140">
-        <i class="ri-smartphone-line bento__glyph"></i>
-        <span class="bento__tag bento__tag--soon"><span class="dot"></span> In the forge</span>
-        <h3 class="bento__name">Cosvire Mobile</h3>
-        <div class="bento__spacer"></div>
-        <p class="bento__desc">Cross-platform experiences that feel native, built inside the ecosystem.</p>
-      </article>
-
-      <article class="bento__cell reveal" data-delay="200">
-        <i class="ri-search-2-line bento__glyph"></i>
-        <span class="bento__tag bento__tag--soon"><span class="dot"></span> In the forge</span>
-        <h3 class="bento__name">Cosvire Search</h3>
-        <div class="bento__spacer"></div>
-        <p class="bento__desc">Intelligent search infrastructure for the next generation of products.</p>
-      </article>
-
-      <article class="bento__cell reveal" data-delay="260">
-        <i class="ri-links-line bento__glyph"></i>
-        <span class="bento__tag bento__tag--soon"><span class="dot"></span> In the forge</span>
-        <h3 class="bento__name">Cosvire Connect</h3>
-        <div class="bento__spacer"></div>
-        <p class="bento__desc">The connective tissue — bridging products, users, and data in one network.</p>
-      </article>
-
-      <article class="bento__cell reveal" data-delay="320">
-        <i class="ri-vip-crown-2-line bento__glyph"></i>
-        <span class="bento__tag bento__tag--soon"><span class="dot"></span> In the forge</span>
-        <h3 class="bento__name">Cosvire Rewards</h3>
-        <div class="bento__spacer"></div>
-        <p class="bento__desc">Loyalty and engagement, rewarded across the entire ecosystem.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Manifesto -->
-<section class="manifesto" id="vision">
-  <div class="manifesto__orbit"></div>
+<footer class="colophon">
   <div class="container">
-    <div class="manifesto__quote">
-      <div class="section__index reveal" style="justify-content:center;">
-        <span class="mono mono--volt">04</span><span class="rule"></span><span class="mono">The Manifesto</span>
-      </div>
-      <blockquote class="manifesto__text reveal" data-delay="80">
-        We don't follow <span class="stroke">trends.</span><br />
-        We <span class="accent">forge</span> them.
-      </blockquote>
-      <cite class="manifesto__cite reveal" data-delay="160">— The Cosvire Manifesto</cite>
-    </div>
-    <div class="manifesto__pillars">
-      <div class="pillar reveal">
-        <span class="pillar__num">P.01</span>
-        <h4>Build Bold</h4>
-        <p>Ambitious ideas, zero compromise. We build products that push boundaries others won't approach.</p>
-      </div>
-      <div class="pillar reveal" data-delay="100">
-        <span class="pillar__num">P.02</span>
-        <h4>Move Fast</h4>
-        <p>Speed is a feature. Ship, learn, iterate — faster than the market can react.</p>
-      </div>
-      <div class="pillar reveal" data-delay="200">
-        <span class="pillar__num">P.03</span>
-        <h4>Think Infinite</h4>
-        <p>No idea too big, no problem too complex. We operate at the edge of what's possible.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="contact">
-  <div class="container">
-    <div class="section__index reveal" style="justify-content:center;">
-      <span class="mono mono--volt">05</span><span class="rule"></span><span class="mono">Join the ecosystem</span>
-    </div>
-    <h2 class="cta__title reveal" data-delay="80">Got an idea<br />worth <span class="accent">forging?</span></h2>
-    <a href="mailto:admin@cosvire.com" class="cta__mail reveal" data-delay="160">
-      <i class="ri-mail-send-line"></i> admin@cosvire.com
-    </a>
-    <div class="cta__socials reveal" data-delay="220">
-      <a href="#" class="cta__social" aria-label="Twitter/X"><i class="ri-twitter-x-line"></i></a>
-      <a href="#" class="cta__social" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
-      <a href="#" class="cta__social" aria-label="Reddit"><i class="ri-reddit-line"></i></a>
-      <a href="#" class="cta__social" aria-label="RSS"><i class="ri-rss-line"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
+    <div class="colophon__grid">
       <div>
-        <a href="index.html" class="nav__logo">COSVIRE<em>.</em></a>
-        <p class="footer__tagline">The innovation ecosystem. Engineering the future, one product at a time.</p>
+        <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
+        <p class="colophon__about">The parent company of six technology products.
+        Established 2026. Built in public, by one person.</p>
       </div>
-      <div class="footer__cols">
-        <div class="footer__col">
-          <h5>Ecosystem</h5>
-          <a href="#ecosystem">Chambers</a>
-          <a href="#forge">Forge</a>
-          <a href="#products">Products</a>
-          <a href="#vision">Manifesto</a>
-        </div>
-        <div class="footer__col">
-          <h5>Company</h5>
-          <a href="about.html">About</a>
-          <a href="blog.html">Journal</a>
-          <a href="contact.html">Contact</a>
-          <a href="login.html">Sign In</a>
-        </div>
-        <div class="footer__col">
-          <h5>Legal</h5>
-          <a href="legal.html">Privacy</a>
-          <a href="legal.html">Terms</a>
-          <a href="legal.html">Cookies</a>
-        </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#operations">Operations</a>
+        <a href="#record">The record</a>
+      </div>
+      <div>
+        <h5>Elsewhere</h5>
+        <a href="about.html">About</a>
+        <a href="blog.html">Notes</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Sign in</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="legal.html">Privacy</a>
+        <a href="legal.html">Terms</a>
+        <a href="legal.html">Cookies</a>
       </div>
     </div>
-    <div class="footer__legal">
-      <span>&copy; 2026 Cosvire — All rights reserved</span>
-      <span>Forged inside the ecosystem</span>
+    <div class="colophon__base">
+      <span>© 2026 Cosvire — All rights reserved</span>
+      <span>Built inside the ecosystem</span>
     </div>
-    <div class="footer__wordmark" aria-hidden="true">COSVIRE</div>
   </div>
 </footer>
 

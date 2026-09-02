@@ -1,297 +1,199 @@
 /* ============================================================
-   COSVIRE — Main JavaScript v3
+   COSVIRE — v4 · parent company
    ============================================================ */
 'use strict';
 
-/* ── 1. Navbar scroll ────────────────────────────────────── */
+/* ── 1. Masthead ─────────────────────────────────────────── */
 (function () {
-  const nav = document.getElementById('nav');
-  if (!nav) return;
-  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  const m = document.getElementById('masthead');
+  if (!m) return;
+  const on = () => m.classList.toggle('pinned', window.scrollY > 8);
+  window.addEventListener('scroll', on, { passive: true });
+  on();
 }());
 
-/* ── 2. Hamburger / mobile menu ──────────────────────────── */
+/* ── 2. Mobile navigation ────────────────────────────────── */
 (function () {
-  const btn = document.getElementById('hamburger');
-  if (!btn) return;
-  const menu = document.createElement('div');
-  menu.id = 'mobileMenu';
+  const burger = document.getElementById('burger');
+  if (!burger) return;
+  const nav = document.createElement('nav');
+  nav.id = 'mobileNav';
   [
-    ['index.html#ecosystem', 'Ecosystem'],
-    ['index.html#forge',     'Forge'],
-    ['index.html#products',  'Products'],
-    ['about.html',           'About'],
-    ['blog.html',            'Journal'],
-    ['contact.html',         'Contact'],
-    ['login.html',           'Sign In'],
+    ['index.html#portfolio',    'Portfolio'],
+    ['index.html#architecture', 'Architecture'],
+    ['index.html#record',       'Record'],
+    ['about.html',              'About'],
+    ['blog.html',               'Notes'],
+    ['contact.html',            'Contact'],
+    ['login.html',              'Sign in'],
   ].forEach(([href, label]) => {
     const a = document.createElement('a');
     a.href = href; a.textContent = label;
-    menu.appendChild(a);
+    nav.appendChild(a);
   });
-  document.body.appendChild(menu);
+  document.body.appendChild(nav);
   const close = () => {
-    btn.classList.remove('open');
-    menu.classList.remove('open');
+    burger.classList.remove('open');
+    nav.classList.remove('open');
     document.body.style.overflow = '';
   };
-  btn.addEventListener('click', () => {
-    const open = btn.classList.toggle('open');
-    menu.classList.toggle('open', open);
+  burger.addEventListener('click', () => {
+    const open = burger.classList.toggle('open');
+    nav.classList.toggle('open', open);
     document.body.style.overflow = open ? 'hidden' : '';
   });
-  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 }());
 
-/* ── 3. Smooth scrolling for same-page anchors ───────────── */
+/* ── 3. Anchor scrolling ─────────────────────────────────── */
 (function () {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (!target) return;
+      const t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
       e.preventDefault();
-      const navH = document.getElementById('nav')?.offsetHeight || 0;
-      window.scrollTo({
-        top: target.getBoundingClientRect().top + window.scrollY - navH,
-        behavior: 'smooth',
-      });
+      const off = document.getElementById('masthead')?.offsetHeight || 0;
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - off - 6, behavior: 'smooth' });
     });
   });
 }());
 
-/* ── 4. Orbit canvas (hero) ──────────────────────────────── */
-(function () {
-  const canvas = document.getElementById('orbitCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const DPR = Math.min(window.devicePixelRatio || 1, 2);
-  let W, H, cx, cy;
-
-  const RINGS = [
-    { r: 0.22, tilt: 0.42, speed: 0.00042, dots: 2, color: '215,255,77'  },
-    { r: 0.34, tilt: 0.40, speed: -0.00030, dots: 3, color: '139,124,248' },
-    { r: 0.46, tilt: 0.38, speed: 0.00020, dots: 4, color: '235,233,226' },
-  ];
-  const offsets = RINGS.map((ring, i) =>
-    Array.from({ length: ring.dots }, (_, k) => (k / ring.dots) * Math.PI * 2 + i)
-  );
-
-  const resize = () => {
-    const rect = canvas.getBoundingClientRect();
-    W = rect.width; H = rect.height;
-    canvas.width  = W * DPR;
-    canvas.height = H * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    cx = W / 2; cy = H / 2;
-  };
-
-  const frame = now => {
-    ctx.clearRect(0, 0, W, H);
-    const base = Math.min(W, H);
-
-    // Core
-    const coreR = base * 0.055;
-    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR * 3.4);
-    grad.addColorStop(0, 'rgba(215,255,77,0.5)');
-    grad.addColorStop(0.35, 'rgba(215,255,77,0.12)');
-    grad.addColorStop(1, 'rgba(215,255,77,0)');
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.arc(cx, cy, coreR * 3.4, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = 'rgba(215,255,77,0.9)';
-    ctx.beginPath();
-    ctx.arc(cx, cy, coreR * 0.45, 0, Math.PI * 2);
-    ctx.fill();
-
-    RINGS.forEach((ring, i) => {
-      const rx = base * ring.r;
-      const ry = rx * ring.tilt;
-
-      ctx.strokeStyle = `rgba(${ring.color},0.16)`;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.ellipse(cx, cy, rx, ry, -0.28, 0, Math.PI * 2);
-      ctx.stroke();
-
-      offsets[i].forEach(off => {
-        const a = now * ring.speed + off;
-        // point on tilted ellipse
-        const px0 = Math.cos(a) * rx;
-        const py0 = Math.sin(a) * ry;
-        const px = cx + px0 * Math.cos(-0.28) - py0 * Math.sin(-0.28);
-        const py = cy + px0 * Math.sin(-0.28) + py0 * Math.cos(-0.28);
-        const depth = (Math.sin(a) + 1) / 2;           // fake depth
-        const size = 2 + depth * 2.6;
-        ctx.fillStyle = `rgba(${ring.color},${0.35 + depth * 0.6})`;
-        ctx.beginPath();
-        ctx.arc(px, py, size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-    });
-
-    requestAnimationFrame(frame);
-  };
-
-  resize();
-  window.addEventListener('resize', resize, { passive: true });
-  requestAnimationFrame(frame);
-}());
-
-/* ── 5. Scroll reveal ────────────────────────────────────── */
+/* ── 4. Reveal on scroll ─────────────────────────────────── */
 (function () {
   const items = document.querySelectorAll('.reveal');
   if (!items.length) return;
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      const delay = e.target.dataset.delay ? parseInt(e.target.dataset.delay, 10) : 0;
-      setTimeout(() => e.target.classList.add('is-visible'), delay);
+      const d = parseInt(e.target.dataset.delay || '0', 10);
+      setTimeout(() => e.target.classList.add('is-visible'), d);
       io.unobserve(e.target);
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   items.forEach(el => io.observe(el));
 }());
 
-/* ── 6. Counters ─────────────────────────────────────────── */
+/* ── 5. Counters ─────────────────────────────────────────── */
 (function () {
-  const nums = document.querySelectorAll('[data-target]');
-  if (!nums.length) return;
-  const easeOut = t => 1 - (1 - t) ** 3;
-  const animate = el => {
-    const end = parseInt(el.dataset.target, 10);
-    const dur = 1500;
-    const t0  = performance.now();
+  const nums = document.querySelectorAll('[data-count]');
+  if (!nums.length || !('IntersectionObserver' in window)) return;
+  const ease = t => 1 - (1 - t) ** 3;
+  const run = el => {
+    const end = parseInt(el.dataset.count, 10);
+    const t0 = performance.now(), dur = 900;
     const tick = now => {
       const p = Math.min((now - t0) / dur, 1);
-      el.textContent = Math.round(easeOut(p) * end);
+      el.textContent = Math.round(ease(p) * end);
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   };
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      animate(e.target);
-      io.unobserve(e.target);
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  nums.forEach(n => io.observe(n));
+}());
+
+/* ── 6. Portfolio filtering ──────────────────────────────── */
+(function () {
+  const filters = document.querySelectorAll('.pf-filter');
+  const cards   = document.querySelectorAll('.holding');
+  if (!filters.length || !cards.length) return;
+  filters.forEach(f => {
+    f.addEventListener('click', () => {
+      filters.forEach(x => x.classList.remove('active'));
+      f.classList.add('active');
+      const s = f.dataset.stage;
+      cards.forEach(c => {
+        c.style.display = (s === 'all' || c.dataset.stage === s) ? '' : 'none';
+      });
     });
-  }, { threshold: 0.5 });
-  nums.forEach(el => io.observe(el));
+  });
 }());
 
-/* ── 7. Marquee: duplicate track for seamless loop ───────── */
+/* ── 7. Architecture map ─────────────────────────────────── */
 (function () {
-  const track = document.getElementById('marqueeTrack');
-  if (!track) return;
-  track.innerHTML += track.innerHTML;
-}());
+  const stack = document.getElementById('archStack');
+  if (!stack) return;
+  const nodes = [...stack.querySelectorAll('.node')];
+  const tag   = document.getElementById('archTag');
+  const name  = document.getElementById('archName');
+  const desc  = document.getElementById('archDesc');
+  const meta  = document.getElementById('archMeta');
 
-/* ── 8. The Forge — idea → product synthesizer ───────────── */
-(function () {
-  const machine  = document.getElementById('forgeMachine');
-  const input    = document.getElementById('forgeInput');
-  const btn      = document.getElementById('forgeRun');
-  const state    = document.getElementById('forgeState');
-  const log      = document.getElementById('forgeLog');
-  const card     = document.getElementById('forgeCard');
-  const cardName = document.getElementById('forgeCardName');
-  const cardSrc  = document.getElementById('forgeCardSrc');
-  const cardTime = document.getElementById('forgeCardTime');
-  const nodes    = document.querySelectorAll('.forge__node');
-  const links    = document.querySelectorAll('.forge__link');
-  if (!machine || !input || !nodes.length) return;
-
-  const DEMO_IDEA = 'smart recipe planner';
-  const delay = ms => new Promise(r => setTimeout(r, ms));
-
-  const addLog = (text, ok) => {
-    const line = document.createElement('span');
-    line.textContent = text;
-    if (ok) line.className = 'ok';
-    log.appendChild(line);
-    while (log.children.length > 6) log.removeChild(log.firstChild);
+  const INFO = {
+    icons:   { name:'YTE Icons',       tag:'Released · Language layer',
+      desc:'The only product that depends on nothing. Thirty-seven glyphs drawn to one standard, giving every other product in the ecosystem a shared visual grammar before a line of its interface is written.' },
+    os:      { name:'Cosvire OS',      tag:'In development · Foundation',
+      desc:'The floor everything else stands on. Identity, settings and state live here once, so four products above it do not each solve the same problems in four different ways.' },
+    connect: { name:'Cosvire Connect', tag:'Research · Services',
+      desc:'The wiring inside the walls. Connect lets products hand data to one another without either side knowing how the other is built — which is what turns six products into one ecosystem.' },
+    search:  { name:'Cosvire Search',  tag:'Research · Services',
+      desc:'A single index spanning everything Cosvire runs. It sits on the foundation and reads across every product, so one query returns results from all of them.' },
+    mobile:  { name:'Cosvire Mobile',  tag:'In development · Surface',
+      desc:'What people actually open. Cross-platform apps that inherit the design language and the foundation, engineered to feel native on every device they land on.' },
+    rewards: { name:'Cosvire Rewards', tag:'Research · Surface',
+      desc:'The deepest-stacked product in the portfolio — it needs the foundation to know who you are and Connect to move value between products. It is built last for that reason.' },
   };
 
-  const STOP = new Set(['a','an','the','for','of','to','and','my','our','your','app',
-    'application','smart','new','better','idea','with','that','some','kind','like',
-    'ai','web','mobile','online','digital','simple','easy']);
-  const productName = idea => {
-    const words = idea.toLowerCase().replace(/[^a-z0-9 ]/g, '')
-      .split(/\s+/).filter(w => w && !STOP.has(w));
-    const key = words[0] || 'spark';
-    return 'Cosvire ' + key.charAt(0).toUpperCase() + key.slice(1);
-  };
+  const label = k => INFO[k]?.name || k;
+  const clear = () => nodes.forEach(n => {
+    n.classList.remove('is-active', 'is-dep', 'is-dim');
+    n.style.removeProperty('--accent-dep');
+  });
 
-  const STAGES = [
-    { status: 'shaping…',   logs: ['> idea received — parsing concept', '> mapping the problem space'] },
-    { status: 'building…',  logs: ['> scaffolding architecture', '> compiling interface'] },
-    { status: 'deploying…', logs: ['> provisioning deploy target', '> running smoke tests'] },
-  ];
+  const select = node => {
+    const key    = node.dataset.node;
+    const accent = node.dataset.accent;
+    const deps   = (node.dataset.deps || '').split(',').filter(Boolean);
+    const used   = (node.dataset.used || '').split(',').filter(Boolean);
+    const related = new Set([...deps, ...used]);
 
-  let running = false;
-  const run = async ideaRaw => {
-    if (running) return;
-    running = true;
-    const idea = (ideaRaw || '').trim().slice(0, 60) || DEMO_IDEA;
-
-    card.classList.remove('show');
-    log.innerHTML = '';
+    clear();
     nodes.forEach(n => {
-      n.classList.remove('active', 'done');
-      n.querySelector('.forge__node-status').textContent = 'standby';
-    });
-    links.forEach(l => l.classList.remove('active'));
-    state.textContent = 'FORGING';
-    state.classList.add('on');
-
-    addLog('> forge start: "' + idea + '"');
-    await delay(550);
-
-    for (let i = 0; i < nodes.length; i++) {
-      nodes[i].classList.add('active');
-      nodes[i].querySelector('.forge__node-status').textContent = STAGES[i].status;
-      for (const line of STAGES[i].logs) {
-        addLog(line);
-        await delay(520);
+      const k = n.dataset.node;
+      if (k === key) {
+        n.classList.add('is-active');
+      } else if (related.has(k)) {
+        n.classList.add('is-dep');
+        n.style.setProperty('--accent-dep', accent);
+      } else {
+        n.classList.add('is-dim');
       }
-      nodes[i].classList.remove('active');
-      nodes[i].classList.add('done');
-      nodes[i].querySelector('.forge__node-status').textContent = '✓ done';
-      if (links[i]) links[i].classList.add('active');
-      await delay(240);
-    }
+    });
 
-    const name = productName(idea);
-    const secs = (1.8 + (idea.length % 23) / 10).toFixed(1);
-    cardName.textContent = name;
-    cardSrc.textContent  = 'forged from: "' + idea + '"';
-    cardTime.textContent = secs + 's build';
-    card.classList.add('show');
-    addLog('✓ shipped: ' + name + ' — hello, world', true);
-    state.textContent = 'SHIPPED';
-    await delay(700);
-    state.classList.remove('on');
-    running = false;
+    const info = INFO[key];
+    tag.textContent  = info.tag;
+    name.textContent = info.name;
+    desc.textContent = info.desc;
+    meta.innerHTML =
+      'Stands on &nbsp; <b>' + (deps.length ? deps.map(label).join(', ') : 'Nothing') + '</b><br />' +
+      'Supports &nbsp; <b>' + (used.length ? used.length + ' product' + (used.length > 1 ? 's' : '') : 'None yet') + '</b><br />' +
+      'Layer &nbsp; <b>' + info.tag.split('· ')[1] + '</b>';
   };
 
-  btn?.addEventListener('click', () => run(input.value));
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') run(input.value); });
+  nodes.forEach(n => {
+    n.addEventListener('mouseenter', () => select(n));
+    n.addEventListener('click', () => select(n));
+    n.addEventListener('focus', () => select(n));
+    n.setAttribute('tabindex', '0');
+  });
 
-  /* Auto-demo once when the machine scrolls into view */
-  let auto = false;
-  const io = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting || auto) return;
-    auto = true;
-    io.disconnect();
-    setTimeout(() => { if (!running && !input.value) run(DEMO_IDEA); }, 700);
-  }, { threshold: 0.35 });
-  io.observe(machine);
+  stack.addEventListener('mouseleave', () => {
+    clear();
+    tag.textContent  = 'Select a product';
+    name.textContent = 'Four layers, six products';
+    desc.textContent = 'Nothing in the ecosystem is built from nothing. YTE Icons gives everything its visual language, Cosvire OS gives everything a floor, and each product above inherits the work of the ones beneath it.';
+    meta.innerHTML = 'Layers &nbsp; <b>Four</b><br />Products &nbsp; <b>Six</b><br />Shared systems &nbsp; <b>Two</b>';
+  });
 }());
 
-/* ── 9. Legal tabs ───────────────────────────────────────── */
+/* ── 8. Legal sections ───────────────────────────────────── */
 (function () {
   const tabs = document.querySelectorAll('.legal-tab');
   if (!tabs.length) return;
@@ -305,18 +207,17 @@
   });
 }());
 
-/* ── 10. Blog filters ────────────────────────────────────── */
+/* ── 9. Notes filtering ──────────────────────────────────── */
 (function () {
-  const filters = document.querySelectorAll('.blog-filter');
+  const filters = document.querySelectorAll('.filter');
   if (!filters.length) return;
   filters.forEach(f => {
     f.addEventListener('click', () => {
       filters.forEach(x => x.classList.remove('active'));
       f.classList.add('active');
       const cat = f.dataset.cat || 'all';
-      document.querySelectorAll('[data-post-cat]').forEach(post => {
-        post.style.display =
-          cat === 'all' || post.dataset.postCat === cat ? '' : 'none';
+      document.querySelectorAll('[data-post-cat]').forEach(p => {
+        p.style.display = (cat === 'all' || p.dataset.postCat === cat) ? '' : 'none';
       });
     });
   });
