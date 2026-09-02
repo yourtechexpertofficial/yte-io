@@ -99,7 +99,13 @@
   nums.forEach(n => io.observe(n));
 }());
 
-/* ── 6. Icon lab — search the real set, click to copy ────── */
+/* ── 6. Marquee — duplicate track for a seamless loop ───── */
+(function () {
+  const t = document.getElementById('marquee');
+  if (t) t.innerHTML += t.innerHTML;
+}());
+
+/* ── 7. Icon lab — search the real set, click to copy ────── */
 (function () {
   const grid  = document.getElementById('iconGrid');
   if (!grid) return;
