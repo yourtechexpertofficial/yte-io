@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Cosvire is an independent technology studio designing, engineering and maintaining its own software products." />
 <title>Cosvire — Independent technology studio</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%2308090b'/%3E%3Cpath d='M161.1 89.2A62 62 0 1 1 110.8 38.9' fill='none' stroke='%23f2f1ec' stroke-width='30'/%3E%3Ccircle cx='143.8' cy='56.2' r='19' fill='%23d7ff4d'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2308090b'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='40' font-weight='700' fill='%23f2f1ec' text-anchor='middle'%3EC%3C/text%3E%3Ccircle cx='50' cy='48' r='5' fill='%23d7ff4d'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;450;500;550;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -15,10 +15,10 @@
 
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><path d="M161.1 89.2A62 62 0 1 1 110.8 38.9" fill="none" stroke="#f2f1ec" stroke-width="30"/><circle cx="143.8" cy="56.2" r="19" fill="#d7ff4d"/></svg><span class="brand__name">Cosvire</span></a>
+    <a href="index.html" class="brand">COSVIRE<i>.</i></a>
     <nav class="nav__links">
-      <a href="index.html#craft" class="nav__link">Craft</a>
-      <a href="index.html#approach" class="nav__link">Approach</a>
+      <a href="index.html#craft" class="nav__link">Principles</a>
+      <a href="index.html#approach" class="nav__link">Method</a>
       <a href="about.html" class="nav__link">Company</a>
       <a href="blog.html" class="nav__link">Blog</a>
       <a href="contact.html" class="nav__link">Contact</a>
@@ -32,116 +32,146 @@
 </header>
 
 <main>
-  <section class="hero hero--split">
+  <section class="hero">
     <div class="hero__glow"></div>
-    <div class="hero__grid"></div>
-    <div class="container hero__inner">
-      <div class="hero__cols">
+    <div class="container">
+      <div class="hero__top">
         <div>
-          <div class="chip reveal"><b>Studio</b> <span>Independent &middot; self-funded</span></div>
-          <h1 class="reveal" data-delay="60">You're looking <em>at it.</em></h1>
-          <p class="hero__sub reveal" data-delay="120">
-            Everything on this page — the type, the grid, the motion, the code underneath —
-            was made here. Nothing was bought in.
-          </p>
-          <div class="hero__cta reveal" data-delay="180">
-            <a href="#craft" class="btn btn--primary btn--lg">Look closer</a>
-            <a href="contact.html" class="btn btn--ghost btn--lg">Start a conversation</a>
-          </div>
+          <h1 class="reveal">Good software is <em>quiet.</em></h1>
         </div>
-
-        <div class="spec s1 reveal" id="spec" data-delay="220" aria-hidden="true">
-          <div class="spec__chrome">
-            <span class="spec__dots"><i></i><i></i><i></i></span>
-            <span class="spec__label" id="specLabel">Structure</span>
-          </div>
-          <div class="spec__ui">
-            <div class="spec__guide"></div>
-            <div class="spec__row">
-              <span class="spec__avatar"><svg viewBox="0 0 200 200"><path d="M161.1 89.2A62 62 0 1 1 110.8 38.9" fill="none" stroke="#f2f1ec" stroke-width="30"/><circle cx="143.8" cy="56.2" r="19" fill="#d7ff4d"/></svg></span>
-              <span class="spec__meta">
-                <span class="spec__name" data-ph>Cosvire</span>
-                <span class="spec__sub" data-ph>Independent studio</span>
-              </span>
-              <span class="spec__pill" data-ph>Live</span>
-            </div>
-            <div class="spec__h" data-ph>Considered by default</div>
-            <div class="spec__line"></div>
-            <div class="spec__line spec__line--b"></div>
-            <div class="spec__bars">
-              <span style="--h:34%"></span><span style="--h:58%"></span><span style="--h:45%"></span>
-              <span style="--h:76%"></span><span style="--h:62%"></span><span style="--h:94%"></span>
-            </div>
-            <button class="spec__btn" data-ph type="button" tabindex="-1">Continue</button>
-          </div>
-        </div>
+        <p class="hero__sub reveal" data-delay="90">
+          Cosvire is an independent software studio.
+        </p>
+      </div>
+      <div class="stage reveal" data-delay="150" aria-hidden="true">
+        <div class="stage__wash"></div>
+        <svg viewBox="0 0 1200 460" preserveAspectRatio="xMidYMid slice">
+          <g class="orbit" style="--dur:70s; transform-origin:600px 230px;">
+            <ellipse class="stage__ring" cx="600" cy="230" rx="470" ry="176"/>
+            <circle class="stage__node--soft" cx="1070" cy="230" r="5"/>
+          </g>
+          <g class="orbit orbit--rev" style="--dur:52s; transform-origin:600px 230px;">
+            <ellipse class="stage__ring" cx="600" cy="230" rx="352" ry="132" transform="rotate(-14 600 230)"/>
+            <circle class="stage__node" cx="248" cy="230" r="7"/>
+          </g>
+          <g class="orbit" style="--dur:34s; transform-origin:600px 230px;">
+            <ellipse class="stage__ring stage__ring--lit" cx="600" cy="230" rx="212" ry="80" transform="rotate(-28 600 230)"/>
+            <circle class="stage__node--soft" cx="812" cy="230" r="4.5"/>
+          </g>
+          <circle cx="600" cy="230" r="11" fill="#d7ff4d"/>
+          <circle cx="600" cy="230" r="26" fill="none" stroke="rgba(215,255,77,.28)"/>
+        </svg>
       </div>
     </div>
   </section>
 
-  <section class="section" id="craft" style="padding-top:0;">
+  <section class="section" id="craft">
     <div class="container">
       <div class="shead reveal">
-        <span class="shead__label">Craft</span>
-        <h2>The materials, <em>up close.</em></h2>
-        <p>Every product is assembled from the same three things. We make all of them ourselves.</p>
+        <span class="shead__label">Principles</span>
+        <h2>Four things that decide <em>everything else.</em></h2>
       </div>
-      <div class="arts">
-        <div class="art reveal">
-          <div class="art__stage"><span class="art-type">Aa<em>.</em></span></div>
-          <div class="art__foot"><span class="art__label">Type</span><span class="art__note">Set by hand</span></div>
-        </div>
-        <div class="art reveal" data-delay="70">
-          <div class="art__stage">
-            <span class="art-swatches">
-              <span style="background:#08090b"></span><span style="background:#14171d"></span>
-              <span style="background:#565b66"></span><span style="background:#8b8f99"></span>
-              <span style="background:#f2f1ec"></span><span style="background:#d7ff4d"></span>
-            </span>
+      <div class="features">
+        <article class="feature reveal">
+          <div class="feature__visual"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+  <g fill="none" stroke-width="1.5">
+    <rect x="94" y="132" width="212" height="34" rx="8" stroke="rgba(242,241,236,.1)"/>
+    <rect x="82" y="98" width="236" height="34" rx="8" stroke="rgba(242,241,236,.16)"/>
+    <rect x="70" y="64" width="260" height="34" rx="8" stroke="rgba(242,241,236,.24)"/>
+  </g>
+  <rect x="70" y="64" width="70" height="34" rx="8" fill="rgba(215,255,77,.16)"/>
+  <circle cx="330" cy="81" r="5" fill="#d7ff4d"/>
+</svg></div>
+          <div class="feature__body">
+            <h3>Restraint</h3>
+            <p>Fewer moving parts. Fewer things that can break later.</p>
           </div>
-          <div class="art__foot"><span class="art__label">Colour</span><span class="art__note">Six values</span></div>
-        </div>
-        <div class="art reveal" data-delay="140">
-          <div class="art__stage">
-            <span class="art-grid">
-              <i></i><i></i><i></i><i></i><i></i><i></i>
-              <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
-              <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
-              <i></i><i></i><i></i><i></i><i></i><i></i>
-            </span>
+        </article>
+        <article class="feature reveal" data-delay="70">
+          <div class="feature__visual"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="gf" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="rgba(242,241,236,.16)"/><stop offset="1" stop-color="rgba(242,241,236,0)"/>
+  </linearGradient></defs>
+  <g stroke="url(#gf)" stroke-width="1">
+    <path d="M40 0v225M90 0v225M140 0v225M190 0v225M240 0v225M290 0v225M340 0v225"/>
+    <path d="M0 40h400M0 85h400M0 130h400M0 175h400"/>
+  </g>
+  <rect x="140" y="85" width="100" height="45" fill="rgba(215,255,77,.13)" stroke="rgba(215,255,77,.5)"/>
+</svg></div>
+          <div class="feature__body">
+            <h3>Detail</h3>
+            <p>The last ten per cent is where the product actually lives.</p>
           </div>
-          <div class="art__foot"><span class="art__label">Grid</span><span class="art__note">One unit</span></div>
-        </div>
+        </article>
+        <article class="feature reveal" data-delay="140">
+          <div class="feature__visual"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+  <path d="M0 130h96l18-46 22 92 20-62 16 30h94l16-22 20 40 18-28h80"
+        fill="none" stroke="rgba(242,241,236,.28)" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M0 168h400" stroke="rgba(242,241,236,.07)"/>
+  <path d="M0 92h400" stroke="rgba(242,241,236,.07)"/>
+  <circle cx="156" cy="114" r="5.5" fill="#d7ff4d"/>
+</svg></div>
+          <div class="feature__body">
+            <h3>Longevity</h3>
+            <p>Built to still work in ten years, not just on launch day.</p>
+          </div>
+        </article>
+        <article class="feature reveal" data-delay="210">
+          <div class="feature__visual"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+  <g stroke="rgba(242,241,236,.14)" fill="none">
+    <ellipse cx="200" cy="112" rx="150" ry="58"/>
+    <ellipse cx="200" cy="112" rx="104" ry="40" transform="rotate(-16 200 112)"/>
+    <ellipse cx="200" cy="112" rx="62" ry="24" transform="rotate(-32 200 112)"/>
+  </g>
+  <circle cx="200" cy="112" r="7" fill="#d7ff4d"/>
+  <circle cx="350" cy="112" r="4" fill="rgba(242,241,236,.5)"/>
+  <circle cx="104" cy="140" r="3.5" fill="rgba(242,241,236,.35)"/>
+</svg></div>
+          <div class="feature__body">
+            <h3>Independence</h3>
+            <p>Self-funded, with no timelines set by anyone outside.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section section--line" id="approach">
+  <section class="statement">
+    <div class="container">
+      <p class="reveal">Nothing ships until it's <em>right.</em></p>
+    </div>
+  </section>
+
+  <section class="section" id="approach">
     <div class="container">
       <div class="shead reveal">
-        <span class="shead__label">Approach</span>
-        <h2>How work gets <em>made.</em></h2>
-        <p>Everything goes through the same three stages — or it stops early, which is just
-        as useful an outcome.</p>
+        <span class="shead__label">Method</span>
+        <h2>Three stages. Most ideas stop at the <em>first.</em></h2>
       </div>
-      <div class="steps">
-        <div class="step reveal">
-          <span class="step__no">Stage 01</span>
-          <h3>Define</h3>
-          <p>An idea becomes a written specification. It gets argued with until it's either
-          something worth building or a clear reason not to. Most stop here.</p>
+      <div class="rows reveal" data-delay="60">
+        <div class="row">
+          <span class="row__k">Stage 01</span>
+          <div>
+            <h3>Define</h3>
+            <p>An idea becomes a written specification, or a written reason not to bother.</p>
+          </div>
+          <span class="row__end">Most stop here</span>
         </div>
-        <div class="step reveal" data-delay="70">
-          <span class="step__no">Stage 02</span>
-          <h3>Build</h3>
-          <p>The specification becomes software, built on the standards previous work
-          established — so the foundations aren't reinvented every time.</p>
+        <div class="row">
+          <span class="row__k">Stage 02</span>
+          <div>
+            <h3>Build</h3>
+            <p>The specification becomes software, on foundations that already exist.</p>
+          </div>
+          <span class="row__end">Reuse first</span>
         </div>
-        <div class="step reveal" data-delay="140">
-          <span class="step__no">Stage 03</span>
-          <h3>Release &amp; maintain</h3>
-          <p>It goes out, gets used, and gets corrected. Nothing is treated as finished —
-          released work keeps being improved.</p>
+        <div class="row">
+          <span class="row__k">Stage 03</span>
+          <div>
+            <h3>Maintain</h3>
+            <p>Release is the start of the commitment. Nothing is treated as finished.</p>
+          </div>
+          <span class="row__end">Ongoing</span>
         </div>
       </div>
     </div>
@@ -150,19 +180,16 @@
   <section class="section section--line" id="status">
     <div class="container">
       <div class="shead reveal">
-        <span class="shead__label">Current status</span>
-        <h2>Where things <em>stand.</em></h2>
+        <span class="shead__label">Status</span>
+        <h2>Early, and in <em>progress.</em></h2>
       </div>
       <div class="panel reveal" data-delay="60">
         <div class="status"><span class="status__dot"></span><span class="status__text">In development</span></div>
-        <h3>Our first product is being built.</h3>
-        <p>Cosvire is early. Work is underway on the first release, and it will be listed here
-        — with documentation and everything needed to use it — once it's genuinely ready.</p>
-        <p><strong>We don't publish product names, roadmaps or waiting lists for things that
-        don't exist yet.</strong> If you'd like to hear when the first release ships, send us a
-        message and we'll let you know directly.</p>
-        <p style="margin-top:1.7em;">
-          <a href="contact.html" class="btn btn--ghost">Hear when we launch</a>
+        <h3>The first release is being built.</h3>
+        <p>It will appear here, with documentation, once it is genuinely ready to use.
+        Until then this page stays as it is — no product names, no waiting list.</p>
+        <p style="margin-top:1.6em;">
+          <a href="contact.html" class="btn btn--ghost">Hear when it lands</a>
         </p>
       </div>
     </div>
@@ -173,10 +200,9 @@
       <div class="cta reveal">
         <div class="cta__glow"></div>
         <div class="cta__in">
-          <h2>Working on something <em>worthwhile?</em></h2>
-          <p>Whether it's a question, a collaboration, or something you want to talk through —
-          your message reaches us directly.</p>
-          <div class="hero__cta">
+          <h2>Say <em>hello.</em></h2>
+          <p>Questions, ideas, or something worth talking through.</p>
+          <div class="hero__cta" style="justify-content:center;">
             <a href="mailto:admin@cosvire.com" class="btn btn--primary btn--lg">admin@cosvire.com</a>
             <a href="contact.html" class="btn btn--ghost btn--lg">Contact form</a>
           </div>
@@ -190,13 +216,13 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><path d="M161.1 89.2A62 62 0 1 1 110.8 38.9" fill="none" stroke="#f2f1ec" stroke-width="30"/><circle cx="143.8" cy="56.2" r="19" fill="#d7ff4d"/></svg><span class="brand__name">Cosvire</span></a>
-        <p class="footer__about">An independent technology studio designing and engineering its own software products.</p>
+        <a href="index.html" class="brand">COSVIRE<i>.</i></a>
+        <p class="footer__about">An independent software studio.</p>
       </div>
       <div>
         <h5>Studio</h5>
-        <a href="index.html#craft">Craft</a>
-        <a href="index.html#approach">Approach</a>
+        <a href="index.html#craft">Principles</a>
+        <a href="index.html#approach">Method</a>
         <a href="index.html#status">Current status</a>
       </div>
       <div>

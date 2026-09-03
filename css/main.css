@@ -50,9 +50,8 @@ img,svg { display:block; max-width:100%; }
 .reveal.is-visible { opacity:1; transform:none; }
 
 /* ── Brand ───────────────────────────────────────────────── */
-.brand { display:flex; align-items:center; gap:11px; }
-.brand__mark { width:28px; height:28px; flex-shrink:0; }
-.brand__name { font-family:var(--fd); font-weight:800; font-size:1.15rem; letter-spacing:-.02em; }
+.brand { display:flex; align-items:baseline; gap:5px; font-family:var(--fd); font-weight:800; font-size:1.18rem; letter-spacing:.03em; }
+.brand i { font-style:normal; color:var(--volt); font-size:1.5rem; line-height:0; }
 
 /* ── Navigation ──────────────────────────────────────────── */
 .nav {
@@ -461,3 +460,88 @@ img,svg { display:block; max-width:100%; }
 .spec.s1 .spec__btn[data-ph], .spec.s2 .spec__btn[data-ph] { background:var(--raised-2); color:transparent; }
 .spec.s3 .spec__btn[data-ph] { background:var(--raised-2); color:var(--muted); }
 .spec.s4 .spec__btn[data-ph] { background:var(--volt); color:var(--bg); }
+
+
+/* ============================================================
+   Spacious pass — large visual cards, minimal copy
+   ============================================================ */
+:root { --r-xl:26px; }
+.section { padding:120px 0; }
+.shead { max-width:700px; margin-bottom:60px; }
+.shead h2 { font-size:clamp(2.1rem,4.2vw,3.3rem); }
+
+/* Hero */
+.hero { padding:120px 0 0; text-align:left; }
+.hero h1 { font-size:clamp(2.8rem,6.4vw,5.2rem); line-height:1.01; letter-spacing:-.035em; max-width:16ch; }
+.hero__sub { max-width:40ch; margin:0 0 10px; font-size:1.14rem; }
+.hero__top { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); align-items:end; gap:60px; margin-bottom:60px; }
+
+/* Hero stage — an orbital field */
+.stage {
+  position:relative; height:clamp(280px,38vw,440px);
+  border-radius:var(--r-xl); overflow:hidden;
+  background:linear-gradient(150deg, #0f1218 0%, #0a0c10 55%, #10141b 100%);
+  border:1px solid var(--line);
+}
+.stage svg { position:absolute; inset:0; width:100%; height:100%; }
+.stage__ring { fill:none; stroke:rgba(242,241,236,.13); stroke-width:1; }
+.stage__ring--lit { stroke:rgba(215,255,77,.4); }
+.stage__node { fill:var(--volt); }
+.stage__node--soft { fill:rgba(242,241,236,.45); }
+.orbit { transform-origin:50% 50%; animation:spin var(--dur,44s) linear infinite; }
+.orbit--rev { animation-direction:reverse; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.stage__wash {
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 44% 58% at 50% 50%, rgba(215,255,77,.11), transparent 70%);
+}
+
+/* Big feature cards */
+.features { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.feature {
+  border-radius:var(--r-xl); overflow:hidden;
+  background:var(--surface); border:1px solid var(--line);
+  transition:border-color var(--t), transform var(--t), background var(--t);
+}
+.feature:hover { border-color:rgba(242,241,236,.2); transform:translateY(-4px); background:var(--raised); }
+.feature__visual { position:relative; aspect-ratio:16/9; overflow:hidden; border-bottom:1px solid var(--line); }
+.feature__visual svg { position:absolute; inset:0; width:100%; height:100%; }
+.feature__body { padding:28px 30px 32px; }
+.feature h3 { font-size:1.42rem; letter-spacing:-.026em; margin-bottom:10px; }
+.feature p { color:var(--muted); font-size:1rem; line-height:1.7; max-width:34ch; }
+
+/* Statement band */
+.statement { padding:130px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center; }
+.statement p {
+  font-family:var(--fd); font-weight:800;
+  font-size:clamp(1.9rem,4.6vw,3.5rem); line-height:1.12; letter-spacing:-.035em;
+  max-width:19ch; margin:0 auto; color:var(--text);
+}
+.statement em { font-style:normal; color:var(--volt); }
+
+/* Simple list rows */
+.rows { border-top:1px solid var(--line); }
+.row {
+  display:grid; grid-template-columns:150px 1fr auto; gap:30px; align-items:baseline;
+  padding:30px 4px; border-bottom:1px solid var(--line-2);
+  transition:padding-left var(--t) var(--ease), background var(--t);
+}
+.row:hover { padding-left:14px; background:rgba(242,241,236,.02); }
+.row__k { font-family:var(--fm); font-size:.68rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); }
+.row h3 { font-size:1.28rem; letter-spacing:-.024em; margin-bottom:7px; }
+.row p { color:var(--muted); font-size:.96rem; line-height:1.7; max-width:56ch; }
+.row__end { font-family:var(--fm); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim); justify-self:end; }
+
+@media (max-width:1000px) {
+  .features { grid-template-columns:1fr; }
+  .stage { height:300px; }
+  .row { grid-template-columns:1fr; gap:8px; }
+  .row__end { justify-self:start; }
+}
+@media (max-width:560px) {
+  .section { padding:78px 0; }
+  .hero { padding-top:76px; }
+  .statement { padding:84px 0; }
+}
+
+@media (max-width:860px) { .hero__top { grid-template-columns:1fr; gap:22px; } }
