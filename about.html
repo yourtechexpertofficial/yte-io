@@ -3,121 +3,117 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="About Cosvire — one person turning ideas into products." />
-<title>About — Cosvire</title>
+<meta name="description" content="About Cosvire, an independent technology studio." />
+<title>Company — Cosvire</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%230d1830'/%3E%3Cpath d='M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z' fill='%23fff'/%3E%3Cpath d='M104 110L135 150L177 45' stroke='%23fff' stroke-width='29' fill='none'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;450;500;550;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-<header class="masthead" id="masthead">
-  <div class="masthead__inner">
-    <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
-    <nav class="masthead__nav">
-      <a href="index.html#icons" class="masthead__link">YTE Icons</a>
-      <a href="index.html#process" class="masthead__link">Process</a>
-      <a href="about.html" class="masthead__link active">About</a>
-      <a href="blog.html" class="masthead__link">Notes</a>
-      <a href="contact.html" class="masthead__link">Contact</a>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d1830"/><path d="M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z" fill="#fff"/><path d="M104 110L135 150L177 45" stroke="#fff" stroke-width="29" fill="none"/></svg><span class="brand__name">Cosvire</span></a>
+    <nav class="nav__links">
+      <a href="index.html#products" class="nav__link">Products</a>
+      <a href="index.html#platform" class="nav__link">Platform</a>
+      <a href="about.html" class="nav__link active">Company</a>
+      <a href="blog.html" class="nav__link">Blog</a>
+      <a href="contact.html" class="nav__link">Contact</a>
     </nav>
-    <button class="masthead__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav__actions">
+      <a href="login.html" class="btn btn--ghost btn--sm">Sign in</a>
+      <a href="contact.html" class="btn btn--primary btn--sm">Get in touch</a>
+    </div>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <main>
-  <section class="lede">
-    <div class="container">
-      <div class="lede__eyebrow reveal">
-        <span class="lede__dot"></span><span class="mono">About — the ecosystem</span>
-      </div>
-      <div class="lede__grid">
-        <h1 class="lede__title reveal" data-delay="60">One person, turning ideas into <em>products.</em></h1>
-        <div class="lede__body reveal" data-delay="140">
-          <p>Cosvire is not a team, a fund, or a roadmap. It is the structure I built so my
-          own ideas actually get finished.</p>
-        </div>
-      </div>
+  <section class="phead">
+    <div class="phead__glow"></div>
+    <div class="container phead__in">
+      <span class="shead__label reveal">Company</span>
+      <h1 class="reveal" data-delay="60">An independent studio with a <em>long horizon.</em></h1>
+      <p class="reveal" data-delay="120">We build digital products and publish the systems that sit underneath them.
+      Small by design, and accountable for every decision that ships.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <div class="section__mark reveal"><span class="bar"></span><span class="mono mono--volt">01 — Why it exists</span></div>
-      <div style="margin-top:34px;">
-        <div class="chapter reveal">
-          <div class="chapter__no">01<span>The problem</span></div>
-          <div class="chapter__body">
-            <h3>Ideas kept dying in notebooks</h3>
-            <p>The bottleneck was never coming up with things worth building. It was that
-            every idea started from zero — new decisions about design, structure and tooling,
-            every single time.</p>
-            <p><strong>Cosvire is the fix.</strong> One set of standards, one design language,
-            one way of working, reused by everything I make.</p>
-          </div>
+      <div class="chapter reveal">
+        <div class="chapter__no">01<span>Why we exist</span></div>
+        <div class="chapter__body">
+          <h3>Good products need foundations</h3>
+          <p>Most projects start by assembling other people's parts — a component library here,
+          an icon pack there — and inherit somebody else's decisions along with them. Those
+          decisions accumulate, and eventually they define the product.</p>
+          <p><strong>Cosvire was set up to work the other way round.</strong> We build the
+          foundational layers first and reuse them, so every product we make shares one visual
+          language and one set of standards.</p>
         </div>
-        <div class="chapter reveal">
-          <div class="chapter__no">02<span>The first result</span></div>
-          <div class="chapter__body">
-            <h3>YTE Icons</h3>
-            <p>The first product to come out of the ecosystem — a custom icon set of 35 glyphs,
-            shipped as a webfont in four formats.</p>
-            <p>It proved the approach works: an idea went in one end and came out the other as
-            something real that gets used.</p>
-          </div>
+      </div>
+      <div class="chapter reveal">
+        <div class="chapter__no">02<span>What we've shipped</span></div>
+        <div class="chapter__body">
+          <h3>YTE Icons</h3>
+          <p>Our first published library — 35 interface icons drawn on a shared grid and
+          released as a webfont in four formats.</p>
+          <p>It was built for our own products first, which is the standard we hold everything
+          to: we use it before we publish it.</p>
         </div>
-        <div class="chapter reveal" style="border-bottom:0;">
-          <div class="chapter__no">03<span>Where it stands</span></div>
-          <div class="chapter__body">
-            <h3>Early, and honest about it</h3>
-            <p>One product released, more being built. I would rather show one real thing than
-            a page of names for products that do not exist yet.</p>
-            <p>Everything new gets added here once it is genuinely usable.</p>
-          </div>
+      </div>
+      <div class="chapter reveal">
+        <div class="chapter__no">03<span>How we work</span></div>
+        <div class="chapter__body">
+          <h3>Ship it, then keep it working</h3>
+          <p>We release when something is genuinely usable, then maintain it. We would rather
+          publish one library that stays reliable for years than announce five that never
+          arrive.</p>
+          <p><strong>Nothing appears on our products page until it's real.</strong></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="border-bottom:0;">
+  <section class="section section--line">
     <div class="container">
-      <div class="section__head">
-        <div>
-          <div class="section__mark reveal"><span class="bar"></span><span class="mono mono--volt">02 — How I work</span></div>
-          <h2 class="section__title reveal" data-delay="40">Six rules I actually <em>follow.</em></h2>
-        </div>
+      <div class="shead reveal">
+        <span class="shead__label">Principles</span>
+        <h2>How decisions get <em>made.</em></h2>
       </div>
-      <div class="grid-3 reveal" data-delay="100">
-        <div class="cell"><span class="cell__no">01</span><h4>Simplicity first</h4><p>The best solution is the simplest one that fully solves the problem. Anything that does not need to exist gets removed.</p></div>
-        <div class="cell"><span class="cell__no">02</span><h4>Ship before perfect</h4><p>Something real in the world beats something perfect on a whiteboard. Release, learn from actual use, improve.</p></div>
-        <div class="cell"><span class="cell__no">03</span><h4>Own the craft</h4><p>Every pixel and every function is intentional. Nothing ships just because it was easier to leave alone.</p></div>
-        <div class="cell"><span class="cell__no">04</span><h4>Build on what exists</h4><p>Each product reuses the standards the last one established, so nothing starts from zero twice.</p></div>
-        <div class="cell"><span class="cell__no">05</span><h4>Say what is true</h4><p>Only finished, usable things get presented as products. No vapourware, no fake roadmaps.</p></div>
-        <div class="cell"><span class="cell__no">06</span><h4>Build in public</h4><p>The work, the reasoning and the mistakes are all visible. That is what makes it worth following.</p></div>
+      <div class="cards">
+        <div class="card reveal"><div class="card__icon">01</div><h3>Simple beats clever</h3><p>The best solution is the simplest one that fully solves the problem. Anything that doesn't need to exist gets removed.</p></div>
+        <div class="card reveal" data-delay="60"><div class="card__icon">02</div><h3>Craft is the product</h3><p>Every pixel and every function is intentional. Nothing ships because it was easier to leave alone.</p></div>
+        <div class="card reveal" data-delay="120"><div class="card__icon">03</div><h3>Build on what exists</h3><p>Each product reuses the standards the last one established, so nothing gets rebuilt from zero twice.</p></div>
+        <div class="card reveal" data-delay="180"><div class="card__icon">04</div><h3>Own the essentials</h3><p>Anything core to the product's identity — type, colour, iconography — is made in-house, not rented.</p></div>
+        <div class="card reveal" data-delay="240"><div class="card__icon">05</div><h3>Say only what's true</h3><p>Only finished, usable work is presented as a product. No vapourware and no speculative roadmaps.</p></div>
+        <div class="card reveal" data-delay="300"><div class="card__icon">06</div><h3>Maintain what we ship</h3><p>Releasing is the start of the commitment, not the end of it. Published work stays supported.</p></div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="colophon">
+<footer class="footer">
   <div class="container">
-    <div class="colophon__grid">
+    <div class="footer__grid">
       <div>
-        <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
-        <p class="colophon__about">An ecosystem built to bring ideas to life.
-        Independent, and built in public by one person.</p>
+        <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d1830"/><path d="M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z" fill="#fff"/><path d="M104 110L135 150L177 45" stroke="#fff" stroke-width="29" fill="none"/></svg><span class="brand__name">Cosvire</span></a>
+        <p class="footer__about">An independent technology studio building digital products and the design systems behind them.</p>
       </div>
       <div>
-        <h5>Work</h5>
-        <a href="index.html#icons">YTE Icons</a>
-        <a href="index.html#process">Process</a>
-        <a href="index.html#next">What's next</a>
+        <h5>Products</h5>
+        <a href="index.html#products">YTE Icons</a>
+        <a href="index.html#install">Documentation</a>
+        <a href="index.html#roadmap">Roadmap</a>
       </div>
       <div>
-        <h5>Elsewhere</h5>
+        <h5>Company</h5>
         <a href="about.html">About</a>
-        <a href="blog.html">Notes</a>
+        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
         <a href="login.html">Sign in</a>
       </div>
@@ -128,11 +124,10 @@
         <a href="legal.html">Cookies</a>
       </div>
     </div>
-    <div class="colophon__base">
-      <span>&copy; Cosvire</span>
-      <span>Built inside the ecosystem</span>
+    <div class="footer__base">
+      <span>&copy; Cosvire. All rights reserved.</span>
+      <span>Designed and built in-house.</span>
     </div>
-    <div class="wordmark" aria-hidden="true">COSVIRE</div>
   </div>
 </footer>
 

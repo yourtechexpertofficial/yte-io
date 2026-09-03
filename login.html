@@ -5,40 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Sign in to Cosvire." />
 <title>Sign in — Cosvire</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%230d1830'/%3E%3Cpath d='M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z' fill='%23fff'/%3E%3Cpath d='M104 110L135 150L177 45' stroke='%23fff' stroke-width='29' fill='none'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;450;500;550;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
 <div class="gate">
   <aside class="gate__aside">
-    <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
-    <p class="gate__quote">Ideas, built into <em>products.</em></p>
-    <span class="mono">Cosvire — building in public</span>
+    <div class="glow"></div>
+    <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d1830"/><path d="M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z" fill="#fff"/><path d="M104 110L135 150L177 45" stroke="#fff" stroke-width="29" fill="none"/></svg><span class="brand__name">Cosvire</span></a>
+    <p class="gate__quote">The design layer behind everything we <em>build.</em></p>
+    <p class="mono">Independent technology studio</p>
   </aside>
 
   <main class="gate__main">
     <div class="gate__box">
-      <span class="mono mono--volt">Members</span>
+      <span class="shead__label">Account</span>
       <h1>Sign in</h1>
       <p>Access your Cosvire account.</p>
-
       <form action="#">
-        <div class="field">
-          <label class="field__label" for="em">Email</label>
-          <input class="field__input" type="email" id="em" placeholder="you@example.com" autocomplete="email" required />
-        </div>
-        <div class="field">
-          <label class="field__label" for="pw">Password</label>
-          <input class="field__input" type="password" id="pw" placeholder="Enter your password" autocomplete="current-password" required />
-        </div>
+        <div class="field"><label for="em">Email</label><input id="em" type="email" placeholder="you@example.com" autocomplete="email" required /></div>
+        <div class="field"><label for="pw">Password</label><input id="pw" type="password" placeholder="Enter your password" autocomplete="current-password" required /></div>
         <label class="check"><input type="checkbox" /> Keep me signed in for 30 days</label>
-        <button type="submit" class="btn btn--volt" style="width:100%;justify-content:center;">Sign in</button>
+        <button type="submit" class="btn btn--primary btn--lg" style="width:100%;">Sign in</button>
       </form>
-
-      <p class="gate__foot">No account? <a href="contact.html">Get in touch</a> &nbsp;·&nbsp; <a href="legal.html">Privacy</a></p>
+      <p class="gate__foot">Need an account? <a href="contact.html">Get in touch</a> &nbsp;·&nbsp; <a href="legal.html">Privacy</a></p>
     </div>
   </main>
 </div>

@@ -5,7 +5,7 @@
 
 /* ── 1. Masthead ─────────────────────────────────────────── */
 (function () {
-  const m = document.getElementById('masthead');
+  const m = document.getElementById('nav');
   if (!m) return;
   const on = () => m.classList.toggle('pinned', window.scrollY > 8);
   window.addEventListener('scroll', on, { passive: true });
@@ -19,13 +19,12 @@
   const nav = document.createElement('nav');
   nav.id = 'mobileNav';
   [
-    ['index.html#icons',   'YTE Icons'],
-    ['index.html#process', 'Process'],
-    ['index.html#next',    "What's next"],
-    ['about.html',              'About'],
-    ['blog.html',               'Notes'],
-    ['contact.html',            'Contact'],
-    ['login.html',              'Sign in'],
+    ['index.html#products', 'Products'],
+    ['index.html#install',  'Documentation'],
+    ['about.html',          'Company'],
+    ['blog.html',           'Blog'],
+    ['contact.html',        'Contact'],
+    ['login.html',          'Sign in'],
   ].forEach(([href, label]) => {
     const a = document.createElement('a');
     a.href = href; a.textContent = label;
@@ -53,7 +52,7 @@
       const t = document.querySelector(a.getAttribute('href'));
       if (!t) return;
       e.preventDefault();
-      const off = document.getElementById('masthead')?.offsetHeight || 0;
+      const off = document.getElementById('nav')?.offsetHeight || 0;
       window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - off - 6, behavior: 'smooth' });
     });
   });
@@ -99,10 +98,24 @@
   nums.forEach(n => io.observe(n));
 }());
 
-/* ── 6. Marquee — duplicate track for a seamless loop ───── */
+/* ── 6. Copy the install snippet ─────────────────────────── */
 (function () {
-  const t = document.getElementById('marquee');
-  if (t) t.innerHTML += t.innerHTML;
+  const btn = document.getElementById('copyCode');
+  const block = document.getElementById('codeBlock');
+  if (!btn || !block) return;
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(block.innerText);
+      btn.textContent = 'Copied';
+    } catch (e) {
+      btn.textContent = 'Select all';
+      const r = document.createRange();
+      r.selectNodeContents(block);
+      const sel = window.getSelection();
+      sel.removeAllRanges(); sel.addRange(r);
+    }
+    setTimeout(() => { btn.textContent = 'Copy'; }, 1400);
+  });
 }());
 
 /* ── 7. Icon lab — search the real set, click to copy ────── */
@@ -112,11 +125,11 @@
   const search = document.getElementById('iconSearch');
   const count  = document.getElementById('iconCount');
   const empty  = document.getElementById('iconEmpty');
-  const cells  = [...grid.querySelectorAll('.cellico')];
+  const cells  = [...grid.querySelectorAll('.gcell')];
   const total  = cells.length;
 
   const setCount = n => {
-    if (count) count.innerHTML = '<b>' + n + '</b> of ' + total + ' shown';
+    if (count) count.innerHTML = '<b>' + n + '</b> of ' + total;
   };
 
   search?.addEventListener('input', () => {
@@ -133,7 +146,7 @@
   });
 
   const flash = (cell, text) => {
-    const label = cell.querySelector('.cellico__name');
+    const label = cell.querySelector('.gcell__name');
     const original = label.textContent;
     cell.classList.add('copied');
     label.textContent = text;
@@ -152,7 +165,7 @@
       } catch (e) {
         /* clipboard blocked (http / permissions) — select instead */
         const r = document.createRange();
-        r.selectNodeContents(cell.querySelector('.cellico__name'));
+        r.selectNodeContents(cell.querySelector('.gcell__name'));
         const sel = window.getSelection();
         sel.removeAllRanges(); sel.addRange(r);
         flash(cell, cls);
@@ -171,22 +184,6 @@
       document.querySelectorAll('.legal-doc').forEach(d => d.classList.remove('active'));
       tab.classList.add('active');
       document.getElementById(tab.dataset.tab)?.classList.add('active');
-    });
-  });
-}());
-
-/* ── 9. Notes filtering ──────────────────────────────────── */
-(function () {
-  const filters = document.querySelectorAll('.filter');
-  if (!filters.length) return;
-  filters.forEach(f => {
-    f.addEventListener('click', () => {
-      filters.forEach(x => x.classList.remove('active'));
-      f.classList.add('active');
-      const cat = f.dataset.cat || 'all';
-      document.querySelectorAll('[data-post-cat]').forEach(p => {
-        p.style.display = (cat === 'all' || p.dataset.postCat === cat) ? '' : 'none';
-      });
     });
   });
 }());

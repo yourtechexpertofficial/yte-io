@@ -3,76 +3,78 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Notes from Cosvire — writing on the work." />
-<title>Notes — Cosvire</title>
+<meta name="description" content="Engineering notes from Cosvire." />
+<title>Blog — Cosvire</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%230d1830'/%3E%3Cpath d='M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z' fill='%23fff'/%3E%3Cpath d='M104 110L135 150L177 45' stroke='%23fff' stroke-width='29' fill='none'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;450;500;550;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-<header class="masthead" id="masthead">
-  <div class="masthead__inner">
-    <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
-    <nav class="masthead__nav">
-      <a href="index.html#icons" class="masthead__link">YTE Icons</a>
-      <a href="index.html#process" class="masthead__link">Process</a>
-      <a href="about.html" class="masthead__link">About</a>
-      <a href="blog.html" class="masthead__link active">Notes</a>
-      <a href="contact.html" class="masthead__link">Contact</a>
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d1830"/><path d="M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z" fill="#fff"/><path d="M104 110L135 150L177 45" stroke="#fff" stroke-width="29" fill="none"/></svg><span class="brand__name">Cosvire</span></a>
+    <nav class="nav__links">
+      <a href="index.html#products" class="nav__link">Products</a>
+      <a href="index.html#platform" class="nav__link">Platform</a>
+      <a href="about.html" class="nav__link">Company</a>
+      <a href="blog.html" class="nav__link active">Blog</a>
+      <a href="contact.html" class="nav__link">Contact</a>
     </nav>
-    <button class="masthead__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav__actions">
+      <a href="login.html" class="btn btn--ghost btn--sm">Sign in</a>
+      <a href="contact.html" class="btn btn--primary btn--sm">Get in touch</a>
+    </div>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <main>
-  <section class="lede">
-    <div class="container">
-      <div class="lede__eyebrow reveal">
-        <span class="lede__dot"></span><span class="mono">Notes — writing</span>
-      </div>
-      <div class="lede__grid">
-        <h1 class="lede__title reveal" data-delay="60">Notes from the <em>workbench.</em></h1>
-        <div class="lede__body reveal" data-delay="140">
-          <p>Writing about what I am building, what broke, and what I learned doing it.</p>
-        </div>
-      </div>
+  <section class="phead">
+    <div class="phead__glow"></div>
+    <div class="container phead__in">
+      <span class="shead__label reveal">Blog</span>
+      <h1 class="reveal" data-delay="60">Engineering <em>notes.</em></h1>
+      <p class="reveal" data-delay="120">Technical write-ups on what we're building, the decisions behind it,
+      and what we learned shipping it.</p>
     </div>
   </section>
 
-  <section class="section" style="border-bottom:0;">
+  <section class="section">
     <div class="container">
-      <div class="next reveal">
-        <h3>Nothing published yet.</h3>
-        <p>This is where notes on the work will go — decisions behind the products, things
-        that did not work, and what changed because of them.</p>
-        <p>The first entry is being written. Until then, there is nothing here rather than
-        filler — <strong>which is how the rest of this site works too.</strong></p>
-        <p style="margin-top:1.6em;"><a href="contact.html" class="btn">Tell me what to write about</a></p>
+      <div class="panel reveal">
+        <h3>No posts published yet.</h3>
+        <p>This is where engineering write-ups will go — how the icon set was drawn and
+        packaged, decisions behind the design system, and notes from building what comes next.</p>
+        <p><strong>We'd rather leave this empty than fill it with placeholder posts.</strong>
+        The first article is being written.</p>
+        <p style="margin-top:1.7em;">
+          <a href="contact.html" class="btn btn--ghost">Suggest a topic</a>
+        </p>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="colophon">
+<footer class="footer">
   <div class="container">
-    <div class="colophon__grid">
+    <div class="footer__grid">
       <div>
-        <a href="index.html" class="masthead__logo">COSVIRE<i>.</i></a>
-        <p class="colophon__about">An ecosystem built to bring ideas to life.
-        Independent, and built in public by one person.</p>
+        <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d1830"/><path d="M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z" fill="#fff"/><path d="M104 110L135 150L177 45" stroke="#fff" stroke-width="29" fill="none"/></svg><span class="brand__name">Cosvire</span></a>
+        <p class="footer__about">An independent technology studio building digital products and the design systems behind them.</p>
       </div>
       <div>
-        <h5>Work</h5>
-        <a href="index.html#icons">YTE Icons</a>
-        <a href="index.html#process">Process</a>
-        <a href="index.html#next">What's next</a>
+        <h5>Products</h5>
+        <a href="index.html#products">YTE Icons</a>
+        <a href="index.html#install">Documentation</a>
+        <a href="index.html#roadmap">Roadmap</a>
       </div>
       <div>
-        <h5>Elsewhere</h5>
+        <h5>Company</h5>
         <a href="about.html">About</a>
-        <a href="blog.html">Notes</a>
+        <a href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
         <a href="login.html">Sign in</a>
       </div>
@@ -83,11 +85,10 @@
         <a href="legal.html">Cookies</a>
       </div>
     </div>
-    <div class="colophon__base">
-      <span>&copy; Cosvire</span>
-      <span>Built inside the ecosystem</span>
+    <div class="footer__base">
+      <span>&copy; Cosvire. All rights reserved.</span>
+      <span>Designed and built in-house.</span>
     </div>
-    <div class="wordmark" aria-hidden="true">COSVIRE</div>
   </div>
 </footer>
 
