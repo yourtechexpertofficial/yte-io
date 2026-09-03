@@ -19,7 +19,7 @@
   const nav = document.createElement('nav');
   nav.id = 'mobileNav';
   [
-    ['index.html#work',     'What we build'],
+    ['index.html#craft',    'Craft'],
     ['index.html#approach', 'Approach'],
     ['about.html',          'Company'],
     ['blog.html',           'Blog'],
@@ -110,4 +110,34 @@
       document.getElementById(tab.dataset.tab)?.classList.add('active');
     });
   });
+}());
+
+/* ── Live specimen — cycles a component from raw to finished ── */
+(function () {
+  const spec = document.getElementById('spec');
+  if (!spec) return;
+  const label = document.getElementById('specLabel');
+  const stages = [
+    ['s1', 'Structure'],
+    ['s2', 'Spacing'],
+    ['s3', 'Type'],
+    ['s4', 'Finished'],
+  ];
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    spec.className = 'spec s4 reveal';
+    label.textContent = 'Finished';
+    return;
+  }
+
+  let i = 0;
+  const run = () => {
+    const [cls, text] = stages[i];
+    spec.className = 'spec ' + cls + (spec.classList.contains('is-visible') ? ' reveal is-visible' : ' reveal');
+    label.textContent = text;
+    const hold = cls === 's4' ? 2800 : 1450;
+    i = (i + 1) % stages.length;
+    setTimeout(run, hold);
+  };
+  run();
 }());

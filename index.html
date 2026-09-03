@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Cosvire is an independent technology studio designing, engineering and maintaining its own software products." />
 <title>Cosvire — Independent technology studio</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%230d1830'/%3E%3Cpath d='M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z' fill='%23fff'/%3E%3Cpath d='M104 110L135 150L177 45' stroke='%23fff' stroke-width='29' fill='none'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='40' fill='%2308090b'/%3E%3Cpath d='M161.1 89.2A62 62 0 1 1 110.8 38.9' fill='none' stroke='%23f2f1ec' stroke-width='30'/%3E%3Ccircle cx='143.8' cy='56.2' r='19' fill='%23d7ff4d'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;450;500;550;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -15,9 +15,9 @@
 
 <header class="nav" id="nav">
   <div class="nav__inner">
-    <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d1830"/><path d="M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z" fill="#fff"/><path d="M104 110L135 150L177 45" stroke="#fff" stroke-width="29" fill="none"/></svg><span class="brand__name">Cosvire</span></a>
+    <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><path d="M161.1 89.2A62 62 0 1 1 110.8 38.9" fill="none" stroke="#f2f1ec" stroke-width="30"/><circle cx="143.8" cy="56.2" r="19" fill="#d7ff4d"/></svg><span class="brand__name">Cosvire</span></a>
     <nav class="nav__links">
-      <a href="index.html#work" class="nav__link">What we build</a>
+      <a href="index.html#craft" class="nav__link">Craft</a>
       <a href="index.html#approach" class="nav__link">Approach</a>
       <a href="about.html" class="nav__link">Company</a>
       <a href="blog.html" class="nav__link">Blog</a>
@@ -32,51 +32,85 @@
 </header>
 
 <main>
-  <section class="hero">
+  <section class="hero hero--split">
     <div class="hero__glow"></div>
     <div class="hero__grid"></div>
     <div class="container hero__inner">
-      <div class="chip reveal"><b>Studio</b> <span>Independent · self-funded</span> <i>&rarr;</i></div>
-      <h1 class="reveal" data-delay="60">Software products,<br />built from the <em>ground up.</em></h1>
-      <p class="hero__sub reveal" data-delay="120">
-        Cosvire is an independent technology studio. We design, engineer and maintain our own
-        products — building the systems underneath them in-house rather than assembling
-        them from other people's parts.
-      </p>
-      <div class="hero__cta reveal" data-delay="180">
-        <a href="#work" class="btn btn--primary btn--lg">See what we build</a>
-        <a href="contact.html" class="btn btn--ghost btn--lg">Get in touch</a>
+      <div class="hero__cols">
+        <div>
+          <div class="chip reveal"><b>Studio</b> <span>Independent &middot; self-funded</span></div>
+          <h1 class="reveal" data-delay="60">You're looking <em>at it.</em></h1>
+          <p class="hero__sub reveal" data-delay="120">
+            Everything on this page — the type, the grid, the motion, the code underneath —
+            was made here. Nothing was bought in.
+          </p>
+          <div class="hero__cta reveal" data-delay="180">
+            <a href="#craft" class="btn btn--primary btn--lg">Look closer</a>
+            <a href="contact.html" class="btn btn--ghost btn--lg">Start a conversation</a>
+          </div>
+        </div>
+
+        <div class="spec s1 reveal" id="spec" data-delay="220" aria-hidden="true">
+          <div class="spec__chrome">
+            <span class="spec__dots"><i></i><i></i><i></i></span>
+            <span class="spec__label" id="specLabel">Structure</span>
+          </div>
+          <div class="spec__ui">
+            <div class="spec__guide"></div>
+            <div class="spec__row">
+              <span class="spec__avatar"><svg viewBox="0 0 200 200"><path d="M161.1 89.2A62 62 0 1 1 110.8 38.9" fill="none" stroke="#f2f1ec" stroke-width="30"/><circle cx="143.8" cy="56.2" r="19" fill="#d7ff4d"/></svg></span>
+              <span class="spec__meta">
+                <span class="spec__name" data-ph>Cosvire</span>
+                <span class="spec__sub" data-ph>Independent studio</span>
+              </span>
+              <span class="spec__pill" data-ph>Live</span>
+            </div>
+            <div class="spec__h" data-ph>Considered by default</div>
+            <div class="spec__line"></div>
+            <div class="spec__line spec__line--b"></div>
+            <div class="spec__bars">
+              <span style="--h:34%"></span><span style="--h:58%"></span><span style="--h:45%"></span>
+              <span style="--h:76%"></span><span style="--h:62%"></span><span style="--h:94%"></span>
+            </div>
+            <button class="spec__btn" data-ph type="button" tabindex="-1">Continue</button>
+          </div>
+        </div>
       </div>
-      <p class="hero__note reveal" data-delay="240">Self-funded · No outside investors · Built and maintained in-house</p>
     </div>
   </section>
 
-  <section class="section" id="work" style="padding-top:0;">
+  <section class="section" id="craft" style="padding-top:0;">
     <div class="container">
       <div class="shead reveal">
-        <span class="shead__label">What we build</span>
-        <h2>Products, and the systems <em>beneath them.</em></h2>
-        <p>We work on the whole stack — the interface layer, the engineering behind it, and
-        the standards that keep both consistent as things grow.</p>
+        <span class="shead__label">Craft</span>
+        <h2>The materials, <em>up close.</em></h2>
+        <p>Every product is assembled from the same three things. We make all of them ourselves.</p>
       </div>
-      <div class="cards">
-        <div class="card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13.5 12 18.5l9-5"/></svg></div>
-          <h3>Design systems</h3>
-          <p>Typography, colour, spacing and components defined once and reused everywhere,
-          so interface decisions are made deliberately instead of repeatedly.</p>
+      <div class="arts">
+        <div class="art reveal">
+          <div class="art__stage"><span class="art-type">Aa<em>.</em></span></div>
+          <div class="art__foot"><span class="art__label">Type</span><span class="art__note">Set by hand</span></div>
         </div>
-        <div class="card reveal" data-delay="70">
-          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="m9 7-5 5 5 5"/><path d="m15 7 5 5-5 5"/></svg></div>
-          <h3>Product engineering</h3>
-          <p>Front and back end built with as few moving parts as the problem allows. Less
-          framework churn, fewer dependencies, less to break in two years.</p>
+        <div class="art reveal" data-delay="70">
+          <div class="art__stage">
+            <span class="art-swatches">
+              <span style="background:#08090b"></span><span style="background:#14171d"></span>
+              <span style="background:#565b66"></span><span style="background:#8b8f99"></span>
+              <span style="background:#f2f1ec"></span><span style="background:#d7ff4d"></span>
+            </span>
+          </div>
+          <div class="art__foot"><span class="art__label">Colour</span><span class="art__note">Six values</span></div>
         </div>
-        <div class="card reveal" data-delay="140">
-          <div class="card__icon"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4 3 6.6 7 8 4-1.4 7-4 7-8V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <h3>Long-term maintenance</h3>
-          <p>Shipping is the start of the commitment, not the end. What we release stays
-          supported rather than quietly abandoned.</p>
+        <div class="art reveal" data-delay="140">
+          <div class="art__stage">
+            <span class="art-grid">
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+              <i></i><i></i><i class="on"></i><i class="on"></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </span>
+          </div>
+          <div class="art__foot"><span class="art__label">Grid</span><span class="art__note">One unit</span></div>
         </div>
       </div>
     </div>
@@ -156,12 +190,12 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#0d1830"/><path d="M106.7 151.2A58 58 0 1 1 106.7 52.8L89.8 80A26 26 0 1 0 89.8 124Z" fill="#fff"/><path d="M104 110L135 150L177 45" stroke="#fff" stroke-width="29" fill="none"/></svg><span class="brand__name">Cosvire</span></a>
+        <a href="index.html" class="brand"><svg class="brand__mark" viewBox="0 0 200 200" aria-hidden="true"><path d="M161.1 89.2A62 62 0 1 1 110.8 38.9" fill="none" stroke="#f2f1ec" stroke-width="30"/><circle cx="143.8" cy="56.2" r="19" fill="#d7ff4d"/></svg><span class="brand__name">Cosvire</span></a>
         <p class="footer__about">An independent technology studio designing and engineering its own software products.</p>
       </div>
       <div>
         <h5>Studio</h5>
-        <a href="index.html#work">What we build</a>
+        <a href="index.html#craft">Craft</a>
         <a href="index.html#approach">Approach</a>
         <a href="index.html#status">Current status</a>
       </div>
