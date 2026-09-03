@@ -19,8 +19,8 @@
   const nav = document.createElement('nav');
   nav.id = 'mobileNav';
   [
-    ['index.html#products', 'Products'],
-    ['index.html#install',  'Documentation'],
+    ['index.html#work',     'What we build'],
+    ['index.html#approach', 'Approach'],
     ['about.html',          'Company'],
     ['blog.html',           'Blog'],
     ['contact.html',        'Contact'],
@@ -96,82 +96,6 @@
     es.forEach(e => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
   }, { threshold: 0.6 });
   nums.forEach(n => io.observe(n));
-}());
-
-/* ── 6. Copy the install snippet ─────────────────────────── */
-(function () {
-  const btn = document.getElementById('copyCode');
-  const block = document.getElementById('codeBlock');
-  if (!btn || !block) return;
-  btn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(block.innerText);
-      btn.textContent = 'Copied';
-    } catch (e) {
-      btn.textContent = 'Select all';
-      const r = document.createRange();
-      r.selectNodeContents(block);
-      const sel = window.getSelection();
-      sel.removeAllRanges(); sel.addRange(r);
-    }
-    setTimeout(() => { btn.textContent = 'Copy'; }, 1400);
-  });
-}());
-
-/* ── 7. Icon lab — search the real set, click to copy ────── */
-(function () {
-  const grid  = document.getElementById('iconGrid');
-  if (!grid) return;
-  const search = document.getElementById('iconSearch');
-  const count  = document.getElementById('iconCount');
-  const empty  = document.getElementById('iconEmpty');
-  const cells  = [...grid.querySelectorAll('.gcell')];
-  const total  = cells.length;
-
-  const setCount = n => {
-    if (count) count.innerHTML = '<b>' + n + '</b> of ' + total;
-  };
-
-  search?.addEventListener('input', () => {
-    const q = search.value.trim().toLowerCase();
-    let shown = 0;
-    cells.forEach(c => {
-      const hit = !q || c.dataset.name.includes(q);
-      c.style.display = hit ? '' : 'none';
-      if (hit) shown++;
-    });
-    setCount(shown);
-    if (empty) empty.style.display = shown ? 'none' : '';
-    grid.style.display = shown ? '' : 'none';
-  });
-
-  const flash = (cell, text) => {
-    const label = cell.querySelector('.gcell__name');
-    const original = label.textContent;
-    cell.classList.add('copied');
-    label.textContent = text;
-    setTimeout(() => {
-      cell.classList.remove('copied');
-      label.textContent = original;
-    }, 900);
-  };
-
-  cells.forEach(cell => {
-    cell.addEventListener('click', async () => {
-      const cls = 'ico-' + cell.dataset.name;
-      try {
-        await navigator.clipboard.writeText(cls);
-        flash(cell, 'copied');
-      } catch (e) {
-        /* clipboard blocked (http / permissions) — select instead */
-        const r = document.createRange();
-        r.selectNodeContents(cell.querySelector('.gcell__name'));
-        const sel = window.getSelection();
-        sel.removeAllRanges(); sel.addRange(r);
-        flash(cell, cls);
-      }
-    });
-  });
 }());
 
 /* ── 8. Legal sections ───────────────────────────────────── */
