@@ -1,0 +1,20 @@
+name: yte_ads
+description: Self-hosted ad system (banner, native, interstitial) for affiliate offers, with remote config, frequency capping and click/impression tracking.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  shared_preferences: ^2.2.0
+  url_launcher: ^6.2.0
+  visibility_detector: ^0.4.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

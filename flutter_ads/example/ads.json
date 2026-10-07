@@ -1,0 +1,42 @@
+{
+  "enabled": true,
+  "interstitialCooldownSecs": 180,
+  "interstitialCloseDelaySecs": 3,
+  "ads": [
+    {
+      "id": "hosting-deal-banner",
+      "format": "banner",
+      "placements": ["home_bottom"],
+      "network": "my-affiliate-network",
+      "title": "50% off web hosting",
+      "cta": "Get deal",
+      "imageUrl": "https://example.com/banners/hosting-320x60.png",
+      "targetUrl": "https://affiliate.example.com/click?offer=123&sub1={ad_id}&sub2={placement}&sub3={device_id}",
+      "weight": 3,
+      "dailyCap": 10
+    },
+    {
+      "id": "course-native",
+      "format": "native",
+      "placements": ["feed"],
+      "network": "my-affiliate-network",
+      "title": "Learn Flutter in 30 days",
+      "description": "Top-rated course, limited-time discount.",
+      "cta": "View course",
+      "imageUrl": "https://example.com/banners/course-640x320.png",
+      "targetUrl": "https://affiliate.example.com/click?offer=456&sub1={ad_id}",
+      "end": "2026-12-31T23:59:59Z"
+    },
+    {
+      "id": "vpn-interstitial",
+      "format": "interstitial",
+      "placements": ["level_complete", "task_done"],
+      "network": "my-affiliate-network",
+      "title": "Stay private online",
+      "description": "Try the VPN free for 30 days.",
+      "cta": "Start free trial",
+      "imageUrl": "https://example.com/banners/vpn-1080x1080.png",
+      "targetUrl": "https://affiliate.example.com/click?offer=789&sub1={ad_id}"
+    }
+  ]
+}
