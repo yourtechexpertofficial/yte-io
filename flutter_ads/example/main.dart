@@ -4,8 +4,9 @@ import 'package:yte_ads/yte_ads.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AdService.instance.init(
-    configUrl: 'https://YOUR_HOST/ads.json',
-    trackingUrl: null, // or 'https://YOUR_HOST/track'
+    configUrl: 'https://yourdomain.com/ads-api/ads.php',
+    trackingUrl: 'https://yourdomain.com/ads-api/track.php',
+    trackingKey: 'CHANGE_ME_RANDOM_STRING'
   );
   runApp(const MaterialApp(home: Home()));
 }

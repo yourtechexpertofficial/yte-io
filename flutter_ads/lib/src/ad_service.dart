@@ -23,6 +23,7 @@ class AdService {
   late SharedPreferences _prefs;
   late String _deviceId;
   String? _trackingUrl;
+  String? _trackingKey;
   AdConfig _config = const AdConfig();
   DateTime? _lastInterstitial;
   final _rng = Random();
@@ -33,14 +34,17 @@ class AdService {
   /// [configUrl]   URL of your hosted ads.json.
   /// [trackingUrl] optional endpoint; receives POST {event, adId, placement,
   ///               deviceId, network, ts} for impressions and clicks.
+  /// [trackingKey] sent as the X-Ads-Key header (must match track_key in config.php).
   /// [fallback]    ads bundled in the app, used on first launch if offline.
   Future<void> init({
     required String configUrl,
     String? trackingUrl,
+    String? trackingKey,
     AdConfig fallback = const AdConfig(),
   }) async {
     _prefs = await SharedPreferences.getInstance();
     _trackingUrl = trackingUrl;
+    _trackingKey = trackingKey;
     _config = fallback;
     _deviceId = _prefs.getString(_deviceKey) ??
         (() {
@@ -125,7 +129,10 @@ class AdService {
     if (url == null) return;
     http
         .post(Uri.parse(url),
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+              'Content-Type': 'application/json',
+              if (_trackingKey != null) 'X-Ads-Key': _trackingKey!,
+            },
             body: jsonEncode({
               'event': event,
               'adId': ad.id,
